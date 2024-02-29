@@ -6,8 +6,6 @@ import styles from '@/styles/Home.module.css'
 
 const inter = Inter({ subsets: ['latin'] })
 
-// Hello world
-
 export default function Home() {
   return (
     <>
@@ -20,7 +18,6 @@ export default function Home() {
       <main className={`${styles.main} ${inter.className}`}>
         <div className={styles.description}>
           <p>
-            AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA AAAAAAA
             <code className={styles.code}>src/pages/index.tsx</code>
           </p>
           <div>
