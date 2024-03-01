@@ -4,8 +4,7 @@ import { ReactElement, ReactNode } from 'react'
 
 import { NextPage } from 'next'
 
-
-import '@/styles/globals.css'
+import '@/styles/globals.scss'
 
 export type NextPageWithLayout<P = {}> = NextPage<P> & {
   getLayout?: (page: ReactElement) => ReactNode
