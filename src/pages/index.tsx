@@ -1,8 +1,8 @@
+import { getBaseLayout } from '@/layouts/publ/BaseLayout/BaseLayout'
 import { Inter } from 'next/font/google'
 import Head from 'next/head'
 
 import styles from '@/styles/Home.module.css'
-import { getBaseLayout } from '@/layouts/publ/BaseLayout/BaseLayout'
 
 const inter = Inter({ subsets: ['latin'] })
 
