@@ -4,6 +4,7 @@ import { ReactElement, ReactNode } from 'react'
 
 import { NextPage } from 'next'
 
+
 import '@/styles/globals.css'
 
 export type NextPageWithLayout<P = {}> = NextPage<P> & {
