@@ -1,5 +1,7 @@
-import { NextPage } from 'next'
 import { PropsWithChildren, ReactElement } from 'react'
+
+import { NextPage } from 'next'
+
 import { MainLayout } from '../MainLayout/MainLayout'
 
 export const BaseLayout: NextPage<PropsWithChildren> = props => {
