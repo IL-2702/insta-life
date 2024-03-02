@@ -1,4 +1,13 @@
-:root {
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-light-100);
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+  background-color: var(--color-dark-300);
+}
+
+/* :root {
   --max-width: 1100px;
   --border-radius: 12px;
   --font-mono: ui-monospace, menlo, monaco, 'Cascadia Mono', 'Segoe UI Mono', 'Roboto Mono',
@@ -69,6 +78,7 @@
   padding: 0;
 }
 
+
 html,
 body {
   overflow-x: hidden;
@@ -91,3 +101,4 @@ a {
     color-scheme: dark;
   }
 }
+*/
