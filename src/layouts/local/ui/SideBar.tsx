@@ -1,4 +1,5 @@
 import Link from 'next/link'
+
 import style from './SideBar.module.scss'
 
 const SideBar = () => {
