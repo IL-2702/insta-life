@@ -2,9 +2,9 @@ export const ArrowBack = () => {
   return (
     <svg
       fill={'none'}
-      height={'100%'}
+      height={'16px'}
       viewBox={'0 0 16 16'}
-      width={'100%'}
+      width={'14px'}
       xmlns={'http://www.w3.org/2000/svg'}
     >
       <path

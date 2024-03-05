@@ -17,6 +17,7 @@
   font-size: $fs;
   font-weight: $fw;
   line-height: $lh;
+  color: inherit;
 }
 
 @mixin button($color: var(--color-light-100), $bgColor: var(--color-primary-500)) {

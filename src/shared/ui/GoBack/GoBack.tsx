@@ -6,6 +6,7 @@ import { useRouter } from 'next/router'
 import s from './GoBack.module.scss'
 
 import { ArrowBack } from '../../assets/icons/arrow-back/arrow-back'
+import { Typography } from '../../ui/typography'
 import { Button } from '../button'
 
 type Props = {
@@ -24,9 +25,11 @@ export const GoBack = forwardRef<ElementRef<typeof Button>, Props>(({ className,
   }
 
   return (
-    <Button className={goBackClassName} onClick={onBack} type={'button'} variant={'link'}>
-      <ArrowBack />
-      {title}
+    <Button onClick={onBack} variant={'link'}>
+      <div className={goBackClassName}>
+        <ArrowBack />
+        <Typography variant={'regular14'}>{title}</Typography>
+      </div>
     </Button>
   )
 })
