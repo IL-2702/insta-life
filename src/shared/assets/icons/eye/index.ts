@@ -1,1 +1,1 @@
-export { Eye } from './eye.stories'
+export { Eye } from './eye'
