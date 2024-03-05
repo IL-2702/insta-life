@@ -40,16 +40,11 @@ export const Button = ({
   return (
     <button
       className={['storybook-button', `storybook-button--${size}`, mode].join(' ')}
+      style={{ backgroundColor }}
       type={'button'}
       {...props}
     >
       {label}
-      {/* eslint-disable-next-line react/no-unknown-property */}
-      <style jsx>{`
-        button {
-          background-color: ${backgroundColor};
-        }
-      `}</style>
     </button>
   )
 }
