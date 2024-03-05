@@ -1,0 +1,57 @@
+@mixin container {
+  width: 100%;
+  max-width: 63rem;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@mixin typography(
+  $fs: var(--font-size-medium),
+  $lh: var(--font-line-medium),
+  $fw: var(--font-weight-medium)
+) {
+  margin: 0;
+  padding: 0;
+
+  font-size: $fs;
+  font-weight: $fw;
+  line-height: $lh;
+}
+
+@mixin button($color: var(--color-light-100), $bgColor: var(--color-primary-500)) {
+  // all: unset; // Закомментировал для проверки необходимости данного св-ва
+  cursor: pointer;
+  user-select: none;
+
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+  padding: 6px 24px;
+
+  font-size: var(--font-h3);
+  color: $color;
+  text-decoration: none;
+
+  background-color: $bgColor;
+  border: 1px solid transparent;
+  border-radius: 2px;
+
+  transition-duration: 0.3s;
+
+  &:focus {
+    cursor: pointer;
+  }
+
+  &:disabled {
+    cursor: default;
+  }
+
+  &.fullWidth {
+    justify-content: center;
+    width: 100%;
+  }
+}
