@@ -38,6 +38,7 @@ export const Checkbox: FC<CheckboxPropsType> = ({
 
   return (
     <>
+      <Typography>{label}</Typography>
       <div className={classNames.buttonWrapper}>
         <CheckboxRadix.Root
           checked={Boolean(checked)}
