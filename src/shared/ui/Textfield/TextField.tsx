@@ -1,7 +1,7 @@
 import React, { ComponentPropsWithoutRef, FC, KeyboardEvent, ReactNode, useState } from 'react'
 
 import { Close } from '@/shared/assets/icons/Close'
-import { Eye } from '@/shared/assets/icons/Eye/Eye'
+import { Eye } from '@/shared/assets/icons/Eye'
 import { Search } from '@/shared/assets/icons/SearchOutline'
 import { VisibilityOff } from '@/shared/assets/icons/VisibilityOff'
 import { Typography } from '@/shared/ui/Typography'
