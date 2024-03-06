@@ -1,13 +1,13 @@
 import { ElementRef, forwardRef } from 'react'
 
+import ArrowBack from '@/shared/assets/icons/ArrowBack/ArrowBack'
 import { clsx } from 'clsx'
 import { useRouter } from 'next/router'
 
 import s from './GoBack.module.scss'
 
-import ArrowBack from '../../assets/icons/arrow-back/arrow-back'
-import { Typography } from '../../ui/typography'
-import { Button } from '../button'
+import { Button } from '../Button'
+import { Typography } from '../Typography'
 
 type Props = {
   className?: string
