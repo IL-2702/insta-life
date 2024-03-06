@@ -1,8 +1,9 @@
 import { getBaseLayout } from '@/layouts/publ/BaseLayout/BaseLayout'
+import FavoritesPage from '@/pages/favorites'
 
-const Search = () => {
+const SearchPage = () => {
   return <div>Search</div>
 }
 
-Search.getLayout = getBaseLayout
-export default Search
+SearchPage.getLayout = getBaseLayout
+export default SearchPage
