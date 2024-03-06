@@ -1,3 +1,3 @@
-import SignIn from '@/pages/auth/SignIn'
+import { SignIn } from './ui/signIn'
 
 // export <SignIn useContainer()/>

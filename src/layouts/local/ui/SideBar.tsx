@@ -11,8 +11,8 @@ const SideBar = () => {
       <Link href={'/search'}>Search</Link>
       <Link href={'/statistics'}>Statistics</Link>
       <Link href={'/favorites'}>Favorites</Link>
-      <Link href={'/auth/signIn'}>SignIn</Link>
-      <Link href={'/auth/signUp'}>SignUp</Link>
+      <Link href={'/auth/sign-in'}>SignIn</Link>
+      <Link href={'/auth/sign-up'}>SignUp</Link>
     </nav>
   )
 }
