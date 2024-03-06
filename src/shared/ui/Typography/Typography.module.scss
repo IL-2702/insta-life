@@ -59,9 +59,11 @@
 }
 
 .error {
-  @include typography($fs: var(--font-size-xs), $lh: var(--line-height-m));
-
-  color: var(--color-danger-300);
+  @include typography(
+    $fs: var(--font-size-xs),
+    $lh: var(--line-height-m),
+    $color: var(--color-danger-300)
+  );
 }
 
 // colors ================================================================================
@@ -92,4 +94,8 @@
 
 .success {
   color: var(--color-success-500);
+}
+
+.color {
+  color: var(--color-danger-300);
 }

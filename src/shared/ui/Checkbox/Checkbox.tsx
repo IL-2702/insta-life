@@ -1,5 +1,6 @@
 import { FC } from 'react'
 
+import { Typography } from '@/shared/ui/Typography'
 import * as CheckboxRadix from '@radix-ui/react-checkbox'
 import clsx from 'clsx'
 
@@ -11,6 +12,7 @@ export type CheckboxPropsType = {
   checked: boolean | string
   className?: string
   disabled?: boolean
+  errorMessage?: string
   id?: string
   label?: string
   // eslint-disable-next-line no-unused-vars
@@ -21,6 +23,7 @@ export type CheckboxPropsType = {
 export const Checkbox: FC<CheckboxPropsType> = ({
   checked,
   disabled,
+  errorMessage,
   label,
   onChange,
   required,
@@ -34,20 +37,28 @@ export const Checkbox: FC<CheckboxPropsType> = ({
   }
 
   return (
-    <div className={classNames.buttonWrapper}>
-      <CheckboxRadix.Root
-        checked={Boolean(checked)}
-        className={classNames.root}
-        disabled={disabled}
-        onCheckedChange={onChange}
-        required={required}
-      >
-        {checked && (
-          <CheckboxRadix.Indicator className={classNames.indicator}>
-            <CheckIcon color={disabled ? 'var(--color-light-700' : 'black'} />
-          </CheckboxRadix.Indicator>
-        )}
-      </CheckboxRadix.Root>
-    </div>
+    <>
+      <Typography>{label}</Typography>
+      <div className={classNames.buttonWrapper}>
+        <CheckboxRadix.Root
+          checked={Boolean(checked)}
+          className={classNames.root}
+          disabled={disabled}
+          onCheckedChange={onChange}
+          required={required}
+        >
+          {checked && (
+            <CheckboxRadix.Indicator className={classNames.indicator}>
+              <CheckIcon color={disabled ? 'var(--color-light-700' : 'black'} />
+            </CheckboxRadix.Indicator>
+          )}
+        </CheckboxRadix.Root>
+      </div>
+      {errorMessage && (
+        <Typography color={'error'} variant={'error'}>
+          {errorMessage}
+        </Typography>
+      )}
+    </>
   )
 }

@@ -9,7 +9,8 @@
 @mixin typography(
   $fs: var(--font-size-medium),
   $lh: var(--font-line-medium),
-  $fw: var(--font-weight-medium)
+  $fw: var(--font-weight-medium),
+  $color: inherit
 ) {
   margin: 0;
   padding: 0;
@@ -17,7 +18,7 @@
   font-size: $fs;
   font-weight: $fw;
   line-height: $lh;
-  color: inherit;
+  color: $color;
 }
 
 @mixin button($color: var(--color-light-100), $bgColor: var(--color-primary-500)) {
