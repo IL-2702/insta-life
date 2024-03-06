@@ -1,5 +1,4 @@
 import { getBaseLayout } from '@/layouts/publ/BaseLayout/BaseLayout'
-import FavoritesPage from '@/pages/favorites'
 import { Inter } from 'next/font/google'
 import Head from 'next/head'
 
