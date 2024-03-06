@@ -1,6 +1,7 @@
 import React, { ComponentPropsWithoutRef, FC, KeyboardEvent, ReactNode, useState } from 'react'
 
 import { Close } from '@/shared/assets/icons/Close'
+import { Eye } from '@/shared/assets/icons/Eye'
 import { Search } from '@/shared/assets/icons/SearchOutline'
 import { VisibilityOff } from '@/shared/assets/icons/VisibilityOff'
 import { Typography } from '@/shared/ui/Typography'
@@ -8,8 +9,6 @@ import * as Label from '@radix-ui/react-label'
 import clsx from 'clsx'
 
 import s from './TextField.module.scss'
-
-import { Eye } from '../../assets/icons/Eye'
 
 export type TextFieldProps = {
   className?: string
