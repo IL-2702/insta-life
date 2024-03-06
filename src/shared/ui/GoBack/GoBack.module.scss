@@ -1,0 +1,13 @@
+.root {
+  color: var(--color-light-100);
+
+  .wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  &:hover {
+    color: var(--color-primary-500);
+  }
+}

@@ -13,11 +13,13 @@
     "lint": "eslint --fix src/**/*.{tsx,ts,jsx,js} --color --no-error-on-unmatched-pattern && stylelint --fix src/{,*/}*.{scss,css} --allow-empty-input",
     "prepare": "husky"
   },
-
   "dependencies": {
+    "@radix-ui/react-checkbox": "^1.0.4",
     "@radix-ui/react-dialog": "^1.0.5",
+    "@radix-ui/react-label": "^2.0.2",
     "@radix-ui/react-select": "^2.0.0",
     "clsx": "^2.1.0",
+    "esbuild": "^0.20.1",
     "next": "14.1.0",
     "react": "^18",
     "react-dom": "^18"

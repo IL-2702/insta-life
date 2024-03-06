@@ -65,8 +65,9 @@
 }
 
 // colors ================================================================================
+
 .primary {
-  color: var(--color-light-100);
+  color: var(--color-primary-500);
 }
 
 .secondary {
@@ -74,7 +75,7 @@
 }
 
 .inherit {
-  color: var(--color-dark-100);
+  color: inherit;
 }
 
 .link {
