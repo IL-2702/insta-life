@@ -1,8 +1,8 @@
 import { getBaseLayout } from '@/layouts/publ/BaseLayout/BaseLayout'
 
-const Profile = () => {
+const ProfilePage = () => {
   return <div>Profile</div>
 }
 
-Profile.getLayout = getBaseLayout
-export default Profile
+ProfilePage.getLayout = getBaseLayout
+export default ProfilePage

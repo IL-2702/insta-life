@@ -1,8 +1,8 @@
 import { getBaseLayout } from '@/layouts/publ/BaseLayout/BaseLayout'
 
-const Home = () => {
+const HomePage = () => {
   return <div>Home</div>
 }
 
-Home.getLayout = getBaseLayout
-export default Home
+HomePage.getLayout = getBaseLayout
+export default HomePage

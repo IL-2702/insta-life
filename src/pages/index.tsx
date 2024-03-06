@@ -4,7 +4,7 @@ import Head from 'next/head'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export const Home = () => {
+export const HomePage = () => {
   return (
     <>
       <Head>
@@ -18,5 +18,5 @@ export const Home = () => {
   )
 }
 
-Home.getLayout = getBaseLayout
-export default Home
+HomePage.getLayout = getBaseLayout
+export default HomePage

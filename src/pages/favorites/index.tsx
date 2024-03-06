@@ -1,8 +1,8 @@
 import { getBaseLayout } from '@/layouts/publ/BaseLayout/BaseLayout'
 
-const Favorites = () => {
+const FavoritesPage = () => {
   return <div>Favorites</div>
 }
 
-Favorites.getLayout = getBaseLayout
-export default Favorites
+FavoritesPage.getLayout = getBaseLayout
+export default FavoritesPage
