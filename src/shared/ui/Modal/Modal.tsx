@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef, ReactNode } from 'react'
+import { ComponentPropsWithoutRef, ReactNode, useEffect, useRef, useState } from 'react'
 
 import { Close } from '@/shared/assets/icons/Close'
 import { Button } from '@/shared/ui/Button'
@@ -7,7 +7,7 @@ import { PointerDownOutsideEvent } from '@radix-ui/react-dismissable-layer'
 import clsx from 'clsx'
 
 import s from './Modal.module.scss'
-
+//TODO
 type ModalPropsType = {
   children: ReactNode
   className?: string
@@ -39,6 +39,21 @@ export const Modal = ({
   previousStepBtn = false,
   title,
 }: ModalPropsType) => {
+  const containerRef = useRef<any>(null)
+
+  const [isMounted, setIsMounted] = useState(false)
+
+  useEffect(() => {
+    setIsMounted(true)
+
+    return () => {
+      setIsMounted(false)
+    }
+  }, [])
+
+  if (!isMounted) {
+    return null
+  }
   const modalContentClassName = clsx({
     [s.DialogDescription]: true,
     [s.DialogDescription_postModal]: isPostModal,
@@ -75,31 +90,31 @@ export const Modal = ({
             )}
           </div>
           <hr className={s.border} />
-          <Dialog.Description className={modalContentClassName}>
+          <Dialog.Description asChild className={modalContentClassName}>
             {children}
-            {customButtonsBlock ? (
-              <div
-                style={{
-                  display: 'flex',
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
-                  marginTop: 'auto',
-                }}
-              >
-                {customButtonsBlock}
-              </div>
-            ) : (
-              <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: 'auto' }}>
-                {editPost ? (
-                  <Button onClick={onSubmit}>Save changes</Button>
-                ) : (
-                  <Dialog.Close asChild>
-                    <Button>OK</Button>
-                  </Dialog.Close>
-                )}
-              </div>
-            )}
           </Dialog.Description>
+          {customButtonsBlock ? (
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                marginTop: 'auto',
+              }}
+            >
+              {customButtonsBlock}
+            </div>
+          ) : (
+            <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: 'auto' }}>
+              {editPost ? (
+                <Button onClick={onSubmit}>Save changes</Button>
+              ) : (
+                <Dialog.Close asChild>
+                  <Button>OK</Button>
+                </Dialog.Close>
+              )}
+            </div>
+          )}
         </Dialog.Content>
       </Dialog.Portal>
     </Dialog.Root>
