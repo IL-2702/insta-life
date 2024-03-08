@@ -1,0 +1,1 @@
+export { MessengerIcon } from './MessengerIcon'
