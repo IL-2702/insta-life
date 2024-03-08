@@ -4,14 +4,14 @@ import Link from 'next/link'
 
 import s from './SideBar.module.scss'
 
-import bookmarkIcon from '../../../../../public/bookmarkIcon.svg'
-import createIcon from '../../../../../public/createIcon.svg'
-import homeIcon from '../../../../../public/homeIcon.svg'
-import logOutIcon from '../../../../../public/logOutIcon.svg'
-import messengerIcon from '../../../../../public/messengerIcon.svg'
-import profileIcon from '../../../../../public/profileIcon.svg'
-import searchIcon from '../../../../../public/searchIcon.svg'
-import statisticsIcon from '../../../../../public/statisticsIcon.svg'
+import bookmarkIcon from '../../../../../public/assideIcons/bookmarkIcon.svg'
+import createIcon from '../../../../../public/assideIcons/createIcon.svg'
+import homeIcon from '../../../../../public/assideIcons/homeIcon.svg'
+import logOutIcon from '../../../../../public/assideIcons/logOutIcon.svg'
+import messengerIcon from '../../../../../public/assideIcons/messengerIcon.svg'
+import profileIcon from '../../../../../public/assideIcons/profileIcon.svg'
+import searchIcon from '../../../../../public/assideIcons/searchIcon.svg'
+import statisticsIcon from '../../../../../public/assideIcons/statisticsIcon.svg'
 
 export const SideBar = () => {
   return (
