@@ -8,16 +8,17 @@ type Props<T extends FieldValues> = {
   control: Control<T>
   name: FieldPath<T>
 } & Omit<TextFieldProps, 'onChange' | 'value'>
-export const ControlledTextField = forwardRef(
-  <T extends FieldValues>({ control, name, ...rest }: Props<T>, ref: Ref<HTMLInputElement>) => {
-    const {
-      field,
-      fieldState: { error },
-    } = useController({
-      control,
-      name,
-    })
+export const ControlledTextField = <T extends FieldValues>(
+  { control, name, ...rest }: Props<T>,
+  ref: Ref<HTMLInputElement>
+) => {
+  const {
+    field,
+    fieldState: { error },
+  } = useController({
+    control,
+    name,
+  })
 
-    return <TextField {...field} errorMessage={error?.message} ref={ref} {...rest} />
-  }
-)
+  return <TextField {...field} errorMessage={error?.message} {...rest} />
+}
