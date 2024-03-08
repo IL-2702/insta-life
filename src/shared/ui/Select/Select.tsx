@@ -3,11 +3,8 @@ import { useState } from 'react'
 import { SelectToggle } from '@/shared/assets/icons/SelectToggle'
 import { Typography } from '@/shared/ui/Typography'
 import * as Select from '@radix-ui/react-select'
-import Image from 'next/image'
 
 import s from './Select.module.scss'
-
-import g from '../../../../public/bell.svg'
 
 type SelectPropsType = {
   currentValue?: string

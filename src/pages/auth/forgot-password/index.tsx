@@ -45,7 +45,7 @@ const ForgotPassword = () => {
           <ControlledTextField
             className={s.email}
             control={control}
-            label={'email'}
+            label={'Email'}
             name={'email'}
           />
           <Typography className={s.subtitle} variant={'regular14'}>
