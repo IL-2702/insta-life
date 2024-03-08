@@ -1,8 +1,7 @@
 import { useForm } from 'react-hook-form'
 
 import { getBaseLayout } from '@/layouts/publ/BaseLayout/BaseLayout'
-import { ForgotPasswordFormType } from '@/pages/auth/forgot-password'
-import { forgotPasswordSchema } from '@/pages/auth/forgot-password/forgotPasswordSchema'
+import { ForgotPasswordFormType, forgotPasswordSchema } from '@/pages/auth/forgot-password'
 import { Button } from '@/shared/ui/Button'
 import { Card } from '@/shared/ui/Card/Card'
 import { Typography } from '@/shared/ui/Typography'

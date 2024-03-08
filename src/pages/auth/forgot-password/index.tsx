@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 import { getBaseLayout } from '@/layouts/publ/BaseLayout/BaseLayout'
-import { forgotPasswordSchema } from '@/pages/auth/forgot-password/forgotPasswordSchema'
 import { Button } from '@/shared/ui/Button'
 import { Card } from '@/shared/ui/Card'
 import { GoBack } from '@/shared/ui/GoBack'
@@ -14,6 +13,10 @@ import { useRouter } from 'next/router'
 import { z } from 'zod'
 
 import s from './ForgotPassword.module.scss'
+
+export const forgotPasswordSchema = z.object({
+  email: z.string().trim().email("User with this email doesn't exist").toLowerCase(),
+})
 
 export type ForgotPasswordFormType = z.infer<typeof forgotPasswordSchema>
 
