@@ -1,0 +1,36 @@
+.aside {
+  float: left;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  width: 100%;
+  max-width: 220px;
+  margin-left: 60px;
+  padding-top: 72px;
+  padding-bottom: 0;
+
+  border-right: 1px solid var(--color-dark-300);
+
+  & > a {
+    display: flex;
+    gap: 12px;
+  }
+
+  & > a:hover {
+    color: var(--color-primary-100);
+  }
+
+  & > a:active {
+    color: var(--color-primary-500);
+  }
+
+  & > a:nth-child(6) {
+    margin-top: 60px;
+  }
+
+  & > a:nth-child(8) {
+    margin-top: 180px;
+    padding-bottom: 100px;
+  }
+}

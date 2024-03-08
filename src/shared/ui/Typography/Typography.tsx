@@ -5,7 +5,16 @@ import s from './Typography.module.scss'
 export type TypographyProps<T extends ElementType = 'p'> = {
   as?: T // h1 h2 h3
   className?: string
-  color?: 'error' | 'form' | 'inherit' | 'link' | 'primary' | 'secondary' | 'success' | 'tertiary'
+  color?:
+    | 'error'
+    | 'form'
+    | 'inherit'
+    | 'light'
+    | 'link'
+    | 'primary'
+    | 'secondary'
+    | 'success'
+    | 'tertiary'
   variant?:
     | 'bold-small'
     | 'bold14'

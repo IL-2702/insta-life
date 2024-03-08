@@ -3,8 +3,11 @@ import { useState } from 'react'
 import { SelectToggle } from '@/shared/assets/icons/SelectToggle'
 import { Typography } from '@/shared/ui/Typography'
 import * as Select from '@radix-ui/react-select'
+import Image from 'next/image'
 
 import s from './Select.module.scss'
+
+import g from '../../../../public/bell.svg'
 
 type SelectPropsType = {
   currentValue?: string
@@ -53,9 +56,9 @@ export const SelectComponent = ({
         </Select.Icon>
       </Select.Trigger>
       <Select.Content className={s.selectContent} position={'popper'}>
-        {selectItems?.map((el, i) => {
+        {selectItems?.map(el => {
           return (
-            <Select.Item className={s.selectItem} key={i} value={el}>
+            <Select.Item className={s.selectItem} key={el} value={el}>
               <Select.ItemText>
                 <Typography variant={optionTextVariant}>{el}</Typography>
               </Select.ItemText>

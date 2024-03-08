@@ -1,0 +1,1 @@
+export { StatisticsIcon } from './StatisticsIcon'
