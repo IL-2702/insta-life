@@ -1,65 +1,63 @@
+import { BookMark } from '@/shared/assets/icons/asideIcons/bookmarkIcon/BookmarkIcon'
+import { CreateIcon } from '@/shared/assets/icons/asideIcons/createIcon/CreateIcon'
+import { HomeIcon } from '@/shared/assets/icons/asideIcons/homeIcon'
+import { LogOutIcon } from '@/shared/assets/icons/asideIcons/logOutIcon'
+import { MessengerIcon } from '@/shared/assets/icons/asideIcons/messengerIcon'
+import { ProfileIcon } from '@/shared/assets/icons/asideIcons/profileIcon'
+import { SearchIcon } from '@/shared/assets/icons/asideIcons/searchIcon'
+import { StatisticsIcon } from '@/shared/assets/icons/asideIcons/statisticsIcon'
 import { Typography } from '@/shared/ui/Typography'
-import Image from 'next/image'
 import Link from 'next/link'
 
 import s from './SideBar.module.scss'
-
-import bookmarkIcon from '../../../../../public/assideIcons/bookmarkIcon.svg'
-import createIcon from '../../../../../public/assideIcons/createIcon.svg'
-import homeIcon from '../../../../../public/assideIcons/homeIcon.svg'
-import logOutIcon from '../../../../../public/assideIcons/logOutIcon.svg'
-import messengerIcon from '../../../../../public/assideIcons/messengerIcon.svg'
-import profileIcon from '../../../../../public/assideIcons/profileIcon.svg'
-import searchIcon from '../../../../../public/assideIcons/searchIcon.svg'
-import statisticsIcon from '../../../../../public/assideIcons/statisticsIcon.svg'
 
 export const SideBar = () => {
   return (
     <aside className={s.aside}>
       <Link href={'/home'}>
-        <Image alt={'homeIcon'} src={homeIcon} />
+        <HomeIcon />
         <Typography color={'light'} variant={'medium14'}>
           Home
         </Typography>
       </Link>
       <Link href={'/create'}>
-        <Image alt={'createIcon'} src={createIcon} />
+        <CreateIcon />
         <Typography color={'light'} variant={'medium14'}>
           Create
         </Typography>
       </Link>
       <Link href={'/profile'}>
-        <Image alt={'profileIcon'} src={profileIcon} />
+        <ProfileIcon />
         <Typography color={'light'} variant={'medium14'}>
           MyProfile
         </Typography>
       </Link>
       <Link href={'/messenger'}>
-        <Image alt={'messengerIcon'} src={messengerIcon} />
+        <MessengerIcon />
         <Typography color={'light'} variant={'medium14'}>
           Messenger
         </Typography>
       </Link>
       <Link href={'/search'}>
-        <Image alt={'searchIcon'} src={searchIcon} />
+        <SearchIcon />
         <Typography color={'light'} variant={'medium14'}>
           Search
         </Typography>
       </Link>
       <Link href={'/statistics'}>
-        <Image alt={'statisticsIcon'} src={statisticsIcon} />
+        <StatisticsIcon />
         <Typography color={'light'} variant={'medium14'}>
           Statistics
         </Typography>
       </Link>
       <Link href={'/favorites'}>
-        <Image alt={'bookmarkIcon'} src={bookmarkIcon} />
+        <BookMark />
         <Typography color={'light'} variant={'medium14'}>
           Favorites
         </Typography>
       </Link>
       <Link href={'/auth/sign-in'}>
-        <Image alt={'logOutIcon'} src={logOutIcon} />
+        <LogOutIcon />
         <Typography color={'light'} variant={'medium14'}>
           Log Out
         </Typography>
