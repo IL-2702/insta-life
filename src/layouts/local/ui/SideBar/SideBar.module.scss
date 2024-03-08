@@ -1,0 +1,28 @@
+.aside {
+  float: left;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  width: 100%;
+  max-width: 220px;
+  margin-top: 72px;
+  margin-left: 100px;
+
+  & > a {
+    display: flex;
+    gap: 12px;
+  }
+
+  & > a:nth-child(6) {
+    margin-top: 60px;
+  }
+
+  & > a:nth-child(6) {
+    margin-top: 60px;
+  }
+
+  & > a:nth-child(8) {
+    margin-top: 180px;
+  }
+}
