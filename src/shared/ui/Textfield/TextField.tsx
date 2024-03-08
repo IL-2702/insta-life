@@ -1,4 +1,4 @@
-import React, { ComponentPropsWithoutRef, FC, KeyboardEvent, ReactNode, useState } from 'react'
+import React, { ComponentPropsWithRef, FC, KeyboardEvent, ReactNode, useState } from 'react'
 
 import { Close } from '@/shared/assets/icons/Close'
 import { Eye } from '@/shared/assets/icons/Eye'
@@ -20,7 +20,7 @@ export type TextFieldProps = {
   // eslint-disable-next-line no-unused-vars
   onEnter?: (e: KeyboardEvent<HTMLInputElement>) => void
   value?: string
-} & ComponentPropsWithoutRef<'input'>
+} & ComponentPropsWithRef<'input'>
 
 export const TextField: FC<TextFieldProps> = ({
   className,
