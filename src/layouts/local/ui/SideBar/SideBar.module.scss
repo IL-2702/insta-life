@@ -6,16 +6,23 @@
 
   width: 100%;
   max-width: 220px;
-  margin-top: 72px;
-  margin-left: 100px;
+  margin-left: 60px;
+  padding-top: 72px;
+  padding-bottom: 0;
+
+  border-right: 1px solid var(--color-dark-300);
 
   & > a {
     display: flex;
     gap: 12px;
   }
 
-  & > a:nth-child(6) {
-    margin-top: 60px;
+  & > a:hover {
+    color: var(--color-primary-100);
+  }
+
+  & > a:active {
+    color: var(--color-primary-500);
   }
 
   & > a:nth-child(6) {
@@ -24,5 +31,6 @@
 
   & > a:nth-child(8) {
     margin-top: 180px;
+    padding-bottom: 100px;
   }
 }
