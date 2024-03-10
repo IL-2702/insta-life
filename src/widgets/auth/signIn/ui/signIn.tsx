@@ -20,10 +20,10 @@ export const SignIn = memo(({ control, errorsWrapper, onSubmit }: SignInProps) =
         Sign In
       </Typography>
       <div className={s.service}>
-        <Link href={'#google'}>
+        <Link href={'#google#'}>
           <Image alt={'SignIn with google service'} height={36} src={gLogo} width={36} />
         </Link>
-        <Link href={'#github'}>
+        <Link href={'#github#'}>
           <Image alt={'SignIn with github service'} height={36} src={gitLogo} width={36} />
         </Link>
       </div>
