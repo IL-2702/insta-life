@@ -1,3 +1,5 @@
-import { SignIn } from './ui/signIn'
+import { Container } from '@/widgets/auth/signIn/container'
 
-// export <SignIn useContainer()/>
+export const SignInPage = {
+  widget: Container,
+}

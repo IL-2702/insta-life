@@ -1,7 +1,9 @@
 import type { AppProps } from 'next/app'
 
 import { ReactElement, ReactNode } from 'react'
+import { Provider } from 'react-redux'
 
+import { store } from '@/app/store'
 import { NextPage } from 'next'
 
 import '@/styles/variables/index.scss'
@@ -17,5 +19,9 @@ type AppPropsWithLayout = AppProps & {
 export default function App({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout = Component.getLayout ?? (page => page)
 
-  return getLayout(<Component {...pageProps} />)
+  return getLayout(
+    <Provider store={store}>
+      <Component {...pageProps} />
+    </Provider>
+  )
 }

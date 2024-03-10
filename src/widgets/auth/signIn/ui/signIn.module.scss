@@ -1,0 +1,51 @@
+.container {
+  padding: 25px;
+  max-width: 378px;
+  margin-top: 43px;
+  display: flex;
+  flex-direction: column;
+
+  .title {
+    text-align: center;
+    margin-bottom: 13px;
+  }
+
+  .service {
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: center;
+
+    & > *:first-child {
+      margin-right: 60px;
+    }
+  }
+
+  .email {
+    margin-bottom: 24px;
+  }
+
+  .pass {
+    margin-bottom: 24px;
+  }
+
+  .forgot {
+    display: flex;
+    justify-content: end;
+    margin-bottom: 24px;
+  }
+
+  .button {
+    margin-bottom: 24px;
+  }
+
+  .signup {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    & > *:not(:last-child) {
+      margin-bottom: 6px;
+    }
+  }
+}
