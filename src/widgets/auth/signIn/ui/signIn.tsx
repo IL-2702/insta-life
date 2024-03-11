@@ -1,4 +1,4 @@
-import { memo, useEffect } from 'react'
+import { memo } from 'react'
 
 import { Button } from '@/shared/ui/Button'
 import { Card } from '@/shared/ui/Card'
@@ -15,13 +15,7 @@ import gitLogo from '../../../../../public/assets/githubLogo.svg'
 import gLogo from '../../../../../public/assets/googleLogo.svg'
 
 export const SignIn = memo(
-  ({ control, errorsWrapper, onSubmit, router, signIsLoading, token }: SignInProps) => {
-    useEffect(() => {
-      if (token) {
-        router.push('/profile')
-      }
-    }, [token, router])
-
+  ({ control, errorsWrapper, onSubmit, signIsLoading, token }: SignInProps) => {
     return (
       !token && (
         <Card className={s.container}>
