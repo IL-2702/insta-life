@@ -99,3 +99,18 @@ body {
 [data-radix-popper-content-wrapper] {
   z-index: 110 !important;
 }
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus input:-webkit-autofill,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: 1px solid inherit;
+  -webkit-text-fill-color: var(--color-light-100);
+  transition: background-color 5000s ease-in-out 0s;
+  background: var(--color-dark-300);
+  background-color: var(--color-dark-300);
+}
