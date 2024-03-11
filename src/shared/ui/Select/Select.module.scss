@@ -8,11 +8,10 @@
 
   display: flex;
   gap: 5px;
-
   align-items: flex-end;
-
   justify-content: space-between;
 
+  width: var(--radix-select-trigger-width);
   padding: 5px;
 
   background: var(--color-dark-700);
@@ -36,7 +35,7 @@
 .selectContent {
   z-index: 1;
 
-  width: var(--radix-select-trigger-width);
+  width: var(--radix-select-content-available-width);
   margin-top: -2px;
 
   background-color: var(--color-dark-700);
@@ -46,7 +45,11 @@
 
 .selectItem {
   cursor: pointer;
+
+  display: flex;
+
   padding: 5px;
+
   border: none;
   outline: none;
 
