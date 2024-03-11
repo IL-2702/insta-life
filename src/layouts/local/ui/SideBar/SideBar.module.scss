@@ -17,12 +17,12 @@
     gap: 12px;
   }
 
-  & > a:hover {
+  & > a:hover .navLink {
     color: var(--color-primary-100);
   }
 
-  & > a:active {
-    color: var(--color-primary-500);
+  & > a:hover .navIcon path {
+    fill: var(--color-primary-100) !important;
   }
 
   & > a:nth-child(6) {
@@ -33,4 +33,12 @@
     margin-top: 180px;
     padding-bottom: 100px;
   }
+}
+
+.activeLink .navLink {
+  color: var(--color-primary-500);
+}
+
+.activeLink .navIcon path {
+  fill: var(--color-primary-500) !important;
 }
