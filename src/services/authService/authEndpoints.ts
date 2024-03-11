@@ -8,7 +8,7 @@ import { authActions } from '@/services/authService/store/slice/authEndpoints.sl
 
 const authEndpoints = api.injectEndpoints({
   endpoints: builder => ({
-    getMe: builder.query<GetMeResponse, void>({
+    getMe: builder.query<GetMeResponse | unknown, void>({
       providesTags: ['Me'],
       async queryFn(_, _api, _extraOptions, baseQuery) {
         const result = await baseQuery({
@@ -16,7 +16,7 @@ const authEndpoints = api.injectEndpoints({
           url: `auth/me`,
         })
 
-        return result as any
+        return result
       },
     }),
     signIn: builder.mutation<SignInResponse, SignInParams>({
