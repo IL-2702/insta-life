@@ -16,7 +16,6 @@ export const baseQuery = fetchBaseQuery({
     const token = (getState() as RootState).authReducer?.accessToken
 
     if (token) {
-      debugger
       headers.set('Authorization', `Bearer ${token}`)
     }
 
