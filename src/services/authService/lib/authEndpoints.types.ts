@@ -17,3 +17,12 @@ export type ErrorResponse = {
   messages: [{ field: string; message: string }]
   statusCode: number
 }
+
+export type UserType = {
+  email: string
+  isBlocked: boolean
+  userId: number
+  userName: string
+}
+
+export type GetMeResponse = ErrorResponse | UserType

@@ -1,10 +1,26 @@
 import { api } from '@/services/api'
-import { SignInParams, SignInResponse } from '@/services/authService/lib/authEndpoints.types'
+import {
+  GetMeResponse,
+  SignInParams,
+  SignInResponse,
+} from '@/services/authService/lib/authEndpoints.types'
 import { authActions } from '@/services/authService/store/slice/authEndpoints.slice'
 
 const authEndpoints = api.injectEndpoints({
   endpoints: builder => ({
+    getMe: builder.query<GetMeResponse, void>({
+      providesTags: ['Me'],
+      async queryFn(_, _api, _extraOptions, baseQuery) {
+        const result = await baseQuery({
+          method: 'GET',
+          url: `auth/me`,
+        })
+
+        return result as any
+      },
+    }),
     signIn: builder.mutation<SignInResponse, SignInParams>({
+      invalidatesTags: ['Me'],
       onQueryStarted: async (_, { dispatch, queryFulfilled }) => {
         try {
           const {
@@ -27,4 +43,4 @@ const authEndpoints = api.injectEndpoints({
   }),
 })
 
-export const { useSignInMutation } = authEndpoints
+export const { useGetMeQuery, useSignInMutation } = authEndpoints
