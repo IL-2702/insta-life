@@ -36,7 +36,7 @@ export const useContainer = () => {
 
   const token = useAppSelector(state => state.authReducer?.accessToken)
 
-  const [signIn] = useSignInMutation()
+  const [signIn, { isLoading: signIsLoading }] = useSignInMutation()
 
   const onSubmit = handleSubmit((data: signInFormSchema) => {
     signIn(data)
@@ -50,5 +50,5 @@ export const useContainer = () => {
       })
   })
 
-  return { control, errorsWrapper, onSubmit, router, token }
+  return { control, errorsWrapper, onSubmit, router, signIsLoading, token }
 }
