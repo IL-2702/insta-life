@@ -1,5 +1,6 @@
 import { useForm } from 'react-hook-form'
 
+import { useAppSelector } from '@/app/store/hooks/useAppSelector'
 import { useSignInMutation } from '@/services/authService/authEndpoints'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useRouter } from 'next/router'
@@ -33,12 +34,14 @@ export const useContainer = () => {
 
   const router = useRouter()
 
-  const [signIn] = useSignInMutation()
+  const token = useAppSelector(state => state.authReducer?.accessToken)
+
+  const [signIn, { isLoading: signIsLoading }] = useSignInMutation()
 
   const onSubmit = handleSubmit((data: signInFormSchema) => {
     signIn(data)
       .unwrap()
-      .then(() => router.push('/profile'))
+
       .catch(() => {
         setError('password', {
           message: 'The email or password are incorrect. Try again please',
@@ -47,5 +50,5 @@ export const useContainer = () => {
       })
   })
 
-  return { control, errorsWrapper, onSubmit }
+  return { control, errorsWrapper, onSubmit, router, signIsLoading, token }
 }
