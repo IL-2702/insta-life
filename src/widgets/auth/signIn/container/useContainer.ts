@@ -48,7 +48,6 @@ export const useContainer = () => {
   const onSubmit = handleSubmit((data: signInFormSchema) => {
     signIn(data)
       .unwrap()
-      .then(() => router.push(ROUTES.PROFILE))
       .catch(() => {
         setError('password', {
           message: 'The email or password are incorrect. Try again please',
