@@ -20,7 +20,6 @@ const authEndpoints = api.injectEndpoints({
       },
     }),
     signIn: builder.mutation<SignInResponse, SignInParams>({
-      invalidatesTags: ['Me'],
       onQueryStarted: async (_, { dispatch, queryFulfilled }) => {
         try {
           const {
@@ -29,6 +28,9 @@ const authEndpoints = api.injectEndpoints({
 
           if (accessToken) {
             dispatch(authActions.setAccessToken(accessToken))
+            setTimeout(() => {
+              dispatch(api.util.invalidateTags(['Me']))
+            }, 500)
           }
         } catch (e) {
           console.log(e)
