@@ -1,32 +1,30 @@
 import { ReactNode, useEffect, useState } from 'react'
 
-import { useAppSelector } from '@/app/store/hooks/useAppSelector'
 import { useGetMeQuery } from '@/services/authService/authEndpoints'
-import { PRIVATE_ROUTES } from '@/shared/constants/routes'
+import { PRIVATE_ROUTES, ROUTES } from '@/shared/constants/routes'
 import { Spinner } from '@/shared/ui/Spinner'
 import { usePathname } from 'next/navigation'
 import { useRouter } from 'next/router'
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [isLoading, setIsLoading] = useState(true)
-  const token = useAppSelector(state => state.authReducer?.accessToken)
-  const { isLoading: isLoadingMe } = useGetMeQuery()
+  const { data: me, isLoading: isLoadingMe } = useGetMeQuery()
   const pathname = usePathname()
   const { push } = useRouter()
 
-  const isPrivateRoute = PRIVATE_ROUTES.find(route => route === pathname)
+  const isPrivateRoute = !!PRIVATE_ROUTES.find(route => route === pathname)
 
   useEffect(() => {
     if (isLoadingMe) {
       setIsLoading(true)
     } else {
-      if (!token && isPrivateRoute) {
-        push('auth/sign-in').then(() => setIsLoading(false))
+      if (!me && isPrivateRoute) {
+        push(ROUTES.LOGIN).then(() => setIsLoading(false))
       } else {
         setIsLoading(false)
       }
     }
-  }, [token, push, pathname, isLoadingMe, isPrivateRoute])
+  }, [push, isLoadingMe, isPrivateRoute, me])
 
   if (isLoading) {
     return (
@@ -41,6 +39,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         <Spinner />
       </div>
     )
+  }
+
+  if (!me && isPrivateRoute) {
+    return null
   }
 
   return children
