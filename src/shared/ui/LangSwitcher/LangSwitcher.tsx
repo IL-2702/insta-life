@@ -12,8 +12,8 @@ import RUFlag from '../../../../public/ru-flag.svg'
 export const LangSwitcher = () => {
   const { asPath, locale, locales, pathname, push, query } = useRouter()
 
-  const changeLangHandler = (lang: { icon?: ReactElement; title: string }) => {
-    const locale = lang.title === 'English' ? 'en' : 'ru'
+  const changeLangHandler = (title: string) => {
+    const locale = title === 'English' ? 'en' : 'ru'
 
     push({ pathname, query }, asPath, { locale })
   }
@@ -32,8 +32,8 @@ export const LangSwitcher = () => {
   return (
     <div className={s.selectWrapper}>
       <SelectComponent
-        changeI18n={changeLangHandler}
         fullWidth
+        onValueChange={changeLangHandler}
         selectItems={languages}
       ></SelectComponent>
     </div>
