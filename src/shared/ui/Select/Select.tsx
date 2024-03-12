@@ -12,6 +12,7 @@ type LanguageSelectItem = {
 }
 
 type SelectPropsType = {
+  changeI18n: (el: LanguageSelectItem) => void
   currentValue?: LanguageSelectItem
   fullWidth?: boolean
   onValueChange?: (value: string) => void
@@ -35,6 +36,7 @@ type SelectPropsType = {
 }
 
 export const SelectComponent = ({
+  changeI18n,
   currentValue,
   fullWidth,
   onValueChange,
@@ -50,6 +52,7 @@ export const SelectComponent = ({
 
     if (el) {
       setValue(el)
+      changeI18n(el)
     }
   }
 
