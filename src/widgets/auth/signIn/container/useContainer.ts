@@ -21,6 +21,7 @@ export const useContainer = () => {
     formState: { errors },
     handleSubmit,
     setError,
+    watch,
   } = useForm<signInFormSchema>({
     defaultValues: {
       email: '',
@@ -29,13 +30,24 @@ export const useContainer = () => {
     mode: 'onTouched',
     resolver: zodResolver(signInSchema),
   })
-  const router = useRouter()
-
-  const token = useAppSelector(state => state.authReducer?.accessToken)
+  const [signIn, { isLoading: signIsLoading }] = useSignInMutation()
 
   const errorsWrapper = {
     errors,
   }
+
+  const email = watch('email')
+  const password = watch('password')
+  const isDisabled =
+    !email ||
+    !password ||
+    !!errorsWrapper.errors.email ||
+    !!errorsWrapper.errors.password ||
+    signIsLoading
+
+  const router = useRouter()
+
+  const token = useAppSelector(state => state.authReducer?.accessToken)
 
   useEffect(() => {
     if (token) {
@@ -43,18 +55,16 @@ export const useContainer = () => {
     }
   }, [token, router])
 
-  const [signIn, { isLoading: signIsLoading }] = useSignInMutation()
-
   const onSubmit = handleSubmit((data: signInFormSchema) => {
     signIn(data)
       .unwrap()
-      .catch(() => {
+      .catch(e => {
         setError('password', {
-          message: 'The email or password are incorrect. Try again please',
+          message: e?.data?.messages,
           type: 'manual',
         })
       })
   })
 
-  return { control, errorsWrapper, onSubmit, signIsLoading, token }
+  return { control, errorsWrapper, isDisabled, onSubmit, signIsLoading, token }
 }
