@@ -37,11 +37,11 @@ export const useContainer = () => {
     errors,
   }
 
-  // useEffect(() => {
-  //   if (token) {
-  //     router.push(ROUTES.PROFILE)
-  //   }
-  // }, [token, router])
+  useEffect(() => {
+    if (token) {
+      router.push(ROUTES.PROFILE)
+    }
+  }, [token, router])
 
   const [signIn, { isLoading: signIsLoading }] = useSignInMutation()
 
