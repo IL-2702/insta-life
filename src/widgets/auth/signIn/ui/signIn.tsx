@@ -1,5 +1,6 @@
-import { memo, useEffect } from 'react'
+import { memo } from 'react'
 
+import { ROUTES } from '@/shared/constants/routes'
 import { Button } from '@/shared/ui/Button'
 import { Card } from '@/shared/ui/Card'
 import { Spinner } from '@/shared/ui/Spinner'
@@ -15,13 +16,7 @@ import gitLogo from '../../../../../public/assets/githubLogo.svg'
 import gLogo from '../../../../../public/assets/googleLogo.svg'
 
 export const SignIn = memo(
-  ({ control, errorsWrapper, onSubmit, router, signIsLoading, token }: SignInProps) => {
-    useEffect(() => {
-      if (token) {
-        router.push('/profile')
-      }
-    }, [token, router])
-
+  ({ control, errorsWrapper, onSubmit, signIsLoading, token }: SignInProps) => {
     return (
       !token && (
         <Card className={s.container}>
@@ -53,7 +48,7 @@ export const SignIn = memo(
               type={'password'}
             />
             <div className={s.forgot}>
-              <Link href={'forgot-password'}>
+              <Link href={ROUTES.FORGOT_PASS}>
                 <Typography color={'form'} variant={'regular14'}>
                   Forgot password
                 </Typography>
@@ -64,7 +59,7 @@ export const SignIn = memo(
             </Button>
             <div className={s.signup}>
               <Typography variant={'regular16'}>Don’t have an account?</Typography>
-              <Link href={'sign-up'}>
+              <Link href={ROUTES.REGISTER}>
                 <Typography color={'primary'} variant={'h3'}>
                   Sign Up
                 </Typography>
