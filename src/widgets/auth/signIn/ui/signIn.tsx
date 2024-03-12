@@ -16,7 +16,7 @@ import gitLogo from '../../../../../public/assets/githubLogo.svg'
 import gLogo from '../../../../../public/assets/googleLogo.svg'
 
 export const SignIn = memo(
-  ({ control, errorsWrapper, onSubmit, signIsLoading, token }: SignInProps) => {
+  ({ control, errorsWrapper, isDisabled, onSubmit, signIsLoading, token }: SignInProps) => {
     return (
       !token && (
         <Card className={s.container}>
@@ -54,7 +54,7 @@ export const SignIn = memo(
                 </Typography>
               </Link>
             </div>
-            <Button className={s.button} disabled={signIsLoading} fullWidth>
+            <Button className={s.button} disabled={isDisabled} fullWidth>
               {signIsLoading ? <Spinner /> : 'Sign In'}
             </Button>
             <div className={s.signup}>
