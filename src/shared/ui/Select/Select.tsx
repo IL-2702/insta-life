@@ -7,12 +7,12 @@ import * as Select from '@radix-ui/react-select'
 import s from './Select.module.scss'
 
 type LanguageSelectItem = {
-  icon: ReactElement
+  icon?: ReactElement
   title: string
 }
 
 type SelectPropsType = {
-  currentValue?: string
+  currentValue?: LanguageSelectItem
   fullWidth?: boolean
   onValueChange?: (value: string) => void
   optionTextVariant?:
@@ -41,28 +41,42 @@ export const SelectComponent = ({
   optionTextVariant = 'regular14',
   selectItems,
 }: SelectPropsType) => {
-  const [value, setValue] = useState(selectItems[0].title)
+  const [value, setValue] = useState(selectItems[0])
   const localCurrentValue = currentValue ? currentValue : value
   const localOnValueChange = onValueChange ? onValueChange : setValue
 
+  const handleValueChange = (title: string) => {
+    const el = selectItems.find(el => el.title === title)
+
+    if (el) {
+      setValue(el)
+    }
+  }
+
+  const [isOpen, setIsOpen] = useState(false)
+
   return (
-    <Select.Root onValueChange={localOnValueChange} value={localCurrentValue}>
+    <Select.Root
+      onOpenChange={() => setIsOpen(prevState => !prevState)}
+      onValueChange={handleValueChange}
+      open={isOpen}
+      value={localCurrentValue.title}
+    >
       <Select.Trigger
         className={`${s.selectTrigger} ${fullWidth ? s.fullWidth : ''}`}
-        value={localCurrentValue}
+        value={localCurrentValue.title}
       >
-        <Select.Icon>{selectItems[0].icon}</Select.Icon>
+        {selectItems[0].icon && <Select.Icon>{localCurrentValue.icon}</Select.Icon>}
         <Select.Value />
-        {/*<Typography variant={optionTextVariant}>{localCurrentValue}</Typography>*/}
-        <Select.Icon>
-          <SelectToggle />
+        <Select.Icon className={s.arrow}>
+          <SelectToggle className={isOpen ? s.arrowDown : ''} />
         </Select.Icon>
       </Select.Trigger>
       <Select.Content className={s.selectContent} position={'popper'}>
         {selectItems?.map(el => {
           return (
             <Select.Item className={s.selectItem} key={el.title} value={el.title}>
-              <Select.Icon>{el.icon}</Select.Icon>
+              {el.icon && <Select.Icon>{el.icon}</Select.Icon>}
               <Select.ItemText>
                 <Typography variant={optionTextVariant}>{el.title}</Typography>
               </Select.ItemText>

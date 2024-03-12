@@ -8,8 +8,7 @@
 
   display: flex;
   gap: 5px;
-  align-items: flex-end;
-  justify-content: space-between;
+  align-items: center;
 
   width: var(--radix-select-trigger-width);
   padding: 5px;
@@ -17,6 +16,13 @@
   background: var(--color-dark-700);
   border: 1px solid var(--color-dark-300);
   border-radius: 2px;
+
+  & > *:last-child {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+  }
 
   &:hover {
     background: var(--color-dark-500);
@@ -35,7 +41,7 @@
 .selectContent {
   z-index: 1;
 
-  width: var(--radix-select-content-available-width);
+  width: var(--radix-select-trigger-width);
   margin-top: -2px;
 
   background-color: var(--color-dark-700);
@@ -47,6 +53,7 @@
   cursor: pointer;
 
   display: flex;
+  gap: 5px;
 
   padding: 5px;
 
@@ -57,4 +64,14 @@
     color: var(--color-accent-300);
     background: var(--color-accent-900);
   }
+}
+
+.arrow {
+  display: flex;
+  justify-content: flex-end;
+  padding: 3px;
+}
+
+.arrowDown {
+  transform: rotate(180deg);
 }

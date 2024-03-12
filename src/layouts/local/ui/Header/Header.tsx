@@ -1,26 +1,11 @@
 import { Bell } from '@/shared/assets/icons/Bell'
-import { SelectComponent } from '@/shared/ui/Select'
+import { LangSwitcher } from '@/shared/ui/LangSwitcher'
 import { Typography } from '@/shared/ui/Typography'
-import Image from 'next/image'
 import Link from 'next/link'
 
 import s from './Header.module.scss'
 
-import GBFlag from '../../../../../public/gb-flag.svg'
-import RUFlag from '../../../../../public/ru-flag.svg'
-
 export const Header = () => {
-  const languages = [
-    {
-      icon: <Image alt={'fff'} src={GBFlag} />,
-      title: 'English',
-    },
-    {
-      icon: <Image alt={'fff'} src={RUFlag} />,
-      title: 'Russia',
-    },
-  ]
-
   return (
     <header className={s.header}>
       <Link href={'/home'}>
@@ -35,7 +20,7 @@ export const Header = () => {
             3
           </Typography>
         </button>
-        <SelectComponent fullWidth selectItems={languages}></SelectComponent>
+        <LangSwitcher />
       </div>
     </header>
   )
