@@ -58,9 +58,9 @@ export const useContainer = () => {
   const onSubmit = handleSubmit((data: signInFormSchema) => {
     signIn(data)
       .unwrap()
-      .catch(() => {
+      .catch(e => {
         setError('password', {
-          message: 'The email or password are incorrect. Try again please',
+          message: e?.data?.messages,
           type: 'manual',
         })
       })
