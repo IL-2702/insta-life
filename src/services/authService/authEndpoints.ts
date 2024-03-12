@@ -30,7 +30,7 @@ const authEndpoints = api.injectEndpoints({
             dispatch(authActions.setAccessToken(accessToken))
             setTimeout(() => {
               dispatch(api.util.invalidateTags(['Me']))
-            }, 500)
+            }, 50)
           }
         } catch (e) {
           console.log(e)
