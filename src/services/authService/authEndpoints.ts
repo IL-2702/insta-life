@@ -5,6 +5,7 @@ import {
   SignInResponse,
   SignUpArgs,
   SignUpConfirmationArgs,
+  SignUpEmailResendingArgs,
 } from '@/services/authService/lib/authEndpoints.types'
 import { authActions } from '@/services/authService/store/slice/authEndpoints.slice'
 
@@ -58,6 +59,13 @@ const authEndpoints = api.injectEndpoints({
         url: 'auth/registration-confirmation',
       }),
     }),
+    signUpEmailResending: builder.mutation<void, SignUpEmailResendingArgs>({
+      query: body => ({
+        body,
+        method: 'POST',
+        url: 'auth/registration-email-resending',
+      }),
+    }),
   }),
 })
 
@@ -65,5 +73,6 @@ export const {
   useGetMeQuery,
   useSignInMutation,
   useSignUpConfirmationMutation,
+  useSignUpEmailResendingMutation,
   useSignUpMutation,
 } = authEndpoints
