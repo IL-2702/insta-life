@@ -14,6 +14,10 @@ export type SignUpArgs = {
   userName: string
 }
 
+export type SignUpConfirmationArgs = {
+  confirmationCode: string
+}
+
 export type SignInResponse = {
   accessToken?: string
 } & Partial<ErrorResponse>
