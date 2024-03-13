@@ -1,6 +1,9 @@
+import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 
+import { useAppSelector } from '@/app/store/hooks/useAppSelector'
 import { useSignInMutation } from '@/services/authService/authEndpoints'
+import { ROUTES } from '@/shared/constants/routes'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useRouter } from 'next/router'
 import { z } from 'zod'
@@ -18,6 +21,7 @@ export const useContainer = () => {
     formState: { errors },
     handleSubmit,
     setError,
+    watch,
   } = useForm<signInFormSchema>({
     defaultValues: {
       email: '',
@@ -26,26 +30,41 @@ export const useContainer = () => {
     mode: 'onTouched',
     resolver: zodResolver(signInSchema),
   })
+  const [signIn, { isLoading: signIsLoading }] = useSignInMutation()
 
   const errorsWrapper = {
     errors,
   }
 
+  const email = watch('email')
+  const password = watch('password')
+  const isDisabled =
+    !email ||
+    !password ||
+    !!errorsWrapper.errors.email ||
+    !!errorsWrapper.errors.password ||
+    signIsLoading
+
   const router = useRouter()
 
-  const [signIn] = useSignInMutation()
+  const token = useAppSelector(state => state.authReducer?.accessToken)
+
+  useEffect(() => {
+    if (token) {
+      router.push(ROUTES.PROFILE)
+    }
+  }, [token, router])
 
   const onSubmit = handleSubmit((data: signInFormSchema) => {
     signIn(data)
       .unwrap()
-      .then(() => router.push('/profile'))
-      .catch(() => {
+      .catch(e => {
         setError('password', {
-          message: 'The email or password are incorrect. Try again please',
+          message: e?.data?.messages,
           type: 'manual',
         })
       })
   })
 
-  return { control, errorsWrapper, onSubmit }
+  return { control, errorsWrapper, isDisabled, onSubmit, signIsLoading, token }
 }

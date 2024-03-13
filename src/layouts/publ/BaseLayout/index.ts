@@ -1,0 +1,1 @@
+export { getBaseLayout } from './BaseLayout'

@@ -8,57 +8,61 @@ import { SearchIcon } from '@/shared/assets/icons/asideIcons/searchIcon'
 import { StatisticsIcon } from '@/shared/assets/icons/asideIcons/statisticsIcon'
 import { Typography } from '@/shared/ui/Typography'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 import s from './SideBar.module.scss'
 
 export const SideBar = () => {
+  const router = useRouter()
+  const { pathname } = router
+
   return (
     <aside className={s.aside}>
-      <Link href={'/home'}>
-        <HomeIcon />
-        <Typography color={'light'} variant={'medium14'}>
+      <Link className={pathname === '/home' ? s.activeLink : ''} href={'/home'}>
+        <HomeIcon className={s.navIcon} />
+        <Typography className={s.navLink} color={'light'} variant={'medium14'}>
           Home
         </Typography>
       </Link>
-      <Link href={'/create'}>
-        <CreateIcon />
-        <Typography color={'light'} variant={'medium14'}>
+      <Link className={pathname === '/create' ? s.activeLink : ''} href={'/create'}>
+        <CreateIcon className={s.navIcon} />
+        <Typography className={s.navLink} color={'light'} variant={'medium14'}>
           Create
         </Typography>
       </Link>
-      <Link href={'/profile'}>
-        <ProfileIcon />
-        <Typography color={'light'} variant={'medium14'}>
+      <Link className={pathname === '/profile' ? s.activeLink : ''} href={'/profile'}>
+        <ProfileIcon className={s.navIcon} />
+        <Typography className={s.navLink} color={'light'} variant={'medium14'}>
           MyProfile
         </Typography>
       </Link>
-      <Link href={'/messenger'}>
-        <MessengerIcon />
-        <Typography color={'light'} variant={'medium14'}>
+      <Link className={pathname === '/messenger' ? s.activeLink : ''} href={'/messenger'}>
+        <MessengerIcon className={s.navIcon} />
+        <Typography className={s.navLink} color={'light'} variant={'medium14'}>
           Messenger
         </Typography>
       </Link>
-      <Link href={'/search'}>
-        <SearchIcon />
-        <Typography color={'light'} variant={'medium14'}>
+      <Link className={pathname === '/search' ? s.activeLink : ''} href={'/search'}>
+        <SearchIcon className={s.navIcon} />
+        <Typography className={s.navLink} color={'light'} variant={'medium14'}>
           Search
         </Typography>
       </Link>
-      <Link href={'/statistics'}>
-        <StatisticsIcon />
-        <Typography color={'light'} variant={'medium14'}>
+      <Link className={pathname === '/statistics' ? s.activeLink : ''} href={'/statistics'}>
+        <StatisticsIcon className={s.navIcon} />
+        <Typography className={s.navLink} color={'light'} variant={'medium14'}>
           Statistics
         </Typography>
       </Link>
-      <Link href={'/favorites'}>
-        <BookMark />
-        <Typography color={'light'} variant={'medium14'}>
+      <Link className={pathname === '/favorites' ? s.activeLink : ''} href={'/favorites'}>
+        <BookMark className={s.navIcon} />
+        <Typography className={s.navLink} color={'light'} variant={'medium14'}>
           Favorites
         </Typography>
       </Link>
       <Link href={'/auth/sign-in'}>
-        <LogOutIcon />
-        <Typography color={'light'} variant={'medium14'}>
+        <LogOutIcon className={s.navIcon} />
+        <Typography className={s.navLink} color={'light'} variant={'medium14'}>
           Log Out
         </Typography>
       </Link>

@@ -1,0 +1,1 @@
+export { GBFlag } from './GBFlag'
