@@ -1,5 +1,4 @@
 import { memo } from 'react'
-import { Control, FieldError, FieldErrors } from 'react-hook-form'
 
 import { Button } from '@/shared/ui/Button'
 import { Card } from '@/shared/ui/Card'
@@ -7,7 +6,6 @@ import { Typography } from '@/shared/ui/Typography'
 import { ControlledCheckbox } from '@/shared/ui/controlledInsta/ControlledCheckbox/ControlledCheckbox'
 import { ControlledTextField } from '@/shared/ui/controlledInsta/ControlledTextField/ControlledTextField'
 import { SignUpProps } from '@/widgets/auth/signUp/container'
-import { SignUpFormSchema } from '@/widgets/auth/signUp/container/useContainer'
 import Image from 'next/image'
 import Link from 'next/link'
 import gitLogo from 'public/assets/githubLogo.svg'
