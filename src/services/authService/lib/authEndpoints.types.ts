@@ -18,6 +18,11 @@ export type SignUpConfirmationArgs = {
   confirmationCode: string
 }
 
+export type SignUpEmailResendingArgs = {
+  baseUrl: string
+  email: string
+}
+
 export type SignInResponse = {
   accessToken?: string
 } & Partial<ErrorResponse>
