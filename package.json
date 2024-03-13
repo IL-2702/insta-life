@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "build:production": "next build",
+    "build:production": "env-cmd -f .env.production next build",
     "start": "next start",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
@@ -21,6 +21,7 @@
     "@radix-ui/react-select": "^2.0.0",
     "@reduxjs/toolkit": "^2.2.1",
     "clsx": "^2.1.0",
+    "env-cmd": "^10.1.0",
     "esbuild": "^0.20.1",
     "next": "14.1.0",
     "react": "^18",
