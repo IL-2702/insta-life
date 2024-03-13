@@ -3,6 +3,7 @@ import {
   GetMeResponse,
   SignInParams,
   SignInResponse,
+  SignUpArgs,
 } from '@/services/authService/lib/authEndpoints.types'
 import { authActions } from '@/services/authService/store/slice/authEndpoints.slice'
 
@@ -42,7 +43,14 @@ const authEndpoints = api.injectEndpoints({
         url: 'auth/login',
       }),
     }),
+    signUp: builder.mutation<void, SignUpArgs>({
+      query: body => ({
+        body,
+        method: 'POST',
+        url: 'auth/registration',
+      }),
+    }),
   }),
 })
 
-export const { useGetMeQuery, useSignInMutation } = authEndpoints
+export const { useGetMeQuery, useSignInMutation, useSignUpMutation } = authEndpoints
