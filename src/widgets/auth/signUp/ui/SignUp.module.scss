@@ -1,0 +1,60 @@
+.card {
+  display: flex;
+  flex-direction: column;
+
+  max-width: 378px;
+  margin-top: 24px;
+  padding: 24px;
+
+  .title {
+    text-align: center;
+  }
+
+  .services {
+    display: flex;
+    justify-content: center;
+    margin-top: 14px;
+
+    & > *:last-child {
+      margin-left: 60px;
+    }
+  }
+
+  .form {
+    margin-top: 24px;
+  }
+
+  .email,
+  .password,
+  .passwordConfirmation {
+    margin-top: 24px;
+  }
+
+  .checkAgreement {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 12px;
+  }
+
+  .submit {
+    margin-top: 12px;
+  }
+
+  .signInSuggestion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    & > *:first-child {
+      margin-top: 18px;
+    }
+
+    & > *:last-child {
+      margin-top: 6px;
+    }
+  }
+}
