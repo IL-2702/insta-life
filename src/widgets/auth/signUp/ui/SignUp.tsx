@@ -20,6 +20,7 @@ export const SignUp = memo(
   ({
     control,
     emailErrorMessage,
+    isFormValid,
     onSubmit,
     passwordConfirmationErrorMessage,
     passwordErrorMessage,
@@ -87,7 +88,7 @@ export const SignUp = memo(
               </Link>
             </Typography>
           </div>
-          <Button className={s.submit} fullWidth type={'submit'}>
+          <Button className={s.submit} disabled={!isFormValid} fullWidth type={'submit'}>
             Sign Up
           </Button>
           <div className={s.signInSuggestion}>

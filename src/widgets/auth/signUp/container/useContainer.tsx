@@ -38,7 +38,7 @@ export type SignUpFormSchema = z.infer<typeof signUpSchema>
 export const useContainer = () => {
   const {
     control,
-    formState: { errors },
+    formState: { dirtyFields, errors, isDirty },
     handleSubmit,
     setError,
   } = useForm<SignUpFormSchema>({
@@ -58,6 +58,9 @@ export const useContainer = () => {
   const passwordErrorMessage = errors.password?.message
   const passwordConfirmationErrorMessage = errors.passwordConfirmation?.message
 
+  const fieldNames = Object.keys(signUpSchema)
+  const isFormValid = Object.keys(errors).length === 0 && isDirty && dirtyFields.termsAgreement
+
   const router = useRouter()
 
   const onSubmit = handleSubmit((data: SignUpFormSchema) => {})
@@ -65,6 +68,7 @@ export const useContainer = () => {
   return {
     control,
     emailErrorMessage,
+    isFormValid,
     onSubmit,
     passwordConfirmationErrorMessage,
     passwordErrorMessage,
