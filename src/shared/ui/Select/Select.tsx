@@ -50,6 +50,9 @@ export const SelectComponent = ({
 
     if (el) {
       setValue(el)
+      if (onValueChange) {
+        onValueChange(el.title)
+      }
     }
   }
 

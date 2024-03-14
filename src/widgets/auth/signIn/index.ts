@@ -1,5 +1,5 @@
 import { Container } from '@/widgets/auth/signIn/container'
 
-export const SignInPage = {
+export const SignIn = {
   widget: Container,
 }
