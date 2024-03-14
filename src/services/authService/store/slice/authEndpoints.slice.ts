@@ -3,6 +3,8 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 
 const initialState: AuthSliceInitialState = {
   accessToken: undefined,
+  email: '',
+  recaptchaToken: null,
 }
 
 export const authSlice = createSlice({
@@ -12,8 +14,13 @@ export const authSlice = createSlice({
     setAccessToken: (state, action: PayloadAction<string>) => {
       state.accessToken = action.payload
     },
+    setEmail: (state, action: PayloadAction<string>) => {
+      state.email = action.payload
+    },
+    setRecaptchaToken: (state, action: PayloadAction<string>) => {
+      state.recaptchaToken = action.payload
+    },
   },
 })
 
-export const authReducer = authSlice.reducer
 export const authActions = authSlice.actions
