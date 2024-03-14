@@ -12,16 +12,19 @@ import Link from 'next/link'
 
 import s from './signIn.module.scss'
 
+import { useTranslation } from '../../../../../hooks/useTranslation'
 import gitLogo from '../../../../../public/assets/githubLogo.svg'
 import gLogo from '../../../../../public/assets/googleLogo.svg'
 
 export const SignIn = memo(
   ({ control, errorsWrapper, isDisabled, onSubmit, signIsLoading, token }: SignInProps) => {
+    const { t } = useTranslation()
+
     return (
       !token && (
         <Card className={s.container}>
           <Typography className={s.title} variant={'h1'}>
-            Sign In
+            {t.auth.signInPage.title}
           </Typography>
           <div className={s.service}>
             <Link href={'#google#'}>
@@ -36,32 +39,32 @@ export const SignIn = memo(
               className={s.email}
               control={control}
               errorMessage={errorsWrapper.errors.email?.message}
-              label={'Email'}
+              label={t.auth.form.email}
               name={'email'}
             />
             <ControlledTextField
               className={s.pass}
               control={control}
               errorMessage={errorsWrapper.errors.password?.message}
-              label={'Password'}
+              label={t.auth.form.password}
               name={'password'}
               type={'password'}
             />
             <div className={s.forgot}>
               <Link href={ROUTES.FORGOT_PASS}>
                 <Typography color={'form'} variant={'regular14'}>
-                  Forgot password
+                  {t.auth.signInPage.forgotPassword}
                 </Typography>
               </Link>
             </div>
             <Button className={s.button} disabled={isDisabled} fullWidth>
-              {signIsLoading ? <Spinner /> : 'Sign In'}
+              {signIsLoading ? <Spinner /> : t.auth.button.signInButton}
             </Button>
             <div className={s.signup}>
-              <Typography variant={'regular16'}>Don’t have an account?</Typography>
+              <Typography variant={'regular16'}>{t.auth.signInPage.question}</Typography>
               <Link href={ROUTES.REGISTER}>
                 <Typography color={'primary'} variant={'h3'}>
-                  Sign Up
+                  {t.auth.button.signUpButton}
                 </Typography>
               </Link>
             </div>
