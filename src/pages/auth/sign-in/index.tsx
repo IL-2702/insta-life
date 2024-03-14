@@ -1,9 +1,9 @@
 import { getBaseLayout } from '@/layouts/publ/BaseLayout/BaseLayout'
-import { SignInPage } from '@/widgets/auth/signIn'
+import { SignIn } from '@/widgets/auth/signIn'
 
-const SignIn = () => {
-  return <SignInPage.widget />
+const SignInPage = () => {
+  return <SignIn.widget />
 }
 
-export default SignIn
-SignIn.getLayout = getBaseLayout
+export default SignInPage
+SignInPage.getLayout = getBaseLayout
