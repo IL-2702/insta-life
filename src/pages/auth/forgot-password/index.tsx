@@ -1,10 +1,14 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
+import ReCAPTCHA from 'react-google-recaptcha'
 import { useForm } from 'react-hook-form'
 
 import { getBaseLayout } from '@/layouts/publ/BaseLayout/BaseLayout'
+import { usePasswordRecoveryMutation } from '@/services/authService/authEndpoints'
+import { ROUTES } from '@/shared/constants/routes'
 import { Button } from '@/shared/ui/Button'
 import { Card } from '@/shared/ui/Card'
 import { GoBack } from '@/shared/ui/GoBack'
+import { Modal } from '@/shared/ui/Modal'
 import { Typography } from '@/shared/ui/Typography'
 import { ControlledTextField } from '@/shared/ui/controlledInsta/ControlledTextField/ControlledTextField'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -22,20 +26,46 @@ export type ForgotPasswordFormType = z.infer<typeof forgotPasswordSchema>
 
 const ForgotPassword = () => {
   const status = 'fulfilled'
-  const { pathname, push } = useRouter()
-  const isLoading = false
+  // const { push, router } = useRouter()
 
-  const [, setEmail] = useState('')
+  const publicKey = process.env.NEXT_PUBLIC_RECAPTCHA_API_KEY
 
-  const { control, handleSubmit } = useForm<ForgotPasswordFormType>({
+  const [token, setToken] = useState<null | string>(null)
+  const [isOpen, setIsOpen] = useState(false)
+
+  const [passwordRecovery, { isLoading: isLoadingPasswordRecovery }] = usePasswordRecoveryMutation()
+
+  const { control, getValues, handleSubmit } = useForm<ForgotPasswordFormType>({
+    defaultValues: {
+      email: '',
+    },
     mode: 'onTouched',
     resolver: zodResolver(forgotPasswordSchema),
   })
-  const onSubmit = handleSubmit(async data => {})
 
-  // useEffect(() => {
-  //   status === 'fulfilled' && push(pathname + '/link-has-been-sent')
-  // }, [status])
+  const { email } = getValues()
+
+  const isDisabled = !token || isLoadingPasswordRecovery || !email
+
+  const onSubmit = handleSubmit(async data => {
+    if (typeof token === 'string') {
+      const { email } = data
+
+      passwordRecovery({
+        baseUrl: 'http://localhost:3000',
+        email,
+        recaptcha: token,
+      })
+        .unwrap()
+        .then(res => {
+          setIsOpen(true)
+          console.log(res)
+        })
+        .catch(err => {
+          console.error(err)
+        })
+    }
+  })
 
   return (
     <div className={s.container}>
@@ -53,18 +83,31 @@ const ForgotPassword = () => {
           </Typography>
           <Button
             className={s.registerBtn}
-            disabled={isLoading}
+            disabled={isDisabled}
             fullWidth
-            isLoading={isLoading}
+            isLoading={isLoadingPasswordRecovery}
             type={'submit'}
           >
-            <Typography variant={'h3'}>Send Link</Typography>
+            <Typography variant={'h3'}>{!isLoadingPasswordRecovery && 'Send Link'}</Typography>
           </Button>
         </form>
         <Link className={s.link} href={'/auth/sign-in'}>
           <Typography variant={'h3'}>Back to Sign In</Typography>
         </Link>
+        <div className={s.recaptchaWrapper}>
+          <ReCAPTCHA onChange={token => setToken(token)} sitekey={publicKey!} theme={'dark'} />
+        </div>
       </Card>
+      <Modal
+        modalHandler={isOpen => setIsOpen(isOpen)}
+        onPointerOutsideClickHandler={() => setIsOpen(false)}
+        open={isOpen}
+        title={'Email sent'}
+      >
+        <Typography
+          variant={'regular16'}
+        >{`We have sent a link to confirm your email to ${email}`}</Typography>
+      </Modal>
     </div>
   )
 }
