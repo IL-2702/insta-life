@@ -1,11 +1,14 @@
 import { useForm } from 'react-hook-form'
 
 import { getBaseLayout } from '@/layouts/publ/BaseLayout/BaseLayout'
-import { ForgotPasswordFormType, forgotPasswordSchema } from '@/pages/auth/forgot-password'
 import { Button } from '@/shared/ui/Button'
 import { Card } from '@/shared/ui/Card/Card'
 import { Typography } from '@/shared/ui/Typography'
 import { ControlledTextField } from '@/shared/ui/controlledInsta/ControlledTextField/ControlledTextField'
+import {
+  ForgotPasswordForm,
+  forgotPasswordFormSchema,
+} from '@/widgets/auth/forgotPassword/container/useContainer'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { GetStaticPropsContext } from 'next'
 import Link from 'next/link'
@@ -13,8 +16,8 @@ import Link from 'next/link'
 import s from './LinkHasBeenSent.module.scss'
 
 const LinkHasBeenSent = () => {
-  const { control, handleSubmit } = useForm<ForgotPasswordFormType>({
-    resolver: zodResolver(forgotPasswordSchema),
+  const { control, handleSubmit } = useForm<ForgotPasswordForm>({
+    resolver: zodResolver(forgotPasswordFormSchema),
   })
   const onSubmit = handleSubmit(async data => {})
 
