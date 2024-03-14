@@ -39,6 +39,8 @@ export type ApiErrorResultDto = {
   statusCode: number
 }
 
+export type ApiResponse<T> = ApiErrorResultDto | T
+
 export type UserType = {
   email: string
   isBlocked: boolean
