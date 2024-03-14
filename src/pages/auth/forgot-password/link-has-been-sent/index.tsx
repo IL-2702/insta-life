@@ -1,11 +1,11 @@
 import { useForm } from 'react-hook-form'
 
 import { getBaseLayout } from '@/layouts/publ/BaseLayout/BaseLayout'
-import { ForgotPasswordFormType, forgotPasswordSchema } from '@/pages/auth/forgot-password'
 import { Button } from '@/shared/ui/Button'
 import { Card } from '@/shared/ui/Card/Card'
 import { Typography } from '@/shared/ui/Typography'
 import { ControlledTextField } from '@/shared/ui/controlledInsta/ControlledTextField/ControlledTextField'
+import { ForgotPasswordFormType, forgotPasswordSchema } from '@/widgets/auth/forgotPassword/ui'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { GetStaticPropsContext } from 'next'
 import Link from 'next/link'
