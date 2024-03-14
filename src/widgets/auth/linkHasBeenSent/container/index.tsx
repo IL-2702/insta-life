@@ -1,4 +1,4 @@
-import {LinkHasBeenSent} from '../ui'
+import { LinkHasBeenSent } from '../ui'
 import { useContainer } from './useContainer'
 
 export const Container = () => <LinkHasBeenSent {...useContainer()} />
