@@ -1,13 +1,11 @@
 import { Bell } from '@/shared/assets/icons/Bell'
-import { SelectComponent } from '@/shared/ui/Select'
+import { LangSwitcher } from '@/shared/ui/LangSwitcher'
 import { Typography } from '@/shared/ui/Typography'
 import Link from 'next/link'
 
 import s from './Header.module.scss'
 
 export const Header = () => {
-  const languages = ['🇬🇧 English', '🇷🇺 Russia']
-
   return (
     <header className={s.header}>
       <Link href={'/home'}>
@@ -22,7 +20,7 @@ export const Header = () => {
             3
           </Typography>
         </button>
-        <SelectComponent fullWidth selectItems={languages}></SelectComponent>
+        <LangSwitcher />
       </div>
     </header>
   )
