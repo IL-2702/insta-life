@@ -39,3 +39,10 @@
   color: var(--color-primary-500);
   text-decoration: underline;
 }
+
+.spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}

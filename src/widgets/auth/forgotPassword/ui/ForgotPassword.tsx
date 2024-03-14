@@ -13,13 +13,15 @@ import s from './ForgotPassword.module.scss'
 export const ForgotPassword = ({
   control,
   email,
+  emailError,
+  handleSetToken,
   isDisabled,
   isLoadingPasswordRecovery,
   isOpen,
   onSubmit,
   publicKey,
+  redirectToForgotPassword,
   setIsOpen,
-  setToken,
 }: ForgotPasswordProps) => {
   return (
     <div className={s.container}>
@@ -29,6 +31,7 @@ export const ForgotPassword = ({
           <ControlledTextField
             className={s.email}
             control={control}
+            errorMessage={emailError}
             label={'Email'}
             name={'email'}
           />
@@ -49,11 +52,15 @@ export const ForgotPassword = ({
           <Typography variant={'h3'}>Back to Sign In</Typography>
         </Link>
         <div className={s.recaptchaWrapper}>
-          <ReCAPTCHA onChange={token => setToken(token)} sitekey={publicKey!} theme={'dark'} />
+          <ReCAPTCHA
+            onChange={token => handleSetToken(token!)}
+            sitekey={publicKey!}
+            theme={'dark'}
+          />
         </div>
       </Card>
       <Modal
-        modalHandler={isOpen => setIsOpen(isOpen)}
+        modalHandler={redirectToForgotPassword}
         onPointerOutsideClickHandler={() => setIsOpen(false)}
         open={isOpen}
         title={'Email sent'}

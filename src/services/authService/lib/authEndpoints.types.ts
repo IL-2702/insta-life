@@ -2,6 +2,8 @@ export {}
 
 export type AuthSliceInitialState = {
   accessToken?: string
+  email: string
+  recaptchaToken: null | string
 }
 
 export type SignInParams = {
