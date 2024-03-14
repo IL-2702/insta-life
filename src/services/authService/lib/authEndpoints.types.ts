@@ -26,3 +26,11 @@ export type UserType = {
 }
 
 export type GetMeResponse = ErrorResponse | UserType
+
+export type PasswordRecoveryResponse = Partial<ErrorResponse>
+
+export type PasswordRecoveryParams = {
+  baseUrl: string
+  email: string
+  recaptcha: string
+}
