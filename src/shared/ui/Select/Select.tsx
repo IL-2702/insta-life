@@ -43,7 +43,6 @@ export const SelectComponent = ({
 }: SelectPropsType) => {
   const [value, setValue] = useState(selectItems[0])
   const localCurrentValue = currentValue ? currentValue : value
-  const localOnValueChange = onValueChange ? onValueChange : setValue
 
   const handleValueChange = (title: string) => {
     const el = selectItems.find(el => el.title === title)
