@@ -1,9 +1,9 @@
-import { CreateNewPassword } from '@/widgets/auth/createNewPassword/ui/CreateNewPassword'
+import { getBaseLayout } from '@/layouts/publ/BaseLayout'
+import { CreateNewPassword } from '@/widgets/auth/createNewPassword'
 
-export default function CreateNewPasswordPage() {
-  const onSubmit = (data: { password: string }) => {
-    return
-  }
-
-  return <CreateNewPassword onSubmit={onSubmit} />
+const CreateNewPasswordPage = () => {
+  return <CreateNewPassword.widget />
 }
+
+export default CreateNewPasswordPage
+CreateNewPasswordPage.getLayout = getBaseLayout
