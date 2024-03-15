@@ -1,5 +1,7 @@
 import { api } from '@/services/api'
 import {
+  CheckRecoveryArgs,
+  CheckRecoveryResponse,
   ErrorResponse,
   GetMeResponse,
   PasswordRecoveryParams,
@@ -14,6 +16,13 @@ import { authActions } from '@/services/authService/store/slice/authEndpoints.sl
 
 const authEndpoints = api.injectEndpoints({
   endpoints: builder => ({
+    checkRecoveryCode: builder.mutation<CheckRecoveryResponse, CheckRecoveryArgs>({
+      query: ({ recoveryCode }) => ({
+        body: { recoveryCode },
+        method: 'POST',
+        url: 'auth/check-recovery-code',
+      }),
+    }),
     getMe: builder.query<GetMeResponse | unknown, void>({
       providesTags: ['Me'],
       async queryFn(_, _api, _extraOptions, baseQuery) {
@@ -80,6 +89,7 @@ const authEndpoints = api.injectEndpoints({
 })
 
 export const {
+  useCheckRecoveryCodeMutation,
   useGetMeQuery,
   usePasswordRecoveryMutation,
   useSignInMutation,

@@ -1,5 +1,6 @@
 import ReCAPTCHA from 'react-google-recaptcha'
 
+import { ROUTES } from '@/shared/constants/routes'
 import { Button } from '@/shared/ui/Button'
 import { Card } from '@/shared/ui/Card'
 import { Modal } from '@/shared/ui/Modal'
@@ -11,16 +12,18 @@ import Link from 'next/link'
 import s from './ForgotPassword.module.scss'
 
 export const ForgotPassword = ({
+  captchaRef,
   control,
   email,
   emailError,
+  handleCloseModal,
   handleSetToken,
   isDisabled,
   isLoadingPasswordRecovery,
   isOpen,
+  isRender,
   onSubmit,
   publicKey,
-  redirectToForgotPassword,
   setIsOpen,
 }: ForgotPasswordProps) => {
   return (
@@ -38,6 +41,11 @@ export const ForgotPassword = ({
           <Typography className={s.subtitle} variant={'regular14'}>
             Enter your email address and we will send you further instructions
           </Typography>
+          {isRender && (
+            <Typography className={s.subtitleTwo} color={'light'} variant={'regular14'}>
+              The link has been sent by email. If you don’t receive an email send link again
+            </Typography>
+          )}
           <Button
             className={s.registerBtn}
             disabled={isDisabled}
@@ -45,22 +53,26 @@ export const ForgotPassword = ({
             isLoading={isLoadingPasswordRecovery}
             type={'submit'}
           >
-            <Typography variant={'h3'}>{!isLoadingPasswordRecovery && 'Send Link'}</Typography>
+            <Typography variant={'h3'}>
+              {!isLoadingPasswordRecovery && 'Send Link'}
+              {!isLoadingPasswordRecovery && isRender && ' Again'}
+            </Typography>
           </Button>
         </form>
-        <Link className={s.link} href={'/auth/sign-in'}>
+        <Link className={s.link} href={ROUTES.LOGIN}>
           <Typography variant={'h3'}>Back to Sign In</Typography>
         </Link>
         <div className={s.recaptchaWrapper}>
           <ReCAPTCHA
-            onChange={token => handleSetToken(token!)}
+            onChange={token => handleSetToken(token as string)}
+            ref={captchaRef}
             sitekey={publicKey!}
             theme={'dark'}
           />
         </div>
       </Card>
       <Modal
-        modalHandler={redirectToForgotPassword}
+        modalHandler={handleCloseModal}
         onPointerOutsideClickHandler={() => setIsOpen(false)}
         open={isOpen}
         title={'Email sent'}

@@ -16,6 +16,14 @@ export type SignUpArgs = {
   userName: string
 }
 
+export type CheckRecoveryArgs = {
+  recoveryCode: string
+}
+
+export type CheckRecoveryResponse = {
+  email: string
+}
+
 export type SignUpConfirmationArgs = {
   confirmationCode: string
 }

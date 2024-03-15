@@ -1,13 +1,12 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
+import ReCAPTCHA from 'react-google-recaptcha'
 import { useForm } from 'react-hook-form'
 
 import { useAppDispatch } from '@/app/store/hooks/useAppDispatch'
 import { useAppSelector } from '@/app/store/hooks/useAppSelector'
 import { usePasswordRecoveryMutation } from '@/services/authService/authEndpoints'
 import { authActions } from '@/services/authService/store/slice/authEndpoints.slice'
-import { ROUTES } from '@/shared/constants/routes'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useRouter } from 'next/router'
 import { z } from 'zod'
 
 export const forgotPasswordFormSchema = z.object({
@@ -17,9 +16,8 @@ export type ForgotPasswordForm = z.infer<typeof forgotPasswordFormSchema>
 export const useContainer = () => {
   const publicKey = process.env.NEXT_PUBLIC_RECAPTCHA_API_KEY
 
-  const { push } = useRouter()
-
   const [isOpen, setIsOpen] = useState(false)
+  const [isRender, setIsRender] = useState(false)
 
   const token = useAppSelector(state => state.authReducer.recaptchaToken)
 
@@ -75,21 +73,30 @@ export const useContainer = () => {
     }
   })
 
-  const redirectToForgotPassword = () => {
-    push(ROUTES.LINK_NAS_BEEN_SENT)
+  const captchaRef = useRef<ReCAPTCHA | null>(null)
+
+  const handleCloseModal = (isOpen: boolean) => {
+    setIsOpen(isOpen)
+    if (captchaRef.current) {
+      dispatch(authActions.setRecaptchaToken(''))
+      captchaRef.current.reset()
+    }
+    setIsRender(true)
   }
 
   return {
+    captchaRef,
     control,
     email,
     emailError,
+    handleCloseModal,
     handleSetToken,
     isDisabled,
     isLoadingPasswordRecovery,
     isOpen,
+    isRender,
     onSubmit,
     publicKey,
-    redirectToForgotPassword,
     setIsOpen,
   }
 }
