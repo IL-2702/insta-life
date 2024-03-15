@@ -14,7 +14,6 @@ type ModalPropsType = {
   customButtonsBlock?: ReactNode
   editPost?: boolean
   isPostModal?: boolean
-  // eslint-disable-next-line no-unused-vars
   modalHandler?: (isOpen: boolean) => void
   modalTrigger?: ReactNode
   nextStepBtn?: ReactNode
@@ -68,7 +67,7 @@ export const Modal = ({
               nextStepBtn
             ) : (
               <Dialog.Close asChild>
-                <Button className={s.closeBtn}>
+                <Button className={s.closeBtn} onClick={onSubmit}>
                   <Close />
                 </Button>
               </Dialog.Close>

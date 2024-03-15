@@ -1,5 +1,5 @@
 import { Container } from './container'
 
-export const ForgotPassword = {
+export const LinkHasBeenSent = {
   widget: Container,
 }

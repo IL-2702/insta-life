@@ -1,6 +1,9 @@
 import { api } from '@/services/api'
 import {
+  ErrorResponse,
   GetMeResponse,
+  PasswordRecoveryParams,
+  PasswordRecoveryResponse,
   SignInParams,
   SignInResponse,
   SignUpArgs,
@@ -21,6 +24,13 @@ const authEndpoints = api.injectEndpoints({
 
         return result
       },
+    }),
+    passwordRecovery: builder.mutation<PasswordRecoveryResponse, PasswordRecoveryParams>({
+      query: ({ baseUrl, email, recaptcha }) => ({
+        body: { baseUrl, email, recaptcha },
+        method: 'POST',
+        url: 'auth/password-recovery',
+      }),
     }),
     signIn: builder.mutation<SignInResponse, SignInParams>({
       onQueryStarted: async (_, { dispatch, queryFulfilled }) => {
@@ -71,6 +81,7 @@ const authEndpoints = api.injectEndpoints({
 
 export const {
   useGetMeQuery,
+  usePasswordRecoveryMutation,
   useSignInMutation,
   useSignUpConfirmationMutation,
   useSignUpEmailResendingMutation,

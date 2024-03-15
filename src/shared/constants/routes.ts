@@ -4,6 +4,7 @@ export const ROUTES = {
   FAVORITES: '/favorites',
   FORGOT_PASS: '/auth/forgot-password',
   HOME: '/home',
+  LINK_NAS_BEEN_SENT: '/auth/forgot-password/link-has-been-sent',
   LOGIN: '/auth/sign-in',
   MESSENGER: '/messenger',
   PROFILE: '/profile',

@@ -1,5 +1,7 @@
 export type AuthSliceInitialState = {
   accessToken?: string
+  email: string
+  recaptchaToken: null | string
 }
 
 export type SignInParams = {
@@ -41,3 +43,11 @@ export type UserType = {
 }
 
 export type GetMeResponse = ErrorResponse | UserType
+
+export type PasswordRecoveryResponse = Partial<ErrorResponse>
+
+export type PasswordRecoveryParams = {
+  baseUrl: string
+  email: string
+  recaptcha: string
+}
