@@ -32,6 +32,7 @@ export const LangSwitcher = () => {
   return (
     <div className={s.selectWrapper}>
       <SelectComponent
+        currentValue={locale === 'en' ? languages[0] : languages[1]}
         fullWidth
         onValueChange={changeLangHandler}
         selectItems={languages}
