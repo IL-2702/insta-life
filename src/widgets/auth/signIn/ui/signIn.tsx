@@ -3,7 +3,6 @@ import { memo } from 'react'
 import { ROUTES } from '@/shared/constants/routes'
 import { Button } from '@/shared/ui/Button'
 import { Card } from '@/shared/ui/Card'
-import { Spinner } from '@/shared/ui/Spinner'
 import { Typography } from '@/shared/ui/Typography'
 import { ControlledTextField } from '@/shared/ui/controlledInsta/ControlledTextField/ControlledTextField'
 import { SignInProps } from '@/widgets/auth/signIn/container'
@@ -57,8 +56,10 @@ export const SignIn = memo(
                 </Typography>
               </Link>
             </div>
-            <Button className={s.button} disabled={isDisabled} fullWidth>
-              {signIsLoading ? <Spinner /> : t.auth.button.signInButton}
+            <Button className={s.button} disabled={isDisabled} isLoading={signIsLoading} fullWidth>
+                <Typography as={'h3'}>
+                    {!signIsLoading && t.auth.button.signInButton}
+                </Typography>
             </Button>
             <div className={s.signup}>
               <Typography variant={'regular16'}>{t.auth.signInPage.question}</Typography>
