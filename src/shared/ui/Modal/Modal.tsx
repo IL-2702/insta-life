@@ -74,31 +74,33 @@ export const Modal = ({
             )}
           </div>
           <hr className={s.border} />
-          <Dialog.Description className={modalContentClassName}>
+          <Dialog.Description asChild className={modalContentClassName}>
             {children}
-            {customButtonsBlock ? (
-              <div
-                style={{
-                  display: 'flex',
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
-                  marginTop: 'auto',
-                }}
-              >
-                {customButtonsBlock}
-              </div>
-            ) : (
-              <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: 'auto' }}>
-                {editPost ? (
-                  <Button onClick={onSubmit}>Save changes</Button>
-                ) : (
-                  <Dialog.Close asChild>
-                    <Button>OK</Button>
-                  </Dialog.Close>
-                )}
-              </div>
-            )}
           </Dialog.Description>
+          {customButtonsBlock ? (
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                marginTop: 'auto',
+              }}
+            >
+              {customButtonsBlock}
+            </div>
+          ) : (
+            <div
+              style={{ display: 'flex', justifyContent: 'flex-end', margin: '18px 24px 36px 0' }}
+            >
+              {editPost ? (
+                <Button onClick={onSubmit}>Save changes</Button>
+              ) : (
+                <Dialog.Close asChild>
+                  <Button>OK</Button>
+                </Dialog.Close>
+              )}
+            </div>
+          )}
         </Dialog.Content>
       </Dialog.Portal>
     </Dialog.Root>
