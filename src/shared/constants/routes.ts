@@ -1,5 +1,6 @@
 export const ROUTES = {
   CREATE: '/create',
+  CREATE_NEW_PASSWORD: '/auth/create-new-password',
   DEFAULT: '/',
   FAVORITES: '/favorites',
   FORGOT_PASS: '/auth/forgot-password',
@@ -10,6 +11,7 @@ export const ROUTES = {
   REGISTER: '/auth/sign-up',
   SEARCH: '/search',
   STATISTICS: '/statistics',
+  VERIFICATION_LINK_EXPIRED: '/auth/forgot-password/verification-link-expired',
 }
 export const PRIVATE_ROUTES = [
   ROUTES.DEFAULT,

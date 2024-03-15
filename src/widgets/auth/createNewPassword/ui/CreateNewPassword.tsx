@@ -1,46 +1,14 @@
 import React from 'react'
-import { useForm } from 'react-hook-form'
 
 import { Button } from '@/shared/ui/Button'
 import { Card } from '@/shared/ui/Card'
 import { Typography } from '@/shared/ui/Typography'
 import { ControlledTextField } from '@/shared/ui/controlledInsta/ControlledTextField/ControlledTextField'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { z } from 'zod'
+import { CreateNewPasswordProps } from '@/widgets/auth/createNewPassword/container'
 
 import s from './CreateNewPassword.module.scss'
 
-const schema = z
-  .object({
-    password: z
-      .string()
-      .trim()
-      .min(6, 'Password must be at least 5 characters')
-      .max(20, 'The password must be no more than 20 characters'),
-    passwordConfirmation: z
-      .string()
-      .trim()
-      .min(6, 'Password must be at least 5 characters')
-      .max(20, 'The password must be no more than 20 characters'),
-  })
-  .refine(data => data.password === data.passwordConfirmation, {
-    message: "Passwords don't match",
-    path: ['passwordConfirmation'],
-  })
-
-type FormType = z.infer<typeof schema>
-
-export const CreateNewPassword = ({ onSubmit }: Props) => {
-  const { control, handleSubmit } = useForm<FormType>({
-    defaultValues: {
-      password: '',
-      passwordConfirmation: '',
-    },
-    mode: 'onTouched',
-    resolver: zodResolver(schema),
-  })
-  const handleFormSubmit = handleSubmit(data => onSubmit({ password: data.password }))
-
+export const CreateNewPassword = ({ control, handleFormSubmit }: CreateNewPasswordProps) => {
   return (
     <>
       <Card className={s.card}>
@@ -72,6 +40,6 @@ export const CreateNewPassword = ({ onSubmit }: Props) => {
   )
 }
 
-type Props = {
-  onSubmit: (data: Omit<FormType, 'passwordConfirmation'>) => void
-}
+// type Props = {
+//   onSubmit: (data: Omit<FormType, 'passwordConfirmation'>) => void
+// }
