@@ -14,6 +14,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
 
+
   display: flex;
   flex-direction: column;
 
@@ -47,7 +48,7 @@
   flex-grow: 1;
 
   height: 100%;
-  padding: 12px 24px;
+  margin: 12px 24px;
 
   font: var(--font-regular-16);
 }
@@ -93,7 +94,7 @@
 .modalHeader {
   display: flex;
   justify-content: space-between;
-  padding: 12px 24px;
+  margin: 12px 24px;
 }
 
 .border {

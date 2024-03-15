@@ -74,8 +74,9 @@ export const Modal = ({
             )}
           </div>
           <hr className={s.border} />
-          <Dialog.Description className={modalContentClassName}>
+          <Dialog.Description className={modalContentClassName} asChild>
             {children}
+          </Dialog.Description>
             {customButtonsBlock ? (
               <div
                 style={{
@@ -88,7 +89,7 @@ export const Modal = ({
                 {customButtonsBlock}
               </div>
             ) : (
-              <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: 'auto' }}>
+              <div style={{ display: 'flex', justifyContent: 'flex-end', margin: '18px 24px 36px 0' }}>
                 {editPost ? (
                   <Button onClick={onSubmit}>Save changes</Button>
                 ) : (
@@ -98,7 +99,6 @@ export const Modal = ({
                 )}
               </div>
             )}
-          </Dialog.Description>
         </Dialog.Content>
       </Dialog.Portal>
     </Dialog.Root>
