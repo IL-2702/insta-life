@@ -1,5 +1,3 @@
-export {}
-
 export type AuthSliceInitialState = {
   accessToken?: string
   email: string
@@ -10,6 +8,23 @@ export type SignInParams = {
   email: string
   password: string
 }
+
+export type SignUpArgs = {
+  baseUrl: string
+  email: string
+  password: string
+  userName: string
+}
+
+export type SignUpConfirmationArgs = {
+  confirmationCode: string
+}
+
+export type SignUpEmailResendingArgs = {
+  baseUrl: string
+  email: string
+}
+
 export type SignInResponse = {
   accessToken?: string
 } & Partial<ErrorResponse>

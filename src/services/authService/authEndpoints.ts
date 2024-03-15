@@ -6,6 +6,9 @@ import {
   PasswordRecoveryResponse,
   SignInParams,
   SignInResponse,
+  SignUpArgs,
+  SignUpConfirmationArgs,
+  SignUpEmailResendingArgs,
 } from '@/services/authService/lib/authEndpoints.types'
 import { authActions } from '@/services/authService/store/slice/authEndpoints.slice'
 
@@ -52,7 +55,35 @@ const authEndpoints = api.injectEndpoints({
         url: 'auth/login',
       }),
     }),
+    signUp: builder.mutation<void, SignUpArgs>({
+      query: body => ({
+        body,
+        method: 'POST',
+        url: 'auth/registration',
+      }),
+    }),
+    signUpConfirmation: builder.mutation<void, SignUpConfirmationArgs>({
+      query: body => ({
+        body,
+        method: 'POST',
+        url: 'auth/registration-confirmation',
+      }),
+    }),
+    signUpEmailResending: builder.mutation<void, SignUpEmailResendingArgs>({
+      query: body => ({
+        body,
+        method: 'POST',
+        url: 'auth/registration-email-resending',
+      }),
+    }),
   }),
 })
 
-export const { useGetMeQuery, usePasswordRecoveryMutation, useSignInMutation } = authEndpoints
+export const {
+  useGetMeQuery,
+  usePasswordRecoveryMutation,
+  useSignInMutation,
+  useSignUpConfirmationMutation,
+  useSignUpEmailResendingMutation,
+  useSignUpMutation,
+} = authEndpoints
