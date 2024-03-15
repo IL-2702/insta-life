@@ -56,10 +56,8 @@ export const SignIn = memo(
                 </Typography>
               </Link>
             </div>
-            <Button className={s.button} disabled={isDisabled} isLoading={signIsLoading} fullWidth>
-                <Typography as={'h3'}>
-                    {!signIsLoading && t.auth.button.signInButton}
-                </Typography>
+            <Button className={s.button} disabled={isDisabled} fullWidth isLoading={signIsLoading}>
+              <Typography as={'h3'}>{!signIsLoading && t.auth.button.signInButton}</Typography>
             </Button>
             <div className={s.signup}>
               <Typography variant={'regular16'}>{t.auth.signInPage.question}</Typography>
