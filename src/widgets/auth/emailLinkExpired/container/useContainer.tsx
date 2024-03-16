@@ -5,9 +5,11 @@ import { useAppDispatch } from '@/app/store/hooks/useAppDispatch'
 import { useAppSelector } from '@/app/store/hooks/useAppSelector'
 import { usePasswordRecoveryMutation } from '@/services/authService/authEndpoints'
 import { authActions } from '@/services/authService/store/slice/authEndpoints.slice'
+import { useTranslation } from '@/shared/hooks/useTranslation'
 
 export const useContainer = () => {
   const [isOpen, setIsOpen] = useState(false)
+  const { t } = useTranslation()
 
   const [passwordRecovery, { isLoading }] = usePasswordRecoveryMutation()
   const captchaRef = useRef<ReCAPTCHA | null>(null)
@@ -66,5 +68,6 @@ export const useContainer = () => {
     onRecentLink,
     publicKey,
     setIsOpen,
+    t,
   }
 }

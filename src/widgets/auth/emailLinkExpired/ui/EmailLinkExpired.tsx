@@ -21,14 +21,13 @@ export const EmailLinkExpired = ({
   onRecentLink,
   publicKey,
   setIsOpen,
+  t,
 }: EmailLinkExpiredContainerProps) => {
   return (
     <div className={s.container}>
-      <Typography variant={'h1'}>Email verification link expired</Typography>
+      <Typography variant={'h1'}>{t.auth.verificationPage.linkExpiredTitle}</Typography>
       <div className={s.body}>
-        <Typography variant={'regular16'}>
-          Looks like the verification link has expired. Not to worry, we can send the link again
-        </Typography>
+        <Typography variant={'regular16'}>{t.auth.verificationPage.verificationText}</Typography>
       </div>
       <div>
         <Button
@@ -37,7 +36,7 @@ export const EmailLinkExpired = ({
           onClick={onRecentLink}
           variant={'primary'}
         >
-          <Typography variant={'h3'}>{!isLoading && 'Resend link'}</Typography>
+          <Typography variant={'h3'}>{!isLoading && `${t.auth.button.sendLink}`}</Typography>
         </Button>
       </div>
       <div className={s.recaptchaWrapper}>
@@ -53,7 +52,7 @@ export const EmailLinkExpired = ({
         modalHandler={handleCloseModal}
         onPointerOutsideClickHandler={() => setIsOpen(false)}
         open={isOpen}
-        title={'Email sent'}
+        title={t.auth.modal.modalTitle}
       >
         <Typography
           variant={'regular16'}
