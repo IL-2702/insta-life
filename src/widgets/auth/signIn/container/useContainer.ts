@@ -4,9 +4,9 @@ import { useForm } from 'react-hook-form'
 import { useAppSelector } from '@/app/store/hooks/useAppSelector'
 import { useSignInMutation } from '@/services/authService/authEndpoints'
 import { ROUTES } from '@/shared/constants/routes'
+import useSafePush from '@/shared/hooks/useSafePush'
 import { useTranslation } from '@/shared/hooks/useTranslation'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useRouter } from 'next/router'
 import { z } from 'zod'
 
 export const signInSchema = z.object({
@@ -46,16 +46,16 @@ export const useContainer = () => {
     !!errorsWrapper.errors.password ||
     signIsLoading
 
-  const router = useRouter()
+  const { safePush } = useSafePush()
   const { t } = useTranslation()
 
   const token = useAppSelector(state => state.authReducer?.accessToken)
 
   useEffect(() => {
     if (token) {
-      router.push(ROUTES.PROFILE)
+      safePush(ROUTES.PROFILE)
     }
-  }, [token, router])
+  }, [token, safePush])
 
   const onSubmit = handleSubmit((data: signInFormSchema) => {
     signIn(data)
