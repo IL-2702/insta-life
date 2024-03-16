@@ -2,14 +2,15 @@ import { ReactNode, useEffect, useState } from 'react'
 
 import { useGetMeQuery } from '@/services/authService/authEndpoints'
 import { PRIVATE_ROUTES, ROUTES } from '@/shared/constants/routes'
+import useSafePush from '@/shared/hooks/useSafePush'
 import { usePathname } from 'next/navigation'
-import useSafePush from "@/shared/hooks/useSafePush";
 
-export const AuthProvider = ({ children }: { children: ReactNode }) => {useState(false)
+export const AuthProvider = ({ children }: { children: ReactNode }) => {
+  useState(false)
   const [isLoading, setIsLoading] = useState(true)
   const { data: me, isLoading: isLoadingMe } = useGetMeQuery()
   const pathname = usePathname()
-  const {safePush} = useSafePush()
+  const { safePush } = useSafePush()
   const isPrivateRoute = !!PRIVATE_ROUTES.find(route => route === pathname)
 
   useEffect(() => {
@@ -23,9 +24,9 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {useState
         setIsLoading(false)
       }
     }
-  }, [safePush, isLoadingMe, isPrivateRoute, me,setIsLoading ])
+  }, [safePush, isLoadingMe, isPrivateRoute, me, setIsLoading])
 
-  if (!me && isPrivateRoute || isLoading) {
+  if ((!me && isPrivateRoute) || isLoading) {
     return null
   }
 
