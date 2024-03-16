@@ -1,6 +1,7 @@
 import ReCAPTCHA from 'react-google-recaptcha'
 
 import { Button } from '@/shared/ui/Button'
+import { Modal } from '@/shared/ui/Modal'
 import { Typography } from '@/shared/ui/Typography'
 import { EmailLinkExpiredContainerProps } from '@/widgets/auth/emailLinkExpired/container'
 import Image from 'next/image'
@@ -11,10 +12,15 @@ import img from '../../../../../public/assets/expiredLink.svg'
 
 export const EmailLinkExpired = ({
   captchaRef,
+  email,
+  handleCloseModal,
   handleSetToken,
+  isDisabled,
   isLoading,
+  isOpen,
   onRecentLink,
   publicKey,
+  setIsOpen,
 }: EmailLinkExpiredContainerProps) => {
   return (
     <div className={s.container}>
@@ -26,12 +32,12 @@ export const EmailLinkExpired = ({
       </div>
       <div>
         <Button
-          disabled={isLoading}
+          disabled={isDisabled}
           isLoading={isLoading}
           onClick={onRecentLink}
           variant={'primary'}
         >
-          <Typography variant={'h3'}>Resend link</Typography>
+          <Typography variant={'h3'}>{!isLoading && 'Resend link'}</Typography>
         </Button>
       </div>
       <div className={s.recaptchaWrapper}>
@@ -43,6 +49,16 @@ export const EmailLinkExpired = ({
         />
       </div>
       <Image alt={'Verification link expired'} height={352} src={img.src} width={473} />
+      <Modal
+        modalHandler={handleCloseModal}
+        onPointerOutsideClickHandler={() => setIsOpen(false)}
+        open={isOpen}
+        title={'Email sent'}
+      >
+        <Typography
+          variant={'regular16'}
+        >{`We have sent a link to confirm your email to ${email}`}</Typography>
+      </Modal>
     </div>
   )
 }
