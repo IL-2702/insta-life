@@ -11,14 +11,11 @@ import Link from 'next/link'
 
 import s from './signIn.module.scss'
 
-import { useTranslation } from '../../../../../hooks/useTranslation'
 import gitLogo from '../../../../../public/assets/githubLogo.svg'
 import gLogo from '../../../../../public/assets/googleLogo.svg'
 
 export const SignIn = memo(
-  ({ control, errorsWrapper, isDisabled, onSubmit, signIsLoading, token }: SignInProps) => {
-    const { t } = useTranslation()
-
+  ({ control, errorsWrapper, isDisabled, onSubmit, signIsLoading, t, token }: SignInProps) => {
     return (
       !token && (
         <Card className={s.container}>

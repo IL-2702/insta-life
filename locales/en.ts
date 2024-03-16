@@ -15,12 +15,12 @@ export const en = {
       congratulationText: 'Your email has been confirmed',
       h1: 'Congratulations!',
       meta_description: '',
-      title: 'Congratulations! • Inctagram',
+      title: 'Congratulations!',
     },
     createNewPassword: {
       h1: 'Create New Password',
       meta_description: '',
-      title: 'Create New Password • Inctagram',
+      title: 'Create New Password',
     },
     error: {
       descriptionPostValueMax: 'Limit of the symbols is 500',
@@ -50,7 +50,7 @@ export const en = {
         'The link has been sent by email. If you don’t receive an email send link again',
       meta_description:
         "Trouble logging in? Enter your email and we'll send you a link to get back into your account",
-      title: 'Reset Password • Inctagram',
+      title: 'Reset Password',
     },
     form: {
       addPublicationDescription: 'Add publication descriptions',
@@ -72,38 +72,42 @@ export const en = {
         yes: 'Yes, merge',
       },
       meta_description: '',
-      title: 'Merger of Accounts • Inctagram',
+      title: 'Merger of Accounts',
     },
     modal: {
       modalTitle: 'Email sent',
-      modalVerificationText: 'We have sent a link to confirm your email to epam@epam.com',
+      modalVerificationText: {
+        getEmail(email: string) {
+          return `We have sent a link to confirm your email to ${email}`
+        },
+      },
     },
     privacyPolicyPage: {
       h1: 'Privacy Policy',
       meta_description: 'TEXT',
-      title: 'Privacy policy • Inctagram',
+      title: 'Privacy policy',
     },
     signInPage: {
       forgotPassword: 'Forgot Password',
       h1: 'Sign In',
       meta_description:
-        'Welcome back to Inctagram. Sign in to check out what your friends, family &amp; interests have been capturing &amp; sharing around the world',
+        'Welcome back to INSTALIFE. Sign in to check out what your friends, family &amp; interests have been capturing &amp; sharing around the world',
       question: 'Don’t have an account?',
       title: 'Sign In',
     },
     signUpPage: {
       h1: 'Sign Up',
       meta_description:
-        'Join Inctagram! Sign up to see photos, videos, stories &amp; messages from your friends, family &amp; interests around the world',
+        'Join INSTALIFE! Sign up to see photos, videos, stories &amp; messages from your friends, family &amp; interests around the world',
       privacyTerms:
         "I agree to the <a href='/sign-up/terms-of-service'>Terms of Service</a> and <a href='/sign-up/privacy-policy'>Privacy Policy</a>",
       question: 'Do you have an account?',
-      title: 'Sign Up • Inctagram',
+      title: 'Sign Up',
     },
     termsOfServicePage: {
       h1: 'Terms of Service',
       meta_description: 'TEXT',
-      title: 'Terms of service • Inctagram',
+      title: 'Terms of service',
     },
     verificationPage: {
       h1: '',

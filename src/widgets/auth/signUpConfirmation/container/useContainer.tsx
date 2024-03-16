@@ -1,5 +1,7 @@
-import { EmailLinkExpiredContainerProps } from '@/widgets/auth/emailLinkExpired/container/index'
+import { useTranslation } from '@/shared/hooks/useTranslation'
 
 export const useContainer = () => {
-  return {}
+  const { t } = useTranslation()
+
+  return { t }
 }

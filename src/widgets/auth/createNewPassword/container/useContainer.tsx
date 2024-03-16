@@ -1,5 +1,6 @@
 import { useForm } from 'react-hook-form'
 
+import { useTranslation } from '@/shared/hooks/useTranslation'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
@@ -33,9 +34,10 @@ export const useContainer = () => {
     resolver: zodResolver(schema),
   })
 
+  const { t } = useTranslation()
   const handleFormSubmit = handleSubmit(data => {
     console.log(data)
   })
 
-  return { control, handleFormSubmit }
+  return { control, handleFormSubmit, t }
 }

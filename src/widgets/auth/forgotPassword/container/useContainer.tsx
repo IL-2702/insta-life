@@ -6,6 +6,7 @@ import { useAppDispatch } from '@/app/store/hooks/useAppDispatch'
 import { useAppSelector } from '@/app/store/hooks/useAppSelector'
 import { usePasswordRecoveryMutation } from '@/services/authService/authEndpoints'
 import { authActions } from '@/services/authService/store/slice/authEndpoints.slice'
+import { useTranslation } from '@/shared/hooks/useTranslation'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
@@ -44,6 +45,7 @@ export const useContainer = () => {
   })
 
   const { email } = getValues()
+  const { t } = useTranslation()
 
   const emailError = errors.email?.message
 
@@ -98,5 +100,6 @@ export const useContainer = () => {
     onSubmit,
     publicKey,
     setIsOpen,
+    t,
   }
 }

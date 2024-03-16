@@ -25,25 +25,26 @@ export const ForgotPassword = ({
   onSubmit,
   publicKey,
   setIsOpen,
+  t,
 }: ForgotPasswordProps) => {
   return (
     <div className={s.container}>
       <Card className={s.card}>
-        <Typography variant={'h1'}>Forgot Password</Typography>
+        <Typography variant={'h1'}>{t.auth.forgotPasswordPage.title}</Typography>
         <form onSubmit={onSubmit}>
           <ControlledTextField
             className={s.email}
             control={control}
             errorMessage={emailError}
-            label={'Email'}
+            label={t.auth.form.email}
             name={'email'}
           />
           <Typography className={s.subtitle} variant={'regular14'}>
-            Enter your email address and we will send you further instructions
+            {t.auth.forgotPasswordPage.enterYourEmailText}
           </Typography>
           {isRender && (
             <Typography className={s.subtitleTwo} color={'light'} variant={'regular14'}>
-              The link has been sent by email. If you don’t receive an email send link again
+              {t.auth.forgotPasswordPage.linkHasBeenSentText}
             </Typography>
           )}
           <Button
@@ -54,13 +55,13 @@ export const ForgotPassword = ({
             type={'submit'}
           >
             <Typography variant={'h3'}>
-              {!isLoadingPasswordRecovery && 'Send Link'}
-              {!isLoadingPasswordRecovery && isRender && ' Again'}
+              {!isLoadingPasswordRecovery && `${t.auth.button.sendLink}`}
+              {!isLoadingPasswordRecovery && isRender && `${t.auth.button.sendLinkAgain}`}
             </Typography>
           </Button>
         </form>
         <Link className={s.link} href={ROUTES.LOGIN}>
-          <Typography variant={'h3'}>Back to Sign In</Typography>
+          <Typography variant={'h3'}>{t.auth.button.backToSignIn}</Typography>
         </Link>
         <div className={s.recaptchaWrapper}>
           <ReCAPTCHA
@@ -75,11 +76,11 @@ export const ForgotPassword = ({
         modalHandler={handleCloseModal}
         onPointerOutsideClickHandler={() => setIsOpen(false)}
         open={isOpen}
-        title={'Email sent'}
+        title={t.auth.modal.modalTitle}
       >
-        <Typography
-          variant={'regular16'}
-        >{`We have sent a link to confirm your email to ${email}`}</Typography>
+        <Typography variant={'regular16'}>
+          {t.auth.modal.modalVerificationText.getEmail(email)}
+        </Typography>
       </Modal>
     </div>
   )
