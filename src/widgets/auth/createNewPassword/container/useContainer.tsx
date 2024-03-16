@@ -1,6 +1,7 @@
 import { useForm } from 'react-hook-form'
 
 import { useCreateNewPasswordMutation } from '@/services/authService/authEndpoints'
+import { useTranslation } from '@/shared/hooks/useTranslation'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useRouter } from 'next/router'
 import { z } from 'zod'
@@ -38,6 +39,8 @@ export const useContainer = () => {
     mode: 'onTouched',
     resolver: zodResolver(schema),
   })
+
+  const { t } = useTranslation()
 
   const handleFormSubmit = handleSubmit(async data => {
     if (code && !Array.isArray(code)) {

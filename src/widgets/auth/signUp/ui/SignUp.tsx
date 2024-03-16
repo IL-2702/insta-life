@@ -24,12 +24,13 @@ export const SignUp = memo(
     onSubmit,
     passwordConfirmationErrorMessage,
     passwordErrorMessage,
+    t,
     userNameErrorMessage,
   }: SignUpProps) => {
     return (
       <Card className={s.card}>
         <Typography as={'h2'} className={s.title} variant={'h1'}>
-          Sign Up
+          {t.auth.signUpPage.title}
         </Typography>
         <div className={s.services}>
           <Link href={'#google#'}>
@@ -44,14 +45,14 @@ export const SignUp = memo(
             className={s.email}
             control={control}
             errorMessage={userNameErrorMessage}
-            label={'Username'}
+            label={t.auth.form.username}
             name={'userName'}
           />
           <ControlledTextField
             className={s.email}
             control={control}
             errorMessage={emailErrorMessage}
-            label={'Email'}
+            label={t.auth.form.email}
             name={'email'}
             type={'email'}
           />
@@ -59,7 +60,7 @@ export const SignUp = memo(
             className={s.password}
             control={control}
             errorMessage={passwordErrorMessage}
-            label={'Password'}
+            label={t.auth.form.password}
             name={'password'}
             type={'password'}
           />
@@ -67,7 +68,7 @@ export const SignUp = memo(
             className={s.passwordConfirmation}
             control={control}
             errorMessage={passwordConfirmationErrorMessage}
-            label={'Password confirmation'}
+            label={t.auth.form.passwordConfirmation}
             name={'passwordConfirmation'}
             type={'password'}
           />
@@ -77,25 +78,25 @@ export const SignUp = memo(
               I agree to the&nbsp;
               <Link href={TERMS_OF_SERVICE}>
                 <Typography as={'span'} color={'primary'} variant={'link-small'}>
-                  Terms of Service
+                  {t.auth.termsOfServicePage.title}
                 </Typography>
               </Link>
               &nbsp;and&nbsp;
               <Link href={PRIVACY_POLICY}>
                 <Typography as={'span'} color={'primary'} variant={'link-small'}>
-                  Privacy Policy
+                  {t.auth.privacyPolicyPage.title}
                 </Typography>
               </Link>
             </Typography>
           </div>
           <Button className={s.submit} disabled={!isFormValid} fullWidth type={'submit'}>
-            Sign Up
+            {t.auth.button.signUpButton}
           </Button>
           <div className={s.signInSuggestion}>
-            <Typography variant={'regular16'}>Do you have an account?</Typography>
+            <Typography variant={'regular16'}>{t.auth.signUpPage.question}</Typography>
             <Link href={'sign-in'}>
               <Typography color={'primary'} variant={'h3'}>
-                Sign In
+                {t.auth.button.signInButton}
               </Typography>
             </Link>
           </div>
