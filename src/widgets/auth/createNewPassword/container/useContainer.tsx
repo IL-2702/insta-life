@@ -1,6 +1,7 @@
 import { useForm } from 'react-hook-form'
 
 import { useCreateNewPasswordMutation } from '@/services/authService/authEndpoints'
+import { ROUTES } from '@/shared/constants/routes'
 import { useTranslation } from '@/shared/hooks/useTranslation'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useRouter } from 'next/router'
@@ -45,7 +46,8 @@ export const useContainer = () => {
   const handleFormSubmit = handleSubmit(async data => {
     if (code && !Array.isArray(code)) {
       try {
-        createNewPassword({ newPassword: data.password, recoveryCode: code })
+        await createNewPassword({ newPassword: data.password, recoveryCode: code })
+        await router.push(ROUTES.LOGIN)
       } catch (e) {
         console.log(e)
       }
