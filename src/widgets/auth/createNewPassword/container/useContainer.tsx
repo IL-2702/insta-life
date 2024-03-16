@@ -1,6 +1,8 @@
 import { useForm } from 'react-hook-form'
 
+import { useCreateNewPasswordMutation } from '@/services/authService/authEndpoints'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useRouter } from 'next/router'
 import { z } from 'zod'
 
 export const useContainer = () => {
@@ -24,6 +26,10 @@ export const useContainer = () => {
 
   type FormType = z.infer<typeof schema>
 
+  const [createNewPassword] = useCreateNewPasswordMutation()
+  const router = useRouter()
+  const { code } = router.query
+
   const { control, handleSubmit } = useForm<FormType>({
     defaultValues: {
       password: '',
@@ -33,8 +39,15 @@ export const useContainer = () => {
     resolver: zodResolver(schema),
   })
 
-  const handleFormSubmit = handleSubmit(data => {
-    console.log(data)
+  const handleFormSubmit = handleSubmit(async data => {
+    if (code && !Array.isArray(code)) {
+      console.log(code)
+      // try {
+      //   createNewPassword({ newPassword: data.password, recoveryCode: code })
+      // } catch (e) {
+      //   console.log(e)
+      // }
+    }
   })
 
   return { control, handleFormSubmit }
