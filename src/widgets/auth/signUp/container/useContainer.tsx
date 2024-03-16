@@ -1,5 +1,6 @@
 import { useForm } from 'react-hook-form'
 
+import { useTranslation } from '@/shared/hooks/useTranslation'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useRouter } from 'next/router'
 import { z } from 'zod'
@@ -62,6 +63,7 @@ export const useContainer = () => {
   const isFormValid = Object.keys(errors).length === 0 && isDirty && dirtyFields.termsAgreement
 
   const router = useRouter()
+  const { t } = useTranslation()
 
   const onSubmit = handleSubmit((data: SignUpFormSchema) => {})
 
@@ -72,6 +74,7 @@ export const useContainer = () => {
     onSubmit,
     passwordConfirmationErrorMessage,
     passwordErrorMessage,
+    t,
     userNameErrorMessage,
   }
 }
