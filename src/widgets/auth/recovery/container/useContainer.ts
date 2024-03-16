@@ -21,7 +21,7 @@ export const useContainer = () => {
         .unwrap()
         .then(res => {
           console.log(res)
-          push(ROUTES.CREATE_NEW_PASSWORD)
+          push(ROUTES.CREATE_NEW_PASSWORD, { query: { code: query.code } })
         })
         .catch(err => {
           console.log(err)
