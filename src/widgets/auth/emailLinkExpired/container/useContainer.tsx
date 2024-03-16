@@ -1,14 +1,13 @@
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import ReCAPTCHA from 'react-google-recaptcha'
 
 import { useAppDispatch } from '@/app/store/hooks/useAppDispatch'
 import { useAppSelector } from '@/app/store/hooks/useAppSelector'
 import { usePasswordRecoveryMutation } from '@/services/authService/authEndpoints'
 import { authActions } from '@/services/authService/store/slice/authEndpoints.slice'
-import { useRouter } from 'next/router'
 
 export const useContainer = () => {
-  const { query } = useRouter()
+  const [isOpen, setIsOpen] = useState(false)
 
   const [passwordRecovery, { isLoading }] = usePasswordRecoveryMutation()
   const captchaRef = useRef<ReCAPTCHA | null>(null)
@@ -18,6 +17,9 @@ export const useContainer = () => {
   const publicKey = process.env.NEXT_PUBLIC_RECAPTCHA_API_KEY
 
   const token = useAppSelector(state => state.authReducer.recaptchaToken)
+  const email = useAppSelector(state => state.authReducer.email)
+
+  const isDisabled = !token || isLoading
 
   const handleSetToken = (token: null | string) => {
     if (token) {
@@ -25,16 +27,21 @@ export const useContainer = () => {
     }
   }
 
+  const handleCloseModal = (isOpen: boolean) => {
+    setIsOpen(isOpen)
+  }
+
   const onRecentLink = () => {
-    if (query.email && token) {
+    if (email && token) {
       passwordRecovery({
         baseUrl: 'http://localhost:3000',
-        email: query.email as string,
+        email: email as string,
         recaptcha: token,
       })
         .unwrap()
         .then(res => {
           console.log(res)
+          setIsOpen(true)
         })
         .catch(err => {
           console.error(err)
@@ -48,5 +55,16 @@ export const useContainer = () => {
     }
   }
 
-  return { captchaRef, handleSetToken, isLoading, onRecentLink, publicKey }
+  return {
+    captchaRef,
+    email,
+    handleCloseModal,
+    handleSetToken,
+    isDisabled,
+    isLoading,
+    isOpen,
+    onRecentLink,
+    publicKey,
+    setIsOpen,
+  }
 }
