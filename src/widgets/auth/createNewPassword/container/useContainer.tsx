@@ -44,14 +44,13 @@ export const useContainer = () => {
 
   const handleFormSubmit = handleSubmit(async data => {
     if (code && !Array.isArray(code)) {
-      console.log(code)
-      // try {
-      //   createNewPassword({ newPassword: data.password, recoveryCode: code })
-      // } catch (e) {
-      //   console.log(e)
-      // }
+      try {
+        createNewPassword({ newPassword: data.password, recoveryCode: code })
+      } catch (e) {
+        console.log(e)
+      }
     }
   })
 
-  return { control, handleFormSubmit }
+  return { control, handleFormSubmit, t }
 }
