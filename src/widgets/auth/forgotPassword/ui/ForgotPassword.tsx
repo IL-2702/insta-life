@@ -35,7 +35,8 @@ export const ForgotPassword = ({
           <ControlledTextField
             className={s.email}
             control={control}
-            errorMessage={emailError}
+            //@ts-ignore
+            errorMessage={emailError && t.auth.error[emailError]}
             label={t.auth.form.email}
             name={'email'}
           />

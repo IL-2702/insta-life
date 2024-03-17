@@ -1,4 +1,6 @@
-export const ru = {
+import { Local } from './en'
+
+export const ru: Local = {
   auth: {
     button: {
       backToSignIn: 'Назад к Войти',
@@ -44,6 +46,7 @@ export const ru = {
       userNameIsRequiredError: 'Имя пользователя необходимо ввести',
       userNameMax: 'Имя пользователя не может быть больше 30 символов',
       userNameMin: 'Имя пользователя не может быть меньше 6 символов',
+      userNotExist: 'Такого пользователя не существует',
     },
     forgotPasswordPage: {
       enterYourEmailText: 'Введите адрес электронной почты, и мы вышлем вам дальнейшие инструкции',
