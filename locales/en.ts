@@ -253,6 +253,7 @@ export const en = {
     },
   },
   sidebar: {
+    create: 'Create',
     favourites: 'Favourites',
     home: 'Home',
     logOut: 'Log out',
