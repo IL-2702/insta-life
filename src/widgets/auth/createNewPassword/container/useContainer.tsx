@@ -14,17 +14,10 @@ export const useContainer = () => {
       password: z
         .string()
         .trim()
-        .min(6, 'Password must be at least 5 characters')
-        .max(20, 'The password must be no more than 20 characters')
-        .regex(
-          passwordRegExp,
-          'Password must contain a-z, A-Z, 0-9, ! " # $ % & \' ( ) * + , - . / : ; < = > ? @ [ \\ ] ^ _` { | } ~'
-        ),
-      passwordConfirmation: z
-        .string()
-        .trim()
-        .min(6, 'Password must be at least 5 characters')
-        .max(20, 'The password must be no more than 20 characters'),
+        .min(6, 'passwordMin')
+        .max(20, 'passwordMax')
+        .regex(passwordRegExp, 'passwordRegex'),
+      passwordConfirmation: z.string().trim().min(6, 'passwordMin').max(20, 'passwordMax'),
     })
     .refine(data => data.password === data.passwordConfirmation, {
       message: 'passwordsDontMatch',
@@ -37,7 +30,11 @@ export const useContainer = () => {
   const router = useRouter()
   const { code } = router.query
 
-  const { control, handleSubmit } = useForm<FormType>({
+  const {
+    control,
+    formState: { errors },
+    handleSubmit,
+  } = useForm<FormType>({
     defaultValues: {
       password: '',
       passwordConfirmation: '',
