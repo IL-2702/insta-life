@@ -12,7 +12,7 @@ import { z } from 'zod'
 
 export const useContainer = () => {
   const forgotPasswordFormSchema = z.object({
-    email: z.string().trim().email('t.auth.error.userNotExist').toLowerCase(),
+    email: z.string().trim().email('invalidEmailAddress').toLowerCase(),
   })
 
   type ForgotPasswordForm = z.infer<typeof forgotPasswordFormSchema>

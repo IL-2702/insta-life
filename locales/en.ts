@@ -51,7 +51,7 @@ export const en = {
         'The link has been sent by email. If you don’t receive an email send link again',
       meta_description:
         "Trouble logging in? Enter your email and we'll send you a link to get back into your account",
-      title: 'Reset Password',
+      title: 'Forgot Password',
     },
     form: {
       addPublicationDescription: 'Add publication descriptions',
