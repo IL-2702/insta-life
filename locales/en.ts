@@ -34,6 +34,8 @@ export const en = {
       passwordIsRequiredError: 'Password is required',
       passwordMax: 'Password can not be longer than 20 characters',
       passwordMin: 'Password must be at least 6 characters',
+      passwordRegex:
+        'Password must contain a-z, A-Z, 0-9, ! " # $ % & \' ( ) * + , - . / : ; < = > ? @ [ \\ ] ^ _` { | } ~',
       passwordsDontMatch: "Passwords don't match",
       titlePostValueMax: 'Title can not be longer than 30 characters',
       titlePostValueMin: 'Title must be at least 8 characters',
@@ -79,7 +81,7 @@ export const en = {
       modalTitle: 'Email sent',
       modalVerificationText: {
         getEmail(email: string) {
-          return `We have sent a link to confirm your email to ${email}`
+          return 'We have sent a link to confirm your email to ' + email
         },
       },
     },

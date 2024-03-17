@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import ReCAPTCHA from 'react-google-recaptcha'
 import { useForm } from 'react-hook-form'
 
@@ -8,6 +8,7 @@ import { usePasswordRecoveryMutation } from '@/services/authService/authEndpoint
 import { authActions } from '@/services/authService/store/slice/authEndpoints.slice'
 import { useTranslation } from '@/shared/hooks/useTranslation'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useRouter } from 'next/router'
 import { z } from 'zod'
 
 const forgotPasswordFormSchema = z.object({
@@ -19,9 +20,11 @@ export const useContainer = () => {
   const publicKey = process.env.NEXT_PUBLIC_RECAPTCHA_API_KEY
 
   const [isOpen, setIsOpen] = useState(false)
-  const [isRender, setIsRender] = useState(false)
+  const [isResendLinkAgain, setIsResendLinkAgain] = useState(false)
 
   const token = useAppSelector(state => state.authReducer.recaptchaToken)
+
+  const { locale } = useRouter()
 
   const dispatch = useAppDispatch()
 
@@ -84,7 +87,7 @@ export const useContainer = () => {
       dispatch(authActions.setRecaptchaToken(''))
       captchaRef.current.reset()
     }
-    setIsRender(true)
+    setIsResendLinkAgain(true)
   }
 
   return {
@@ -97,7 +100,8 @@ export const useContainer = () => {
     isDisabled,
     isLoadingPasswordRecovery,
     isOpen,
-    isRender,
+    isResendLinkAgain,
+    locale,
     onSubmit,
     publicKey,
     setIsOpen,

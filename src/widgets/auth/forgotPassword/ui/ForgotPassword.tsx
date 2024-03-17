@@ -21,7 +21,8 @@ export const ForgotPassword = ({
   isDisabled,
   isLoadingPasswordRecovery,
   isOpen,
-  isRender,
+  isResendLinkAgain,
+  locale,
   onSubmit,
   publicKey,
   setIsOpen,
@@ -43,7 +44,7 @@ export const ForgotPassword = ({
           <Typography className={s.subtitle} variant={'regular14'}>
             {t.auth.forgotPasswordPage.enterYourEmailText}
           </Typography>
-          {isRender && (
+          {isResendLinkAgain && (
             <Typography className={s.subtitleTwo} color={'light'} variant={'regular14'}>
               {t.auth.forgotPasswordPage.linkHasBeenSentText}
             </Typography>
@@ -56,8 +57,9 @@ export const ForgotPassword = ({
             type={'submit'}
           >
             <Typography variant={'h3'}>
-              {!isLoadingPasswordRecovery && `${t.auth.button.sendLink}`}
-              {!isLoadingPasswordRecovery && isRender && `${t.auth.button.sendLinkAgain}`}
+              {isResendLinkAgain
+                ? !isLoadingPasswordRecovery && `${t.auth.button.sendLinkAgain}`
+                : !isLoadingPasswordRecovery && `${t.auth.button.sendLink}`}
             </Typography>
           </Button>
         </form>
@@ -66,6 +68,8 @@ export const ForgotPassword = ({
         </Link>
         <div className={s.recaptchaWrapper}>
           <ReCAPTCHA
+            hl={locale}
+            key={locale}
             onChange={token => handleSetToken(token as string)}
             ref={captchaRef}
             sitekey={publicKey!}

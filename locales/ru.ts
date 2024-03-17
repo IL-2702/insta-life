@@ -37,6 +37,8 @@ export const ru: Local = {
       passwordIsRequiredError: 'Необходим пароль',
       passwordMax: 'Пароль не может быть больше 30 символов',
       passwordMin: 'Пароль не может быть меньше 6 символов',
+      passwordRegex:
+        'Пароль может содержать a-z, A-Z, 0-9, ! " # $ % & \' ( ) * + , - . / : ; < = > ? @ [ \\ ] ^ _` { | } ~',
       passwordsDontMatch: 'Пароли не совпадают',
       titlePostValueMax: 'Название поста не может быть больше 10 символов',
       titlePostValueMin: 'Название поста не может быть меньше 8 символов',
@@ -83,7 +85,9 @@ export const ru: Local = {
       modalTitle: 'Письмо отправлено',
       modalVerificationText: {
         getEmail(email: string) {
-          return `'Мы отправили ссылку для подтверждения вашего электронного письма по адресу ${email}'`
+          return (
+            'Мы отправили ссылку для подтверждения вашего электронного письма по адресу ' + email
+          )
         },
       },
     },
