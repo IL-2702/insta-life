@@ -10,7 +10,7 @@ export const MainLayout: NextPage<PropsWithChildren> = props => {
   return (
     <>
       <Header />
-      <SideBar />
+      <SideBar.widget />
       <div>{children}</div>
     </>
   )

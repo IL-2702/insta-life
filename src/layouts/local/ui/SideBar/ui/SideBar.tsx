@@ -1,3 +1,4 @@
+import { SideBarProps } from '@/layouts/local/ui/SideBar/container'
 import { BookMark } from '@/shared/assets/icons/asideIcons/bookmarkIcon/BookmarkIcon'
 import { CreateIcon } from '@/shared/assets/icons/asideIcons/createIcon/CreateIcon'
 import { HomeIcon } from '@/shared/assets/icons/asideIcons/homeIcon'
@@ -9,62 +10,58 @@ import { StatisticsIcon } from '@/shared/assets/icons/asideIcons/statisticsIcon'
 import { ROUTES } from '@/shared/constants/routes'
 import { Typography } from '@/shared/ui/Typography'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
 
 import s from './SideBar.module.scss'
 
-export const SideBar = () => {
-  const router = useRouter()
-  const { pathname } = router
-
+export const SideBar = ({ handleLogOut, pathname, t }: SideBarProps) => {
   return (
     <aside className={s.aside}>
       <Link className={pathname === ROUTES.HOME ? s.activeLink : ''} href={ROUTES.HOME}>
         <HomeIcon className={s.navIcon} />
         <Typography className={s.navLink} color={'light'} variant={'medium14'}>
-          Home
+          {t.sidebar.home}
         </Typography>
       </Link>
       <Link className={pathname === ROUTES.CREATE ? s.activeLink : ''} href={ROUTES.CREATE}>
         <CreateIcon className={s.navIcon} />
         <Typography className={s.navLink} color={'light'} variant={'medium14'}>
-          Create
+          {t.sidebar.create}
         </Typography>
       </Link>
       <Link className={pathname === ROUTES.PROFILE ? s.activeLink : ''} href={ROUTES.PROFILE}>
         <ProfileIcon className={s.navIcon} />
         <Typography className={s.navLink} color={'light'} variant={'medium14'}>
-          MyProfile
+          {t.sidebar.myProfile}
         </Typography>
       </Link>
       <Link className={pathname === ROUTES.MESSENGER ? s.activeLink : ''} href={ROUTES.MESSENGER}>
         <MessengerIcon className={s.navIcon} />
         <Typography className={s.navLink} color={'light'} variant={'medium14'}>
-          Messenger
+          {t.sidebar.messenger}
         </Typography>
       </Link>
       <Link className={pathname === ROUTES.SEARCH ? s.activeLink : ''} href={ROUTES.SEARCH}>
         <SearchIcon className={s.navIcon} />
         <Typography className={s.navLink} color={'light'} variant={'medium14'}>
-          Search
+          {t.sidebar.search}
         </Typography>
       </Link>
       <Link className={pathname === ROUTES.STATISTICS ? s.activeLink : ''} href={ROUTES.STATISTICS}>
         <StatisticsIcon className={s.navIcon} />
         <Typography className={s.navLink} color={'light'} variant={'medium14'}>
-          Statistics
+          {t.sidebar.statistics}
         </Typography>
       </Link>
       <Link className={pathname === ROUTES.FAVORITES ? s.activeLink : ''} href={ROUTES.FAVORITES}>
         <BookMark className={s.navIcon} />
         <Typography className={s.navLink} color={'light'} variant={'medium14'}>
-          Favorites
+          {t.sidebar.favourites}
         </Typography>
       </Link>
-      <Link href={ROUTES.LOGIN}>
+      <Link href={ROUTES.LOGIN} onClick={handleLogOut}>
         <LogOutIcon className={s.navIcon} />
         <Typography className={s.navLink} color={'light'} variant={'medium14'}>
-          Log Out
+          {t.sidebar.logOut}
         </Typography>
       </Link>
     </aside>
