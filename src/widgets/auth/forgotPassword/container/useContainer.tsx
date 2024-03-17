@@ -20,7 +20,7 @@ export const useContainer = () => {
   const publicKey = process.env.NEXT_PUBLIC_RECAPTCHA_API_KEY
 
   const [isOpen, setIsOpen] = useState(false)
-  const [isRender, setIsRender] = useState(false)
+  const [isResendLinkAgain, setIsResendLinkAgain] = useState(false)
 
   const token = useAppSelector(state => state.authReducer.recaptchaToken)
 
@@ -85,7 +85,7 @@ export const useContainer = () => {
       dispatch(authActions.setRecaptchaToken(''))
       captchaRef.current.reset()
     }
-    setIsRender(true)
+    setIsResendLinkAgain(true)
   }
 
   return {
@@ -98,7 +98,7 @@ export const useContainer = () => {
     isDisabled,
     isLoadingPasswordRecovery,
     isOpen,
-    isRender,
+    isResendLinkAgain,
     onSubmit,
     publicKey,
     setIsOpen,
