@@ -59,3 +59,7 @@ export type PasswordRecoveryParams = {
   email: string
   recaptcha: string
 }
+export type NewPasswordParams = {
+  newPassword: string
+  recoveryCode: string
+}

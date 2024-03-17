@@ -7,13 +7,16 @@ import { ROUTES } from '@/shared/constants/routes'
 import { useRouter } from 'next/router'
 
 export const useContainer = () => {
-  const { push, query } = useRouter()
+  const { isReady, push, query } = useRouter()
   const email = query.email as string
 
   const [checkRecoveryCode] = useCheckRecoveryCodeMutation()
   const dispatch = useAppDispatch()
 
   useEffect(() => {
+    if (!isReady) {
+      return
+    }
     if (query.code) {
       checkRecoveryCode({
         recoveryCode: query.code as string,
@@ -21,7 +24,7 @@ export const useContainer = () => {
         .unwrap()
         .then(res => {
           console.log(res)
-          push(ROUTES.CREATE_NEW_PASSWORD)
+          push({ pathname: ROUTES.CREATE_NEW_PASSWORD, query: { code: query.code } })
         })
         .catch(err => {
           console.log(err)
@@ -31,7 +34,7 @@ export const useContainer = () => {
           }
         })
     }
-  }, [query.code])
+  }, [checkRecoveryCode, dispatch, email, isReady, push, query.code, query.email])
 
   return {}
 }

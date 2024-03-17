@@ -4,6 +4,7 @@ import {
   CheckRecoveryResponse,
   ErrorResponse,
   GetMeResponse,
+  NewPasswordParams,
   PasswordRecoveryParams,
   PasswordRecoveryResponse,
   SignInParams,
@@ -22,6 +23,15 @@ const authEndpoints = api.injectEndpoints({
         method: 'POST',
         url: 'auth/check-recovery-code',
       }),
+    }),
+    createNewPassword: builder.mutation<any, NewPasswordParams>({
+      query: params => {
+        return {
+          body: params,
+          method: 'POST',
+          url: 'auth/new-password',
+        }
+      },
     }),
     getMe: builder.query<GetMeResponse | unknown, void>({
       providesTags: ['Me'],
@@ -97,6 +107,7 @@ const authEndpoints = api.injectEndpoints({
 
 export const {
   useCheckRecoveryCodeMutation,
+  useCreateNewPasswordMutation,
   useGetMeQuery,
   useLogOutMutation,
   usePasswordRecoveryMutation,
