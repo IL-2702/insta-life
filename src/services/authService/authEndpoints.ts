@@ -44,6 +44,13 @@ const authEndpoints = api.injectEndpoints({
         return result
       },
     }),
+    logOut: builder.mutation<Partial<ErrorResponse>, void>({
+      invalidatesTags: ['Me'],
+      query: () => ({
+        method: 'POST',
+        url: 'auth/logout',
+      }),
+    }),
     passwordRecovery: builder.mutation<PasswordRecoveryResponse, PasswordRecoveryParams>({
       query: ({ baseUrl, email, recaptcha }) => ({
         body: { baseUrl, email, recaptcha },
@@ -102,6 +109,7 @@ export const {
   useCheckRecoveryCodeMutation,
   useCreateNewPasswordMutation,
   useGetMeQuery,
+  useLogOutMutation,
   usePasswordRecoveryMutation,
   useSignInMutation,
   useSignUpConfirmationMutation,

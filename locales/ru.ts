@@ -256,6 +256,7 @@ export const ru = {
     },
   },
   sidebar: {
+    create: 'Создать',
     favourites: 'Закладки',
     home: 'Новости',
     logOut: 'Выйти',
