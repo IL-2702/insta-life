@@ -8,7 +8,13 @@ import { CreateNewPasswordProps } from '@/widgets/auth/createNewPassword/contain
 
 import s from './CreateNewPassword.module.scss'
 
-export const CreateNewPassword = ({ control, handleFormSubmit, t }: CreateNewPasswordProps) => {
+export const CreateNewPassword = ({
+  control,
+  errorPassword,
+  errorPasswordConfirmation,
+  handleFormSubmit,
+  t,
+}: CreateNewPasswordProps) => {
   return (
     <>
       <Card className={s.card}>
@@ -19,6 +25,8 @@ export const CreateNewPassword = ({ control, handleFormSubmit, t }: CreateNewPas
           <ControlledTextField
             className={s.password}
             control={control}
+            //@ts-ignore
+            errorMessage={errorPassword && t.auth.error[errorPassword]}
             label={t.auth.form.newPassword}
             name={'password'}
             type={'password'}
@@ -26,6 +34,8 @@ export const CreateNewPassword = ({ control, handleFormSubmit, t }: CreateNewPas
           <ControlledTextField
             className={s.confirmPassword}
             control={control}
+            //@ts-ignore
+            errorMessage={errorPasswordConfirmation && t.auth.error[errorPasswordConfirmation]}
             label={t.auth.form.passwordConfirmation}
             name={'passwordConfirmation'}
             type={'password'}

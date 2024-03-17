@@ -7,25 +7,21 @@ import { z } from 'zod'
 export const useContainer = () => {
   const schema = z
     .object({
-      password: z
-        .string()
-        .trim()
-        .min(6, 'Password must be at least 5 characters')
-        .max(20, 'The password must be no more than 20 characters'),
-      passwordConfirmation: z
-        .string()
-        .trim()
-        .min(6, 'Password must be at least 5 characters')
-        .max(20, 'The password must be no more than 20 characters'),
+      password: z.string().trim().min(6, 'passwordMin').max(20, 'passwordMax'),
+      passwordConfirmation: z.string().trim().min(6, 'passwordMin').max(20, 'passwordMax'),
     })
     .refine(data => data.password === data.passwordConfirmation, {
-      message: "Passwords don't match",
+      message: 'passwordsDontMatch',
       path: ['passwordConfirmation'],
     })
 
   type FormType = z.infer<typeof schema>
 
-  const { control, handleSubmit } = useForm<FormType>({
+  const {
+    control,
+    formState: { errors },
+    handleSubmit,
+  } = useForm<FormType>({
     defaultValues: {
       password: '',
       passwordConfirmation: '',
@@ -33,11 +29,13 @@ export const useContainer = () => {
     mode: 'onTouched',
     resolver: zodResolver(schema),
   })
+  const errorPassword = errors.password?.message
+  const errorPasswordConfirmation = errors.passwordConfirmation?.message
 
   const { t } = useTranslation()
   const handleFormSubmit = handleSubmit(data => {
     console.log(data)
   })
 
-  return { control, handleFormSubmit, t }
+  return { control, errorPassword, errorPasswordConfirmation, handleFormSubmit, t }
 }

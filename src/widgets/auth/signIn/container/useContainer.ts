@@ -11,7 +11,7 @@ import { z } from 'zod'
 
 export const signInSchema = z.object({
   email: z.string().email('invalidEmailAddress'),
-  password: z.string().min(6, 'passwordMin').max(30, 'passwordMax'),
+  password: z.string().min(6, 'passwordMin').max(20, 'passwordMax'),
 })
 
 export type signInFormSchema = z.infer<typeof signInSchema>
