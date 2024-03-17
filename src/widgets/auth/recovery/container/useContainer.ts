@@ -22,13 +22,11 @@ export const useContainer = () => {
         recoveryCode: query.code as string,
       })
         .unwrap()
-        .then(res => {
-          console.log(res)
+        .then(_ => {
           push({ pathname: ROUTES.CREATE_NEW_PASSWORD, query: { code: query.code } })
         })
-        .catch(err => {
-          console.log(err)
-          push(ROUTES.VERIFICATION_LINK_EXPIRED, { query: { email: query.email } })
+        .catch(_ => {
+          push({ pathname: ROUTES.VERIFICATION_LINK_EXPIRED, query: { email: query.email } })
           if (email) {
             dispatch(authActions.setEmail(email))
           }
