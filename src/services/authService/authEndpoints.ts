@@ -4,6 +4,7 @@ import {
   CheckRecoveryResponse,
   ErrorResponse,
   GetMeResponse,
+  NewPasswordParams,
   PasswordRecoveryParams,
   PasswordRecoveryResponse,
   SignInParams,
@@ -12,7 +13,7 @@ import {
   SignUpConfirmationArgs,
   SignUpEmailResendingArgs,
 } from '@/services/authService/lib/authEndpoints.types'
-import { authActions } from '@/services/authService/store/slice/authEndpoints.slice'
+import { authActions, authSlice } from '@/services/authService/store/slice/authEndpoints.slice'
 
 const authEndpoints = api.injectEndpoints({
   endpoints: builder => ({
@@ -22,6 +23,15 @@ const authEndpoints = api.injectEndpoints({
         method: 'POST',
         url: 'auth/check-recovery-code',
       }),
+    }),
+    createNewPassword: builder.mutation<any, NewPasswordParams>({
+      query: params => {
+        return {
+          body: params,
+          method: 'POST',
+          url: 'auth/new-password',
+        }
+      },
     }),
     getMe: builder.query<GetMeResponse | unknown, void>({
       providesTags: ['Me'],
@@ -35,7 +45,20 @@ const authEndpoints = api.injectEndpoints({
       },
     }),
     logOut: builder.mutation<Partial<ErrorResponse>, void>({
-      invalidatesTags: ['Me'],
+      onQueryStarted: async (_, { dispatch, queryFulfilled }) => {
+        try {
+          await queryFulfilled
+          dispatch(authSlice.actions.reset())
+
+          const patchResult = dispatch(
+            authEndpoints.util.updateQueryData('getMe', undefined, () => {
+              return null
+            })
+          )
+        } catch (e) {
+          console.log(e)
+        }
+      },
       query: () => ({
         method: 'POST',
         url: 'auth/logout',
@@ -97,6 +120,7 @@ const authEndpoints = api.injectEndpoints({
 
 export const {
   useCheckRecoveryCodeMutation,
+  useCreateNewPasswordMutation,
   useGetMeQuery,
   useLogOutMutation,
   usePasswordRecoveryMutation,
