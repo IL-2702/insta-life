@@ -42,6 +42,7 @@ export const en = {
       userNameIsRequiredError: 'Username is required',
       userNameMax: 'Username can not be longer than 30 characters',
       userNameMin: 'Username must be at least 6 characters',
+      userNotExist: "User with this email doesn't exist",
     },
     forgotPasswordPage: {
       enterYourEmailText: 'Enter your email address and we will send you further instructions ',
@@ -50,7 +51,7 @@ export const en = {
         'The link has been sent by email. If you don’t receive an email send link again',
       meta_description:
         "Trouble logging in? Enter your email and we'll send you a link to get back into your account",
-      title: 'Reset Password',
+      title: 'Forgot Password',
     },
     form: {
       addPublicationDescription: 'Add publication descriptions',
@@ -275,3 +276,5 @@ export const en = {
     week: 'Week',
   },
 }
+
+export type Local = typeof en

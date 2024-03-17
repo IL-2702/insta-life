@@ -15,8 +15,13 @@ export const forgotPasswordFormSchema = z.object({
 })
 export type ForgotPasswordForm = z.infer<typeof forgotPasswordFormSchema>
 export const useContainer = () => {
-  //const publicKey = process.env.NEXT_PUBLIC_RECAPTCHA_API_KEY
-  const publicKey = '6LeY2y0mAAAAANwI_paCWfoksCgBm1n2z9J0nwNQ'
+  const forgotPasswordFormSchema = z.object({
+    email: z.string().trim().email('invalidEmailAddress').toLowerCase(),
+  })
+
+  type ForgotPasswordForm = z.infer<typeof forgotPasswordFormSchema>
+
+  const publicKey = process.env.NEXT_PUBLIC_RECAPTCHA_API_KEY
 
   const [isOpen, setIsOpen] = useState(false)
   const [isRender, setIsRender] = useState(false)
