@@ -22,6 +22,7 @@ export const ForgotPassword = ({
   isLoadingPasswordRecovery,
   isOpen,
   isResendLinkAgain,
+  locale,
   onSubmit,
   publicKey,
   setIsOpen,
@@ -67,6 +68,8 @@ export const ForgotPassword = ({
         </Link>
         <div className={s.recaptchaWrapper}>
           <ReCAPTCHA
+            hl={locale}
+            key={locale}
             onChange={token => handleSetToken(token as string)}
             ref={captchaRef}
             sitekey={publicKey!}

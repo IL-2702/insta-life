@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import ReCAPTCHA from 'react-google-recaptcha'
 import { useForm } from 'react-hook-form'
 
@@ -8,6 +8,7 @@ import { usePasswordRecoveryMutation } from '@/services/authService/authEndpoint
 import { authActions } from '@/services/authService/store/slice/authEndpoints.slice'
 import { useTranslation } from '@/shared/hooks/useTranslation'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useRouter } from 'next/router'
 import { z } from 'zod'
 
 export const useContainer = () => {
@@ -23,6 +24,8 @@ export const useContainer = () => {
   const [isResendLinkAgain, setIsResendLinkAgain] = useState(false)
 
   const token = useAppSelector(state => state.authReducer.recaptchaToken)
+
+  const { locale } = useRouter()
 
   const dispatch = useAppDispatch()
 
@@ -99,6 +102,7 @@ export const useContainer = () => {
     isLoadingPasswordRecovery,
     isOpen,
     isResendLinkAgain,
+    locale,
     onSubmit,
     publicKey,
     setIsOpen,

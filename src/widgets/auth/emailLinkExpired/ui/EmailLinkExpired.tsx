@@ -18,6 +18,7 @@ export const EmailLinkExpired = ({
   isDisabled,
   isLoading,
   isOpen,
+  locale,
   onRecentLink,
   publicKey,
   setIsOpen,
@@ -41,6 +42,8 @@ export const EmailLinkExpired = ({
       </div>
       <div className={s.recaptchaWrapper}>
         <ReCAPTCHA
+          hl={locale}
+          key={locale}
           onChange={token => handleSetToken(token as string)}
           ref={captchaRef}
           sitekey={publicKey!}
