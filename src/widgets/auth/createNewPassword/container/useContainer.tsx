@@ -8,13 +8,18 @@ import { useRouter } from 'next/router'
 import { z } from 'zod'
 
 export const useContainer = () => {
+  const passwordRegExp = RegExp(/^[0-9A-Za-z!"#$%&'()*+,\-./:;<=>?@[\]^_`{|}~]+$/)
   const schema = z
     .object({
       password: z
         .string()
         .trim()
         .min(6, 'Password must be at least 5 characters')
-        .max(20, 'The password must be no more than 20 characters'),
+        .max(20, 'The password must be no more than 20 characters')
+        .regex(
+          passwordRegExp,
+          'Password must contain a-z, A-Z, 0-9, ! " # $ % & \' ( ) * + , - . / : ; < = > ? @ [ \\ ] ^ _` { | } ~'
+        ),
       passwordConfirmation: z
         .string()
         .trim()
