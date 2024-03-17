@@ -79,7 +79,7 @@ export const en = {
       modalTitle: 'Email sent',
       modalVerificationText: {
         getEmail(email: string) {
-          return `We have sent a link to confirm your email to ${email}`
+          return 'We have sent a link to confirm your email to ' + email
         },
       },
     },

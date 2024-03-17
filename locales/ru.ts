@@ -83,7 +83,9 @@ export const ru: Local = {
       modalTitle: 'Письмо отправлено',
       modalVerificationText: {
         getEmail(email: string) {
-          return `'Мы отправили ссылку для подтверждения вашего электронного письма по адресу ${email}'`
+          return (
+            'Мы отправили ссылку для подтверждения вашего электронного письма по адресу ' + email
+          )
         },
       },
     },
