@@ -10,8 +10,8 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
 export const signInSchema = z.object({
-  email: z.string().email(),
-  password: z.string().min(6).max(30),
+  email: z.string().email('invalidEmailAddress'),
+  password: z.string().min(6, 'passwordMin').max(30, 'passwordMax'),
 })
 
 export type signInFormSchema = z.infer<typeof signInSchema>
@@ -33,18 +33,12 @@ export const useContainer = () => {
   })
   const [signIn, { isLoading: signIsLoading }] = useSignInMutation()
 
-  const errorsWrapper = {
-    errors,
-  }
+  const errorPassword = errors.password?.message
+  const errorEmail = errors.email?.message
 
   const email = watch('email')
   const password = watch('password')
-  const isDisabled =
-    !email ||
-    !password ||
-    !!errorsWrapper.errors.email ||
-    !!errorsWrapper.errors.password ||
-    signIsLoading
+  const isDisabled = !email || !password || !!errorPassword || !!errorEmail || signIsLoading
 
   const { safePush } = useSafePush()
   const { t } = useTranslation()
@@ -68,5 +62,5 @@ export const useContainer = () => {
       })
   })
 
-  return { control, errorsWrapper, isDisabled, onSubmit, signIsLoading, t, token }
+  return { control, errorEmail, errorPassword, isDisabled, onSubmit, signIsLoading, t, token }
 }

@@ -32,7 +32,7 @@ export const en = {
       invalidEmailAddress: 'Invalid email address',
       invalidUsername: 'Invalid username or password',
       passwordIsRequiredError: 'Password is required',
-      passwordMax: 'Password can not be longer than 20 characters',
+      passwordMax: 'Password can not be longer than 30 characters',
       passwordMin: 'Password must be at least 6 characters',
       passwordsDontMatch: "Passwords don't match",
       titlePostValueMax: 'Title can not be longer than 30 characters',

@@ -15,7 +15,16 @@ import gitLogo from '../../../../../public/assets/githubLogo.svg'
 import gLogo from '../../../../../public/assets/googleLogo.svg'
 
 export const SignIn = memo(
-  ({ control, errorsWrapper, isDisabled, onSubmit, signIsLoading, t, token }: SignInProps) => {
+  ({
+    control,
+    errorEmail,
+    errorPassword,
+    isDisabled,
+    onSubmit,
+    signIsLoading,
+    t,
+    token,
+  }: SignInProps) => {
     return (
       !token && (
         <Card className={s.container}>
@@ -34,14 +43,16 @@ export const SignIn = memo(
             <ControlledTextField
               className={s.email}
               control={control}
-              errorMessage={errorsWrapper.errors.email?.message}
+              //@ts-ignore
+              errorMessage={errorEmail && t.auth.error[errorEmail]}
               label={t.auth.form.email}
               name={'email'}
             />
             <ControlledTextField
               className={s.pass}
               control={control}
-              errorMessage={errorsWrapper.errors.password?.message}
+              //@ts-ignore
+              errorMessage={errorPassword && t.auth.error[errorPassword]}
               label={t.auth.form.password}
               name={'password'}
               type={'password'}
