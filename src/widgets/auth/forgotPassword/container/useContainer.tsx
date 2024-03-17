@@ -10,17 +10,12 @@ import { useTranslation } from '@/shared/hooks/useTranslation'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
-export const forgotPasswordFormSchema = z.object({
-  email: z.string().trim().email("User with this email doesn't exist").toLowerCase(),
+const forgotPasswordFormSchema = z.object({
+  email: z.string().trim().email('invalidEmailAddress').toLowerCase(),
 })
+
 export type ForgotPasswordForm = z.infer<typeof forgotPasswordFormSchema>
 export const useContainer = () => {
-  const forgotPasswordFormSchema = z.object({
-    email: z.string().trim().email('invalidEmailAddress').toLowerCase(),
-  })
-
-  type ForgotPasswordForm = z.infer<typeof forgotPasswordFormSchema>
-
   const publicKey = process.env.NEXT_PUBLIC_RECAPTCHA_API_KEY
 
   const [isOpen, setIsOpen] = useState(false)
