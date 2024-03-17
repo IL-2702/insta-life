@@ -12,13 +12,10 @@ export const useContainer = () => {
 
   const [logOut] = useLogOutMutation()
 
-  const dispatch = useAppDispatch()
-
   const handleLogOut = async () => {
     try {
       const res = await logOut().unwrap()
 
-      dispatch(authActions.setAccessToken(''))
       await push(ROUTES.LOGIN)
 
       console.log(res)
