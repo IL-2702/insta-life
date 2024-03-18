@@ -1,5 +1,8 @@
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
+import { useSignUpMutation } from '@/services/authService/authEndpoints'
+import { FRONTEND_URL } from '@/shared/constants/frontendUrl'
 import { useTranslation } from '@/shared/hooks/useTranslation'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useRouter } from 'next/router'
@@ -37,9 +40,12 @@ const signUpSchema = z
 export type SignUpFormSchema = z.infer<typeof signUpSchema>
 
 export const useContainer = () => {
+  const [isOpen, setIsOpen] = useState(false)
+
   const {
     control,
     formState: { dirtyFields, errors, isDirty },
+    getValues,
     handleSubmit,
     setError,
   } = useForm<SignUpFormSchema>({
@@ -54,6 +60,8 @@ export const useContainer = () => {
     resolver: zodResolver(signUpSchema),
   })
 
+  const { email } = getValues()
+
   const userNameErrorMessage = errors.userName?.message
   const emailErrorMessage = errors.email?.message
   const passwordErrorMessage = errors.password?.message
@@ -65,15 +73,38 @@ export const useContainer = () => {
   const router = useRouter()
   const { t } = useTranslation()
 
-  const onSubmit = handleSubmit((data: SignUpFormSchema) => {})
+  const [signUp] = useSignUpMutation()
+
+  const onSubmit = handleSubmit((data: SignUpFormSchema) => {
+    setIsOpen(true)
+    const { email, password, userName } = data
+
+    signUp({ baseUrl: FRONTEND_URL, email, password, userName })
+      .unwrap()
+      .catch(err => {
+        setError(err.data.messages[0].field, {
+          message: err?.data?.messages[0].message,
+        })
+      })
+  })
+
+  const handleCloseModal = (isOpen: boolean) => {
+    setIsOpen(isOpen)
+  }
+
+  const pointerOutsideClickHandler = () => setIsOpen(false)
 
   return {
     control,
+    email,
     emailErrorMessage,
+    handleCloseModal,
     isFormValid,
+    isOpen,
     onSubmit,
     passwordConfirmationErrorMessage,
     passwordErrorMessage,
+    pointerOutsideClickHandler,
     t,
     userNameErrorMessage,
   }
