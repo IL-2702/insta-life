@@ -1,4 +1,5 @@
 export const ROUTES = {
+  CONGRATULATION: '/auth/congratulation',
   CREATE: '/create',
   CREATE_NEW_PASSWORD: '/auth/create-new-password',
   DEFAULT: '/',
