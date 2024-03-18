@@ -33,6 +33,7 @@ export const ru: Local = {
       incorrectValue:
         'Вы ввели неверный пароль или адрес электронной почты. Пожалуйста, попробуйте еще раз',
       invalidEmailAddress: 'Неверный адрес электронной почты',
+      invalidEmailOrPass: 'Не правильный логин или пароль',
       invalidUsername: 'Неверное имя пользователя или пароль',
       passwordIsRequiredError: 'Необходим пароль',
       passwordMax: 'Пароль не может быть больше 30 символов',
