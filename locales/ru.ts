@@ -110,6 +110,9 @@ export const ru: Local = {
         'Присоединяйтесь к INSTALIFE! Зарегистрируйтесь, чтобы просматривать фото, видео, истории и сообщения от своих друзей, родственников, а также интересных людей со всего мира',
       privacyTerms:
         "Я согласен с <a href='/sign-up/terms-of-service'>условиями обслуживания</a> и <a href='/sign-up/privacy-policy'>политикой конфиденциальности</a>",
+      privacyTermsPolicyLink: 'политикой конфиденциальности',
+      privacyTermsServiceLink: 'условиями обслуживания',
+      privacyTermsText: 'Я согласен с <1>link</1> и <2>link</2>',
       question: 'У тебя есть аккаунт?',
       title: 'Зарегистрироваться',
     },

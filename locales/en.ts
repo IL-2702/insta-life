@@ -104,6 +104,9 @@ export const en = {
         'Join INSTALIFE! Sign up to see photos, videos, stories &amp; messages from your friends, family &amp; interests around the world',
       privacyTerms:
         "I agree to the <a href='/sign-up/terms-of-service'>Terms of Service</a> and <a href='/sign-up/privacy-policy'>Privacy Policy</a>",
+      privacyTermsPolicyLink: 'Privacy Policy',
+      privacyTermsServiceLink: 'Terms of Service',
+      privacyTermsText: 'I agree to the <1>link</1> and <2>link</2>',
       question: 'Do you have an account?',
       title: 'Sign Up',
     },
