@@ -35,7 +35,7 @@ export const SignIn = memo(
             <Link href={'#google#'}>
               <Image alt={'SignIn with google service'} height={36} src={gLogo} width={36} />
             </Link>
-            <Link href={'#github#'}>
+            <Link href={'https://inctagram.work/api/v1/auth/github/login'}>
               <Image alt={'SignIn with github service'} height={36} src={gitLogo} width={36} />
             </Link>
           </div>
