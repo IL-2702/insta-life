@@ -1,7 +1,9 @@
+import { ROUTES } from '@/shared/constants/routes'
 import { Button } from '@/shared/ui/Button'
 import { Typography } from '@/shared/ui/Typography'
 import { SignUpConfirmationProps } from '@/widgets/auth/signUpConfirmation/container'
 import Image from 'next/image'
+import Link from 'next/link'
 
 import s from './SignUpConfirmation.module.scss'
 
@@ -18,7 +20,9 @@ export const SignUpConfirmation = ({ t }: SignUpConfirmationProps) => {
       </div>
       <div>
         <Button onClick={() => {}} variant={'primary'}>
-          <Typography variant={'h3'}>{t.auth.button.signInButton}</Typography>
+          <Link href={ROUTES.LOGIN}>
+            <Typography variant={'h3'}>{t.auth.button.signInButton}</Typography>
+          </Link>
         </Button>
       </div>
       <Image alt={'Congratulation! Email confirmed'} height={352} src={img.src} width={473} />
