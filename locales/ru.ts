@@ -33,6 +33,7 @@ export const ru: Local = {
       incorrectValue:
         'Вы ввели неверный пароль или адрес электронной почты. Пожалуйста, попробуйте еще раз',
       invalidEmailAddress: 'Неверный адрес электронной почты',
+      invalidEmailOrPass: 'Не правильный логин или пароль',
       invalidUsername: 'Неверное имя пользователя или пароль',
       passwordIsRequiredError: 'Необходим пароль',
       passwordMax: 'Пароль не может быть больше 30 символов',
@@ -110,6 +111,9 @@ export const ru: Local = {
         'Присоединяйтесь к INSTALIFE! Зарегистрируйтесь, чтобы просматривать фото, видео, истории и сообщения от своих друзей, родственников, а также интересных людей со всего мира',
       privacyTerms:
         "Я согласен с <a href='/sign-up/terms-of-service'>условиями обслуживания</a> и <a href='/sign-up/privacy-policy'>политикой конфиденциальности</a>",
+      privacyTermsPolicyLink: 'политикой конфиденциальности',
+      privacyTermsServiceLink: 'условиями обслуживания',
+      privacyTermsText: 'Я согласен с <1>link</1> и <2>link</2>',
       question: 'У тебя есть аккаунт?',
       title: 'Зарегистрироваться',
     },

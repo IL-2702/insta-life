@@ -56,7 +56,7 @@ export const useContainer = () => {
       .unwrap()
       .catch(e => {
         setError('password', {
-          message: e?.data?.messages,
+          message: 'invalidEmailOrPass',
           type: 'manual',
         })
       })
