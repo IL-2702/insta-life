@@ -25,16 +25,15 @@ export const SignIn = memo(
     t,
     token,
   }: SignInProps) => {
-    const login = (): string => {
+    const login = () => {
       const GOOGLE_CLIENT_ID =
         '617342613759-f3kbvgm8l310fn40vh6qna2pv8u2uccr.apps.googleusercontent.com'
-      const REDIRECT_URL = 'http://localhost:3000/google'
+      const REDIRECT_URL = 'http://localhost:3000'
       const scope = 'email profile'
 
-      return `https://accounts.google.com/o/oauth2/v2/auth?scope=${scope}
-      &response_type=code&redirect_uri=${REDIRECT_URL}&client_id=${GOOGLE_CLIENT_ID}`
+      const url = `https://accounts.google.com/o/oauth2/v2/auth?scope=${scope}&response_type=code&redirect_uri=${REDIRECT_URL}&client_id=${GOOGLE_CLIENT_ID}`
 
-      // window.location.assign(url)
+      window.location.assign(url)
     }
 
     return (
@@ -44,9 +43,9 @@ export const SignIn = memo(
             {t.auth.signInPage.title}
           </Typography>
           <div className={s.service}>
-            <Link href={login()}>
+            <Button onClick={login}>
               <Image alt={'SignIn with google service'} height={36} src={gLogo} width={36} />
-            </Link>
+            </Button>
             <Link href={'https://inctagram.work/api/v1/auth/github/login'}>
               <Image alt={'SignIn with github service'} height={36} src={gitLogo} width={36} />
             </Link>

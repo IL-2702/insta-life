@@ -5,7 +5,7 @@ import { PRIVATE_ROUTES, ROUTES } from '@/shared/constants/routes'
 import useSafePush from '@/shared/hooks/useSafePush'
 import { usePathname } from 'next/navigation'
 
-export const AuthProvider = ({ children }: { children: ReactNode }) => {
+const AuthProvider = ({ children }: { children: ReactNode }) => {
   useState(false)
   const [isLoading, setIsLoading] = useState(true)
   const { data: me, isLoading: isLoadingMe } = useGetMeQuery()

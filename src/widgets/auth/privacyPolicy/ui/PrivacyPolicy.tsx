@@ -1,7 +1,7 @@
+import { ROUTES } from '@/shared/constants/routes'
 import { GoBack } from '@/shared/ui/GoBack'
 import { Typography } from '@/shared/ui/Typography'
 import { PrivacyPolicyProps } from '@/widgets/auth/privacyPolicy/container'
-import Link from 'next/link'
 
 import s from './PrivacyPolicy.module.scss'
 
@@ -9,7 +9,7 @@ export const PrivacyPolicy = ({ t }: PrivacyPolicyProps) => {
   return (
     <div className={s.container}>
       <div className={s.backLink}>
-        <GoBack className={s.link} title={t.auth.button.backToSignUp} to={'/auth/sign-up'}></GoBack>
+        <GoBack className={s.link} title={t.auth.button.backToSignUp} to={ROUTES.REGISTER}></GoBack>
       </div>
 
       <Typography className={s.title} variant={'h1'}>
@@ -28,7 +28,9 @@ export const PrivacyPolicy = ({ t }: PrivacyPolicyProps) => {
         rhoncus mattis rhoncus. Id diam maecenas ultricies mi eget mauris pharetra. Tincidunt
         lobortis feugiat vivamus at augue. Non odio euismod lacinia at. Aliquet eget sit amet
         tellus. Auctor neque vitae tempus quam.
-        <hr />
+      </Typography>
+
+      <Typography className={s.content} variant={'regular14'}>
         Tellus in hac habitasse platea dictumst vestibulum rhoncus est. Nisl pretium fusce id velit
         ut tortor pretium. Eget arcu dictum varius duis at consectetur. Est placerat in egestas erat
         imperdiet sed euismod nisi porta. Scelerisque felis imperdiet proin fermentum. Tellus in hac
@@ -37,7 +39,9 @@ export const PrivacyPolicy = ({ t }: PrivacyPolicyProps) => {
         nunc eget lorem dolor sed viverra ipsum. Enim ut tellus elementum sagittis. At consectetur
         lorem donec massa sapien faucibus et molestie. Enim sit amet venenatis urna cursus. Id velit
         ut tortor pretium viverra suspendisse potenti.
-        <hr />
+      </Typography>
+
+      <Typography className={s.content} variant={'regular14'}>
         Et magnis dis parturient montes nascetur ridiculus. Donec ultrices tincidunt arcu non
         sodales neque. Malesuada fames ac turpis egestas maecenas pharetra convallis posuere.
         Consequat mauris nunc congue nisi vitae. Ut tellus elementum sagittis vitae et leo duis.
@@ -49,7 +53,9 @@ export const PrivacyPolicy = ({ t }: PrivacyPolicyProps) => {
         sed pulvinar proin. Morbi non arcu risus quis varius quam quisque id diam. Ac turpis egestas
         sed tempus urna. Sit amet venenatis urna cursus eget nunc. Amet consectetur adipiscing elit
         ut aliquam purus sit. Nisl nunc mi ipsum faucibus vitae aliquet nec ullamcorper
-        <hr />
+      </Typography>
+
+      <Typography className={s.content} variant={'regular14'}>
         Et egestas quis ipsum suspendisse ultrices gravida dictum. Ligula ullamcorper malesuada
         proin libero nunc consequat interdum varius sit. Pretium viverra suspendisse potenti nullam
         ac tortor vitae. Lobortis elementum nibh tellus molestie nunc non blandit. Eget nunc
@@ -57,7 +63,9 @@ export const PrivacyPolicy = ({ t }: PrivacyPolicyProps) => {
         Quis commodo odio aenean sed adipiscing diam. Pharetra massa massa ultricies mi quis
         hendrerit. Et magnis dis parturient montes. Cursus metus aliquam eleifend mi in nulla
         posuere. Tristique senectus et netus et. A lacus vestibulum sed arcu non odio.
-        <hr />
+      </Typography>
+
+      <Typography className={s.content} variant={'regular14'}>
         Sed elementum tempus egestas sed. Faucibus et molestie ac feugiat sed lectus vestibulum
         mattis ullamcorper. Gravida rutrum quisque non tellus orci ac. Turpis tincidunt id aliquet
         risus feugiat in ante metus dictum. Dolor morbi non arcu risus quis varius quam quisque.
@@ -66,7 +74,9 @@ export const PrivacyPolicy = ({ t }: PrivacyPolicyProps) => {
         duis. Mauris pharetra et ultrices neque. Nulla facilisi etiam dignissim diam quis enim
         lobortis scelerisque fermentum. Justo nec ultrices dui sapien eget mi proin sed libero.
         Pellentesque sit amet porttitor eget dolor.
-        <hr />
+      </Typography>
+
+      <Typography className={s.content} variant={'regular14'}>
         A diam maecenas sed enim ut. Fermentum et sollicitudin ac orci phasellus. Tincidunt vitae
         semper quis lectus nulla. Tincidunt dui ut ornare lectus sit amet est. Sed enim ut sem
         viverra aliquet eget sit. Eu augue ut lectus arcu bibendum at varius. Suspendisse sed nisi
@@ -75,7 +85,9 @@ export const PrivacyPolicy = ({ t }: PrivacyPolicyProps) => {
         nulla pharetra. Bibendum neque egestas congue quisque. Facilisis volutpat est velit egestas
         dui. Orci nulla pellentesque dignissim enim sit amet. Mauris vitae ultricies leo integer
         malesuada nunc vel risus commodo. Odio ut enim blandit volutpat maecenas volutpat blandit
-        <hr />
+      </Typography>
+
+      <Typography className={s.content} variant={'regular14'}>
         Eu mi bibendum neque egestas congue quisque egestas diam in. Neque viverra justo nec
         ultrices dui sapien. Congue mauris rhoncus aenean vel elit. Vitae aliquet nec ullamcorper
         sit. Tempus imperdiet nulla malesuada pellentesque. Sed lectus vestibulum mattis ullamcorper

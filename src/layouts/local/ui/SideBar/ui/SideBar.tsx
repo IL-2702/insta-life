@@ -8,6 +8,7 @@ import { ProfileIcon } from '@/shared/assets/icons/asideIcons/profileIcon'
 import { SearchIcon } from '@/shared/assets/icons/asideIcons/searchIcon'
 import { StatisticsIcon } from '@/shared/assets/icons/asideIcons/statisticsIcon'
 import { ROUTES } from '@/shared/constants/routes'
+import { Button } from '@/shared/ui/Button'
 import { Typography } from '@/shared/ui/Typography'
 import Link from 'next/link'
 
@@ -58,12 +59,12 @@ export const SideBar = ({ handleLogOut, pathname, t }: SideBarProps) => {
           {t.sidebar.favourites}
         </Typography>
       </Link>
-      <Link href={ROUTES.LOGIN} onClick={handleLogOut}>
+      <Button className={s.button} onClick={handleLogOut} variant={'link'}>
         <LogOutIcon className={s.navIcon} />
         <Typography className={s.navLink} color={'light'} variant={'medium14'}>
           {t.sidebar.logOut}
         </Typography>
-      </Link>
+      </Button>
     </aside>
   )
 }

@@ -1,3 +1,6 @@
+import { useEffect } from 'react'
+
+import { useAppSelector } from '@/app/store/hooks/useAppSelector'
 import { useLogOutMutation } from '@/services/authService/authEndpoints'
 import { ROUTES } from '@/shared/constants/routes'
 import { useTranslation } from '@/shared/hooks/useTranslation'
@@ -13,8 +16,6 @@ export const useContainer = () => {
   const handleLogOut = async () => {
     try {
       const res = await logOut().unwrap()
-
-      // await push(ROUTES.LOGIN)
 
       console.log(res)
     } catch (error) {
