@@ -48,7 +48,7 @@ const authEndpoints = api.injectEndpoints({
       onQueryStarted: async (_, { dispatch, queryFulfilled }) => {
         try {
           await queryFulfilled
-          dispatch(authSlice.actions.reset())
+          dispatch(authSlice.actions.setAccessToken(''))
 
           const patchResult = dispatch(
             authEndpoints.util.updateQueryData('getMe', undefined, () => {

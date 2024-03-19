@@ -1,4 +1,4 @@
-import { PropsWithChildren } from 'react'
+import { PropsWithChildren, useEffect } from 'react'
 
 import { Header } from '@/layouts/local/ui/Header'
 import { NextPage } from 'next'
