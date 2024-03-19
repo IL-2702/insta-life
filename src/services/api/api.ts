@@ -11,13 +11,14 @@ const baseUrl = process.env.NEXT_PUBLIC_BASE_API_URL
 
 export const baseQuery = fetchBaseQuery({
   baseUrl,
-  //credentials: 'include',
+  credentials: 'include',
   prepareHeaders: (headers, { getState }) => {
     const token = (getState() as RootState).authReducer?.accessToken
 
     if (token) {
       headers.set('Authorization', `Bearer ${token}`)
       headers.set('Content-Type', 'application/json')
+      headers.set('Access-Control-Allow-Origin', '*')
     }
 
     return headers
@@ -33,6 +34,7 @@ export const baseQueryWithReAuth: BaseQueryFn<
 
   if (result?.error?.status === 403 || result?.error?.status === 401) {
     //send refresh token to get new access token
+    debugger
     const refreshResult = await baseQuery(
       { method: 'POST', mode: 'cors', url: 'auth/update-tokens' },
       api,
