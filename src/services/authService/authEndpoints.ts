@@ -122,6 +122,7 @@ export const {
   useCheckRecoveryCodeMutation,
   useCreateNewPasswordMutation,
   useGetMeQuery,
+  useLazyGetMeQuery,
   useLogOutMutation,
   usePasswordRecoveryMutation,
   useSignInMutation,
