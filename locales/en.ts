@@ -2,6 +2,7 @@ export const en = {
   auth: {
     button: {
       backToSignIn: 'Back to Sign In',
+      backToSignUp: 'Back to Sign Up',
       createNewPassword: 'Create new password',
       resendLink: 'Resend link',
       resendVerificationLink: 'Resend verification link',

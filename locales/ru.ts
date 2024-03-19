@@ -4,6 +4,7 @@ export const ru: Local = {
   auth: {
     button: {
       backToSignIn: 'Назад к Войти',
+      backToSignUp: 'Вернуться к странице регистрации',
       createNewPassword: 'Создать новый пароль',
       resendLink: 'Отправить ссылку повторно',
       resendVerificationLink: 'Повторно отправить ссылку для подтверждения',
