@@ -1,0 +1,32 @@
+.container {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 958px;
+  margin: 0 auto;
+  margin-top: 80px;
+  margin-bottom: 100px;
+}
+
+.title {
+  margin: 20px;
+  text-align: center;
+}
+
+.content {
+  text-align: center;
+}
+
+.backLink {
+  margin-top: 24px;
+}
+
+.link {
+  position: absolute;
+  top: -70px;
+  left: -100px;
+}
