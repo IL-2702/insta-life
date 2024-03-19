@@ -7,7 +7,7 @@ import {
   createApi,
   fetchBaseQuery,
 } from '@reduxjs/toolkit/query/react'
-const baseUrl = process.env.NEXT_PUBLIC_BASE_API_URL
+const baseUrl = 'https://inctagram.work/api/v1'
 
 export const baseQuery = fetchBaseQuery({
   baseUrl,
