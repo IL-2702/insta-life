@@ -34,7 +34,7 @@ export const baseQueryWithReAuth: BaseQueryFn<
   if (result?.error?.status === 403 || result?.error?.status === 401) {
     //send refresh token to get new access token
     const refreshResult = await baseQuery(
-      { method: 'POST', url: 'auth/update-tokens' },
+      { method: 'POST', mode: 'cors', url: 'auth/update-tokens' },
       api,
       extraOptions
     )
