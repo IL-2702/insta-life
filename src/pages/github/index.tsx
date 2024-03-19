@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 
 import { useAppDispatch } from '@/app/store/hooks/useAppDispatch'
 import { getBaseLayout } from '@/layouts/publ/BaseLayout/BaseLayout'
-import { useLazyGetMeQuery } from '@/services/authService/authEndpoints'
+import { useLazyGetMeQuery, useRefreshMutation } from '@/services/authService/authEndpoints'
 import { authActions } from '@/services/authService/store/slice/authEndpoints.slice'
 import { ROUTES } from '@/shared/constants/routes'
 import { Button } from '@/shared/ui/Button'
@@ -14,6 +14,7 @@ const GitHubPage = () => {
   const dispatch = useAppDispatch()
 
   const [getMe] = useLazyGetMeQuery()
+  const [refresh] = useRefreshMutation()
 
   useEffect(() => {
     if (query.accessToken) {
@@ -32,6 +33,7 @@ const GitHubPage = () => {
     <div>
       <Spinner />
       <Button onClick={() => getMe()}>getME</Button>
+      <Button onClick={() => refresh()}>refresh</Button>
     </div>
   )
 }

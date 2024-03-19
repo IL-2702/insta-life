@@ -71,6 +71,12 @@ const authEndpoints = api.injectEndpoints({
         url: 'auth/password-recovery',
       }),
     }),
+    refresh: builder.mutation<void, void>({
+      query: () => ({
+        method: 'POST',
+        url: 'auth/update-tokens',
+      }),
+    }),
     signIn: builder.mutation<SignInResponse, SignInParams>({
       onQueryStarted: async (_, { dispatch, queryFulfilled }) => {
         try {
@@ -125,6 +131,7 @@ export const {
   useLazyGetMeQuery,
   useLogOutMutation,
   usePasswordRecoveryMutation,
+  useRefreshMutation,
   useSignInMutation,
   useSignUpConfirmationMutation,
   useSignUpEmailResendingMutation,
