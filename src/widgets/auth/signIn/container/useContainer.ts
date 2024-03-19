@@ -45,11 +45,11 @@ export const useContainer = () => {
 
   const token = useAppSelector(state => state.authReducer?.accessToken)
 
-  useEffect(() => {
-    if (token) {
-      safePush(ROUTES.PROFILE)
-    }
-  }, [token, safePush])
+  // useEffect(() => {
+  //   if (token) {
+  //     safePush(ROUTES.PROFILE)
+  //   }
+  // }, [token, safePush])
 
   const onSubmit = handleSubmit((data: signInFormSchema) => {
     signIn(data)

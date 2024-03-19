@@ -1,6 +1,4 @@
-import { useAppDispatch } from '@/app/store/hooks/useAppDispatch'
 import { useLogOutMutation } from '@/services/authService/authEndpoints'
-import { authActions } from '@/services/authService/store/slice/authEndpoints.slice'
 import { ROUTES } from '@/shared/constants/routes'
 import { useTranslation } from '@/shared/hooks/useTranslation'
 import { useRouter } from 'next/router'
@@ -16,7 +14,7 @@ export const useContainer = () => {
     try {
       const res = await logOut().unwrap()
 
-      await push(ROUTES.LOGIN)
+      // await push(ROUTES.LOGIN)
 
       console.log(res)
     } catch (error) {
