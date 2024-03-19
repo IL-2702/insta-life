@@ -28,7 +28,7 @@ export const SignIn = memo(
     const login = () => {
       const GOOGLE_CLIENT_ID =
         '617342613759-f3kbvgm8l310fn40vh6qna2pv8u2uccr.apps.googleusercontent.com'
-      const REDIRECT_URL = 'https://instalife.fun/google'
+      const REDIRECT_URL = 'http://localhost:3000'
       const scope = 'email profile'
 
       const url = `https://accounts.google.com/o/oauth2/v2/auth?scope=${scope}&response_type=code&redirect_uri=${REDIRECT_URL}&client_id=${GOOGLE_CLIENT_ID}`
