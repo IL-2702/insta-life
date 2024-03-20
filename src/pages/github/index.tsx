@@ -10,11 +10,11 @@ const GitHubPage = () => {
 
   useEffect(() => {
     if (query.accessToken) {
-      // push(ROUTES.HOME)
+      void push(ROUTES.HOME)
     } else {
-      // push(ROUTES.LOGIN)
+      void push(ROUTES.LOGIN)
     }
-  }, [query.accessToken])
+  }, [query.accessToken, push])
 
   return (
     <div>
