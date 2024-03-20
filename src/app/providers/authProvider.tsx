@@ -19,6 +19,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     } else {
       if (!me && isPrivateRoute) {
         safePush(ROUTES.LOGIN)
+        console.log('push LOGIN')
         setIsLoading(false)
       } else {
         setIsLoading(false)

@@ -32,7 +32,7 @@ export const useContainer = () => {
     resolver: zodResolver(signInSchema),
   })
   const [signIn, { isLoading: signIsLoading }] = useSignInMutation()
-  const { data: me } = useGetMeQuery()
+  const { isLoading } = useGetMeQuery()
   const errorPassword = errors.password?.message
   const errorEmail = errors.email?.message
 
@@ -40,19 +40,14 @@ export const useContainer = () => {
   const password = watch('password')
   const isDisabled = !email || !password || !!errorPassword || !!errorEmail || signIsLoading
 
+  const token = useAppSelector(state => state.authReducer.accessToken)
+
   const { t } = useTranslation()
   const { safePush } = useSafePush()
-
-  if (me) {
-    safePush(ROUTES.LOGIN)
-  }
 
   const onSubmit = handleSubmit((data: signInFormSchema) => {
     signIn(data)
       .unwrap()
-      .then(() => {
-        safePush(ROUTES.LOGIN)
-      })
       .catch(e => {
         setError('password', {
           message: 'invalidEmailOrPass',
@@ -61,5 +56,23 @@ export const useContainer = () => {
       })
   })
 
-  return { control, errorEmail, errorPassword, isDisabled, me, onSubmit, signIsLoading, t }
+  useEffect(() => {
+    if (token) {
+      safePush(ROUTES.PROFILE)
+      console.log('push PROFILE')
+    }
+  }, [token, safePush])
+
+  return {
+    control,
+    errorEmail,
+    errorPassword,
+    isDisabled,
+    isLoading,
+    onSubmit,
+    safePush,
+    signIsLoading,
+    t,
+    token,
+  }
 }

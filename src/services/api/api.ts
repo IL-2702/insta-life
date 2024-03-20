@@ -32,7 +32,6 @@ export const baseQueryWithReAuth: BaseQueryFn<
 
   if (result?.error?.status === 403 || result?.error?.status === 401) {
     //send refresh token to get new access token
-    debugger
     const refreshResult = await baseQuery(
       { method: 'POST', url: 'auth/update-tokens' },
       api,
@@ -47,6 +46,7 @@ export const baseQueryWithReAuth: BaseQueryFn<
       // retry the original query with new access token
       result = await baseQuery(args, api, extraOptions)
     } else {
+      api.dispatch(authActions.reset())
       console.log('logOut')
     }
   }

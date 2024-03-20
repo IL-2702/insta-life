@@ -3,6 +3,7 @@ import { memo } from 'react'
 import { ROUTES } from '@/shared/constants/routes'
 import { Button } from '@/shared/ui/Button'
 import { Card } from '@/shared/ui/Card'
+import { Spinner } from '@/shared/ui/Spinner'
 import { Typography } from '@/shared/ui/Typography'
 import { ControlledTextField } from '@/shared/ui/controlledInsta/ControlledTextField/ControlledTextField'
 import { SignInProps } from '@/widgets/auth/signIn/container'
@@ -20,10 +21,12 @@ export const SignIn = memo(
     errorEmail,
     errorPassword,
     isDisabled,
-    me,
+    isLoading,
     onSubmit,
+    safePush,
     signIsLoading,
     t,
+    token,
   }: SignInProps) => {
     const login = () => {
       const GOOGLE_CLIENT_ID =
@@ -36,8 +39,25 @@ export const SignIn = memo(
       window.location.assign(url)
     }
 
+    console.log(token)
+
+    if (isLoading) {
+      return (
+        <div
+          style={{
+            alignItems: 'center',
+            display: 'flex',
+            height: '100vh',
+            justifyContent: 'center',
+          }}
+        >
+          <Spinner />
+        </div>
+      )
+    }
+
     return (
-      !me && (
+      !token && (
         <Card className={s.container}>
           <Typography className={s.title} variant={'h1'}>
             {t.auth.signInPage.title}
