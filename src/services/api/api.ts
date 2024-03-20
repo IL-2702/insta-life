@@ -15,7 +15,6 @@ export const baseQuery = fetchBaseQuery({
   prepareHeaders: (headers, { getState }) => {
     const token = (getState() as RootState).authReducer?.accessToken
 
-    headers.set('Access-Control-Allow-Origin', '*')
     if (token) {
       headers.set('Authorization', `Bearer ${token}`)
     }
@@ -35,7 +34,7 @@ export const baseQueryWithReAuth: BaseQueryFn<
     //send refresh token to get new access token
     debugger
     const refreshResult = await baseQuery(
-      { method: 'POST', mode: 'cors', url: 'auth/update-tokens' },
+      { method: 'POST', url: 'auth/update-tokens' },
       api,
       extraOptions
     )
