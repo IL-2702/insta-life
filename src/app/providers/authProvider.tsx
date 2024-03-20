@@ -17,7 +17,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const { isReady, push } = useRouter()
   const isPrivateRoute = !!PRIVATE_ROUTES.find(route => route === pathname)
 
-  console.log('pathname ', pathname)
   useEffect(() => {
     if (!isReady) {
       return
@@ -29,12 +28,11 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         !token &&
           push(ROUTES.LOGIN).then(() => {
             setIsLoading(false)
-            console.log('push LOGIN')
           })
       }
       setIsLoading(false)
     }
-  }, [push, isLoadingMe, isPrivateRoute, me, setIsLoading, token])
+  }, [push, isLoadingMe, isPrivateRoute, me, setIsLoading, token, isReady])
 
   if (!me && isPrivateRoute) {
     return null
