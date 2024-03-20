@@ -46,6 +46,7 @@ export const baseQueryWithReAuth: BaseQueryFn<
       // retry the original query with new access token
       result = await baseQuery(args, api, extraOptions)
     } else {
+      api.dispatch(authActions.reset())
       console.log('logOut')
     }
   }
