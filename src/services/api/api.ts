@@ -15,10 +15,9 @@ export const baseQuery = fetchBaseQuery({
   prepareHeaders: (headers, { getState }) => {
     const token = (getState() as RootState).authReducer?.accessToken
 
+    headers.set('Access-Control-Allow-Origin', '*')
     if (token) {
       headers.set('Authorization', `Bearer ${token}`)
-      headers.set('Content-Type', 'application/json')
-      headers.set('Access-Control-Allow-Origin', '*')
     }
 
     return headers
