@@ -1,4 +1,4 @@
-import { PropsWithChildren, ReactElement } from 'react'
+import { PropsWithChildren, ReactElement, useEffect } from 'react'
 
 import { AuthLayout } from '@/layouts/publ/AuthLayout'
 import { MainLayout } from '@/layouts/publ/MainLayout'
@@ -10,9 +10,17 @@ const BaseLayout: NextPage<PropsWithChildren> = props => {
   const { children } = props
 
   const router = useRouter()
-  const { pathname } = router
+  const { asPath, locale, locales, pathname, push, query } = router
 
   const isPrivatePassName = !!PRIVATE_ROUTES.find(route => route === pathname)
+
+  useEffect(() => {
+    const languageFromLocalStorage = localStorage.getItem('language')
+
+    if (typeof languageFromLocalStorage === 'string' && languageFromLocalStorage !== locale) {
+      push({ pathname, query }, asPath, { locale: languageFromLocalStorage as string })
+    }
+  }, [asPath, locale, locales, pathname, push, query])
 
   return (
     <>
