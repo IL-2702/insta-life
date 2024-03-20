@@ -38,6 +38,7 @@ const authEndpoints = api.injectEndpoints({
       async queryFn(_, _api, _extraOptions, baseQuery) {
         const result = await baseQuery({
           method: 'GET',
+          mode: 'cors',
           url: `auth/me`,
         })
 
@@ -91,6 +92,7 @@ const authEndpoints = api.injectEndpoints({
       query: args => ({
         body: args,
         method: 'POST',
+        mode: 'cors',
         url: 'auth/login',
       }),
     }),
