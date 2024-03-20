@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 
 import { useAppSelector } from '@/app/store/hooks/useAppSelector'
-import { useSignInMutation } from '@/services/authService/authEndpoints'
+import { useGetMeQuery, useSignInMutation } from '@/services/authService/authEndpoints'
 import { ROUTES } from '@/shared/constants/routes'
 import useSafePush from '@/shared/hooks/useSafePush'
 import { useTranslation } from '@/shared/hooks/useTranslation'
@@ -32,7 +32,7 @@ export const useContainer = () => {
     resolver: zodResolver(signInSchema),
   })
   const [signIn, { isLoading: signIsLoading }] = useSignInMutation()
-
+  const { data: me } = useGetMeQuery()
   const errorPassword = errors.password?.message
   const errorEmail = errors.email?.message
 
@@ -40,20 +40,19 @@ export const useContainer = () => {
   const password = watch('password')
   const isDisabled = !email || !password || !!errorPassword || !!errorEmail || signIsLoading
 
-  const { safePush } = useSafePush()
   const { t } = useTranslation()
+  const { safePush } = useSafePush()
 
-  const token = useAppSelector(state => state.authReducer?.accessToken)
-
-  // useEffect(() => {
-  //   if (token) {
-  //     safePush(ROUTES.PROFILE)
-  //   }
-  // }, [token, safePush])
+  if (me) {
+    safePush(ROUTES.LOGIN)
+  }
 
   const onSubmit = handleSubmit((data: signInFormSchema) => {
     signIn(data)
       .unwrap()
+      .then(() => {
+        safePush(ROUTES.LOGIN)
+      })
       .catch(e => {
         setError('password', {
           message: 'invalidEmailOrPass',
@@ -62,5 +61,5 @@ export const useContainer = () => {
       })
   })
 
-  return { control, errorEmail, errorPassword, isDisabled, onSubmit, signIsLoading, t, token }
+  return { control, errorEmail, errorPassword, isDisabled, me, onSubmit, signIsLoading, t }
 }

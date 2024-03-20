@@ -20,10 +20,10 @@ export const SignIn = memo(
     errorEmail,
     errorPassword,
     isDisabled,
+    me,
     onSubmit,
     signIsLoading,
     t,
-    token,
   }: SignInProps) => {
     const login = () => {
       const GOOGLE_CLIENT_ID =
@@ -37,7 +37,7 @@ export const SignIn = memo(
     }
 
     return (
-      !token && (
+      !me && (
         <Card className={s.container}>
           <Typography className={s.title} variant={'h1'}>
             {t.auth.signInPage.title}
