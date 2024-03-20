@@ -16,18 +16,7 @@ import gitLogo from '../../../../../public/assets/githubLogo.svg'
 import gLogo from '../../../../../public/assets/googleLogo.svg'
 
 export const SignIn = memo(
-  ({
-    control,
-    errorEmail,
-    errorPassword,
-    isDisabled,
-    isLoading,
-    onSubmit,
-    safePush,
-    signIsLoading,
-    t,
-    token,
-  }: SignInProps) => {
+  ({ control, errorEmail, errorPassword, isDisabled, onSubmit, signIsLoading, t }: SignInProps) => {
     const login = () => {
       const GOOGLE_CLIENT_ID =
         '617342613759-f3kbvgm8l310fn40vh6qna2pv8u2uccr.apps.googleusercontent.com'
@@ -39,76 +28,57 @@ export const SignIn = memo(
       window.location.assign(url)
     }
 
-    console.log(token)
-
-    if (isLoading) {
-      return (
-        <div
-          style={{
-            alignItems: 'center',
-            display: 'flex',
-            height: '100vh',
-            justifyContent: 'center',
-          }}
-        >
-          <Spinner />
-        </div>
-      )
-    }
-
     return (
-      !token && (
-        <Card className={s.container}>
-          <Typography className={s.title} variant={'h1'}>
-            {t.auth.signInPage.title}
-          </Typography>
-          <div className={s.service}>
-            <Button onClick={login}>
-              <Image alt={'SignIn with google service'} height={36} src={gLogo} width={36} />
-            </Button>
-            <Link href={'https://inctagram.work/api/v1/auth/github/login'}>
-              <Image alt={'SignIn with github service'} height={36} src={gitLogo} width={36} />
+      <Card className={s.container}>
+        <Typography className={s.title} variant={'h1'}>
+          {t.auth.signInPage.title}
+        </Typography>
+        <div className={s.service}>
+          <Button onClick={login}>
+            <Image alt={'SignIn with google service'} height={36} src={gLogo} width={36} />
+          </Button>
+          <Link href={'https://inctagram.work/api/v1/auth/github/login'}>
+            <Image alt={'SignIn with github service'} height={36} src={gitLogo} width={36} />
+          </Link>
+        </div>
+        <form onSubmit={onSubmit}>
+          <ControlledTextField
+            className={s.email}
+            control={control}
+            //@ts-ignore
+            errorMessage={errorEmail && t.auth.error[errorEmail]}
+            label={t.auth.form.email}
+            name={'email'}
+          />
+          <ControlledTextField
+            className={s.pass}
+            control={control}
+            //@ts-ignore
+            errorMessage={errorPassword && t.auth.error[errorPassword]}
+            label={t.auth.form.password}
+            name={'password'}
+            type={'password'}
+          />
+          <div className={s.forgot}>
+            <Link href={ROUTES.FORGOT_PASS}>
+              <Typography color={'form'} variant={'regular14'}>
+                {t.auth.signInPage.forgotPassword}
+              </Typography>
             </Link>
           </div>
-          <form onSubmit={onSubmit}>
-            <ControlledTextField
-              className={s.email}
-              control={control}
-              //@ts-ignore
-              errorMessage={errorEmail && t.auth.error[errorEmail]}
-              label={t.auth.form.email}
-              name={'email'}
-            />
-            <ControlledTextField
-              className={s.pass}
-              control={control}
-              //@ts-ignore
-              errorMessage={errorPassword && t.auth.error[errorPassword]}
-              label={t.auth.form.password}
-              name={'password'}
-              type={'password'}
-            />
-            <div className={s.forgot}>
-              <Link href={ROUTES.FORGOT_PASS}>
-                <Typography color={'form'} variant={'regular14'}>
-                  {t.auth.signInPage.forgotPassword}
-                </Typography>
-              </Link>
-            </div>
-            <Button className={s.button} disabled={isDisabled} fullWidth isLoading={signIsLoading}>
-              <Typography as={'h3'}>{!signIsLoading && t.auth.button.signInButton}</Typography>
-            </Button>
-            <div className={s.signup}>
-              <Typography variant={'regular16'}>{t.auth.signInPage.question}</Typography>
-              <Link href={ROUTES.REGISTER}>
-                <Typography color={'primary'} variant={'h3'}>
-                  {t.auth.button.signUpButton}
-                </Typography>
-              </Link>
-            </div>
-          </form>
-        </Card>
-      )
+          <Button className={s.button} disabled={isDisabled} fullWidth isLoading={signIsLoading}>
+            <Typography as={'h3'}>{!signIsLoading && t.auth.button.signInButton}</Typography>
+          </Button>
+          <div className={s.signup}>
+            <Typography variant={'regular16'}>{t.auth.signInPage.question}</Typography>
+            <Link href={ROUTES.REGISTER}>
+              <Typography color={'primary'} variant={'h3'}>
+                {t.auth.button.signUpButton}
+              </Typography>
+            </Link>
+          </div>
+        </form>
+      </Card>
     )
   }
 )

@@ -7,6 +7,7 @@ import { ROUTES } from '@/shared/constants/routes'
 import useSafePush from '@/shared/hooks/useSafePush'
 import { useTranslation } from '@/shared/hooks/useTranslation'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useRouter } from 'next/router'
 import { z } from 'zod'
 
 export const signInSchema = z.object({
@@ -32,7 +33,7 @@ export const useContainer = () => {
     resolver: zodResolver(signInSchema),
   })
   const [signIn, { isLoading: signIsLoading }] = useSignInMutation()
-  const { isLoading } = useGetMeQuery()
+  // const { isLoading } = useGetMeQuery()
   const errorPassword = errors.password?.message
   const errorEmail = errors.email?.message
 
@@ -43,8 +44,7 @@ export const useContainer = () => {
   const token = useAppSelector(state => state.authReducer.accessToken)
 
   const { t } = useTranslation()
-  const { safePush } = useSafePush()
-
+  const { push } = useRouter()
   const onSubmit = handleSubmit((data: signInFormSchema) => {
     signIn(data)
       .unwrap()
@@ -58,19 +58,16 @@ export const useContainer = () => {
 
   useEffect(() => {
     if (token) {
-      safePush(ROUTES.PROFILE)
-      console.log('push PROFILE')
+      push(ROUTES.PROFILE)
     }
-  }, [token, safePush])
+  }, [token])
 
   return {
     control,
     errorEmail,
     errorPassword,
     isDisabled,
-    isLoading,
     onSubmit,
-    safePush,
     signIsLoading,
     t,
     token,

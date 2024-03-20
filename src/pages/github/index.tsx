@@ -8,13 +8,17 @@ import { Spinner } from '@/shared/ui/Spinner'
 import { useRouter } from 'next/router'
 
 const GitHubPage = () => {
-  const { push, query } = useRouter()
+  const { isReady, push, query } = useRouter()
   const dispatch = useAppDispatch()
 
   if (query.accessToken) {
     dispatch(authActions.setAccessToken(query.accessToken as string))
   }
+
   useEffect(() => {
+    if (!isReady) {
+      return
+    }
     if (query.accessToken) {
       void push(ROUTES.PROFILE)
     } else {
