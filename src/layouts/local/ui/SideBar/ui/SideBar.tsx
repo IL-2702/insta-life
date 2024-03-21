@@ -60,12 +60,12 @@ export const SideBar = ({ email, handleLogOut, isOpen, pathname, setIsOpen, t }:
           {t.sidebar.favourites}
         </Typography>
       </Link>
-      <Button className={s.button} onClick={() => setIsOpen(true)} variant={'link'}>
+      <Link href={''} onClick={() => setIsOpen(true)}>
         <LogOutIcon className={s.navIcon} />
         <Typography className={s.navLink} color={'light'} variant={'medium14'}>
           {t.sidebar.logOut}
         </Typography>
-      </Button>
+      </Link>
       <Modal
         modalHandler={() => setIsOpen(false)}
         onSubmit={handleLogOut}

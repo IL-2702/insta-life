@@ -86,7 +86,7 @@ export const ru: Local = {
     modal: {
       modalLogOutText: {
         getEmail(email: string) {
-          return 'Вы действительно хотите выйти из своего аккаунта ' + email + '?'
+          return 'Вы действительно хотите выйти со своего аккаунта ' + email + '?'
         },
       },
       modalTitle: 'Письмо отправлено',

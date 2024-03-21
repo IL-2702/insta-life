@@ -1,6 +1,8 @@
 .aside {
   float: left;
+  overflow-y: hidden;
   display: flex;
+  flex: 1;
   flex-direction: column;
   gap: 24px;
 
@@ -41,11 +43,4 @@
 
 .activeLink .navIcon path {
   fill: var(--color-primary-500) !important;
-}
-
-.button {
-  display: flex;
-  gap: 12px;
-  justify-content: flex-start;
-  padding-left: 0;
 }
