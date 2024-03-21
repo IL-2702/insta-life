@@ -84,6 +84,11 @@ export const ru: Local = {
       title: 'Объединение учетных записей',
     },
     modal: {
+      modalLogOutText: {
+        getEmail(email: string) {
+          return 'Вы действительно хотите выйти со своего аккаунта ' + email + '?'
+        },
+      },
       modalTitle: 'Письмо отправлено',
       modalVerificationText: {
         getEmail(email: string) {
@@ -92,6 +97,7 @@ export const ru: Local = {
           )
         },
       },
+      notification: 'Уведомление',
     },
     privacyPolicyPage: {
       h1: 'Политика конфиденциальности',

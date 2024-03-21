@@ -1,15 +1,17 @@
-import { useEffect } from 'react'
+import { useState } from 'react'
 
 import { useAppSelector } from '@/app/store/hooks/useAppSelector'
 import { useLogOutMutation } from '@/services/authService/authEndpoints'
-import { ROUTES } from '@/shared/constants/routes'
 import { useTranslation } from '@/shared/hooks/useTranslation'
 import { useRouter } from 'next/router'
 
 export const useContainer = () => {
   const router = useRouter()
+  const [isOpen, setIsOpen] = useState(false)
+  const email = useAppSelector(state => state.authReducer.email)
+
   const { t } = useTranslation()
-  const { pathname, push } = router
+  const { pathname } = router
 
   const [logOut] = useLogOutMutation()
 
@@ -23,5 +25,5 @@ export const useContainer = () => {
     }
   }
 
-  return { handleLogOut, pathname, t }
+  return { email, handleLogOut, isOpen, pathname, setIsOpen, t }
 }

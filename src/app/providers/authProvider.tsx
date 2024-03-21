@@ -3,13 +3,11 @@ import { ReactNode, useEffect, useState } from 'react'
 import { useAppSelector } from '@/app/store/hooks/useAppSelector'
 import { useGetMeQuery } from '@/services/authService/authEndpoints'
 import { PRIVATE_ROUTES, ROUTES } from '@/shared/constants/routes'
-import useSafePush from '@/shared/hooks/useSafePush'
 import { Spinner } from '@/shared/ui/Spinner'
 import { usePathname } from 'next/navigation'
 import { useRouter } from 'next/router'
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
-  useState(false)
   const [isLoading, setIsLoading] = useState(true)
   const { data: me, isLoading: isLoadingMe } = useGetMeQuery()
   const pathname = usePathname()

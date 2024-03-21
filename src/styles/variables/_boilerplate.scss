@@ -103,7 +103,7 @@ body {
 html,
 body,
 body > div:first-child {
-  height: 100%;
+  height: 100vh;
 }
 
 div#next [data-radix-popper-content-wrapper] {

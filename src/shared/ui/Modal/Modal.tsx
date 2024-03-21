@@ -67,7 +67,7 @@ export const Modal = ({
               nextStepBtn
             ) : (
               <Dialog.Close asChild>
-                <Button className={s.closeBtn} onClick={onSubmit}>
+                <Button className={s.closeBtn}>
                   <Close />
                 </Button>
               </Dialog.Close>
@@ -96,7 +96,7 @@ export const Modal = ({
                 <Button onClick={onSubmit}>Save changes</Button>
               ) : (
                 <Dialog.Close asChild>
-                  <Button>OK</Button>
+                  <Button onClick={onSubmit}>OK</Button>
                 </Dialog.Close>
               )}
             </div>

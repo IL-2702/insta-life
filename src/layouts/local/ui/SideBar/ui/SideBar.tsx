@@ -9,12 +9,13 @@ import { SearchIcon } from '@/shared/assets/icons/asideIcons/searchIcon'
 import { StatisticsIcon } from '@/shared/assets/icons/asideIcons/statisticsIcon'
 import { ROUTES } from '@/shared/constants/routes'
 import { Button } from '@/shared/ui/Button'
+import { Modal } from '@/shared/ui/Modal'
 import { Typography } from '@/shared/ui/Typography'
 import Link from 'next/link'
 
 import s from './SideBar.module.scss'
 
-export const SideBar = ({ handleLogOut, pathname, t }: SideBarProps) => {
+export const SideBar = ({ email, handleLogOut, isOpen, pathname, setIsOpen, t }: SideBarProps) => {
   return (
     <aside className={s.aside}>
       <Link className={pathname === ROUTES.HOME ? s.activeLink : ''} href={ROUTES.HOME}>
@@ -59,12 +60,22 @@ export const SideBar = ({ handleLogOut, pathname, t }: SideBarProps) => {
           {t.sidebar.favourites}
         </Typography>
       </Link>
-      <Button className={s.button} onClick={handleLogOut} variant={'link'}>
+      <Link href={''} onClick={() => setIsOpen(true)}>
         <LogOutIcon className={s.navIcon} />
         <Typography className={s.navLink} color={'light'} variant={'medium14'}>
           {t.sidebar.logOut}
         </Typography>
-      </Button>
+      </Link>
+      <Modal
+        modalHandler={() => setIsOpen(false)}
+        onSubmit={handleLogOut}
+        open={isOpen}
+        title={t.auth.modal.notification}
+      >
+        <Typography variant={'regular16'}>
+          {t.auth.modal.modalLogOutText.getEmail(email)}
+        </Typography>
+      </Modal>
     </aside>
   )
 }
