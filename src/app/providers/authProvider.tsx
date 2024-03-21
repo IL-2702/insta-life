@@ -9,7 +9,6 @@ import { usePathname } from 'next/navigation'
 import { useRouter } from 'next/router'
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
-  useState(false)
   const [isLoading, setIsLoading] = useState(true)
   const { data: me, isLoading: isLoadingMe } = useGetMeQuery()
   const pathname = usePathname()

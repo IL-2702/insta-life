@@ -11,8 +11,9 @@ const GitHubPage = () => {
   const { isReady, push, query } = useRouter()
   const dispatch = useAppDispatch()
 
-  if (query.accessToken) {
+  if (query.accessToken && query.email) {
     dispatch(authActions.setAccessToken(query.accessToken as string))
+    dispatch(authActions.setEmail(query.email as string))
   }
 
   useEffect(() => {

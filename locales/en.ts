@@ -80,12 +80,18 @@ export const en = {
       title: 'Merger of Accounts',
     },
     modal: {
+      modalLogOutText: {
+        getEmail(email: string) {
+          return 'Are you really want to log out of your account ' + email + '?'
+        },
+      },
       modalTitle: 'Email sent',
       modalVerificationText: {
         getEmail(email: string) {
           return 'We have sent a link to confirm your email to ' + email
         },
       },
+      notification: 'Notification',
     },
     privacyPolicyPage: {
       h1: 'Privacy Policy',
