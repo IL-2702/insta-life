@@ -1,10 +1,10 @@
 import { getBaseLayout } from '@/layouts/publ/BaseLayout/BaseLayout'
-import { ProfileInfo } from '@/widgets/profile/profileInfo'
+import { ProfileHeader } from '@/widgets/profile/profileHeader'
 
 const ProfilePage = () => {
   return (
     <div>
-      <ProfileInfo.widget />
+      <ProfileHeader.widget />
     </div>
   )
 }

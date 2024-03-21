@@ -1,5 +1,5 @@
 import { Container } from './container'
 
-export const ProfileInfo = {
+export const ProfileHeader = {
   widget: Container,
 }
