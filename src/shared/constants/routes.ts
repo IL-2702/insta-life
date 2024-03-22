@@ -9,6 +9,7 @@ export const ROUTES = {
   LOGIN: '/auth/sign-in',
   MESSENGER: '/messenger',
   PROFILE: '/profile',
+  PROFILE_SETTINGS: '/profile/settings',
   REGISTER: '/auth/sign-up',
   SEARCH: '/search',
   STATISTICS: '/statistics',
@@ -23,4 +24,5 @@ export const PRIVATE_ROUTES = [
   ROUTES.STATISTICS,
   ROUTES.FAVORITES,
   ROUTES.MESSENGER,
+  ROUTES.PROFILE_SETTINGS,
 ]

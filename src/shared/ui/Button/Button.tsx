@@ -1,5 +1,7 @@
 import React, { ComponentPropsWithoutRef, ElementType, ReactNode } from 'react'
 
+import Link from 'next/link'
+
 import s from './Button.module.scss'
 
 import { Spinner } from '../Spinner/Spinner'
@@ -27,6 +29,19 @@ export const Button = <T extends ElementType = 'button'>(
     variant = 'primary',
     ...rest
   } = props
+
+  if (Component === 'a') {
+    return (
+      <Link
+        className={`${s[variant]} ${fullWidth ? s.fullWidth : ''} ${className}`}
+        href={rest.href}
+        {...rest}
+      >
+        {children}
+        {isLoading && <Spinner />}
+      </Link>
+    )
+  }
 
   return (
     <Component className={`${s[variant]} ${fullWidth ? s.fullWidth : ''} ${className}`} {...rest}>
