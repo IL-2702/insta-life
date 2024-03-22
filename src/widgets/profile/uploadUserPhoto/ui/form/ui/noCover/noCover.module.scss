@@ -1,7 +1,23 @@
-.noCover {
+
+
+.noCoverWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   width: 228px;
   height: 228px;
+
+  background: var(--color-dark-500);
+
+  .noCover {
+    width: 48px;
+    height: 48px;
+  }
 }
+
+
+
 
 .input {
   margin: 50px 0;

@@ -12,17 +12,16 @@ export const UploadUserPhotoForm = ({ currUserPhoto }: Props) => {
   const { control, extraActionsUserPhoto, handleSubmit, userPhoto, userPhotoError } =
     useUploadUserPhotoForm(currUserPhoto)
   const classNames = {
-    errorWrapper: s.errorWrapper,
+    errorWrapper: clsx(s.errorWrapper, !userPhotoError && s.hidden),
     form: clsx(s.form, !userPhotoError && s.noError),
   }
 
   return (
     <>
-      {userPhotoError && (
-        <div className={classNames.errorWrapper}>
-          <Typography variant={'error'}>{userPhotoError}</Typography>
-        </div>
-      )}
+      <div className={classNames.errorWrapper}>
+        {userPhotoError && <Typography variant={'error'}>{userPhotoError}</Typography>}
+      </div>
+
       <form className={classNames.form} onSubmit={handleSubmit(data => console.log(data))}>
         {userPhoto ? (
           <UserPhotoCrop userPhoto={userPhoto} />

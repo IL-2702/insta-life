@@ -11,7 +11,9 @@ import noCover from '../../../../../../../../public/assets/noCover.svg'
 export const NoCover = ({ control, extraActionsUserPhoto }: Props) => {
   return (
     <>
-      <Image alt={'no Photo'} className={s.noCover} height={228} src={noCover} width={228} />
+      <div className={s.noCoverWrapper}>
+        <Image alt={'no Photo'} className={s.noCover} height={48} src={noCover} width={48} />
+      </div>
       <ControlledFileUploader
         className={s.input}
         control={control}

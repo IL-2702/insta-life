@@ -13,6 +13,11 @@
   }
 }
 
+.hidden {
+  height: 38px;
+  visibility: hidden;
+}
+
 .form {
   display: flex;
   flex-direction: column;
@@ -20,6 +25,4 @@
   justify-content: center;
 }
 
-.noError {
-  margin-top: 72px;
-}
+
