@@ -29,7 +29,7 @@ export const ForgotPassword = ({
   t,
 }: ForgotPasswordProps) => {
   return (
-    <div className={s.container}>
+    <>
       <Card className={s.card}>
         <Typography variant={'h1'}>{t.auth.forgotPasswordPage.title}</Typography>
         <form onSubmit={onSubmit}>
@@ -78,6 +78,7 @@ export const ForgotPassword = ({
         </div>
       </Card>
       <Modal
+        className={s.modal}
         modalHandler={handleCloseModal}
         onPointerOutsideClickHandler={() => setIsOpen(false)}
         open={isOpen}
@@ -87,6 +88,6 @@ export const ForgotPassword = ({
           {t.auth.modal.modalVerificationText.getEmail(email)}
         </Typography>
       </Modal>
-    </div>
+    </>
   )
 }
