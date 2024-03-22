@@ -3,6 +3,7 @@ import { memo } from 'react'
 import { ROUTES } from '@/shared/constants/routes'
 import { Button } from '@/shared/ui/Button'
 import { Card } from '@/shared/ui/Card'
+import { Spinner } from '@/shared/ui/Spinner'
 import { Typography } from '@/shared/ui/Typography'
 import { ControlledTextField } from '@/shared/ui/controlledInsta/ControlledTextField/ControlledTextField'
 import { SignInProps } from '@/widgets/auth/signIn/container'
@@ -20,23 +21,37 @@ export const SignIn = memo(
     errorEmail,
     errorPassword,
     isDisabled,
+    isLoadingGoogle,
     login,
     onSubmit,
     signIsLoading,
     t,
   }: SignInProps) => {
+    if (isLoadingGoogle) {
+      return (
+        <div className={s.spinner}>
+          <Spinner />
+        </div>
+      )
+    }
+
     return (
       <Card className={s.container}>
         <Typography className={s.title} variant={'h1'}>
           {t.auth.signInPage.title}
         </Typography>
         <div className={s.service}>
-          <Link href={login()}>
+          <Button className={s.btnOAuth} onClick={login} variant={'link'}>
             <Image alt={'SignIn with google service'} height={36} src={gLogo} width={36} />
-          </Link>
-          <Link href={'https://inctagram.work/api/v1/auth/github/login'}>
+          </Button>
+          <Button
+            as={'a'}
+            className={s.btnOAuth}
+            href={'https://inctagram.work/api/v1/auth/github/login'}
+            variant={'link'}
+          >
             <Image alt={'SignIn with github service'} height={36} src={gitLogo} width={36} />
-          </Link>
+          </Button>
         </div>
         <form onSubmit={onSubmit}>
           <ControlledTextField
