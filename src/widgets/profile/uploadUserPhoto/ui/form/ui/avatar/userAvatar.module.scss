@@ -1,0 +1,42 @@
+.noCover {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 192px;
+  height: 192px;
+
+  background: var(--color-dark-500);
+  border-radius: 50%;
+}
+
+.avatar {
+  position: relative;
+  width: 192px;
+  height: 192px;
+
+
+  .delAvatarBtn {
+    all:unset;
+
+    cursor: pointer;
+
+    position: absolute;
+    top: 19px;
+    right: 19px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--color-danger-300);
+    border-radius: 50%;
+    outline: 3px solid var(--color-dark-700);
+  }
+
+  .img {
+    object-fit: cover;
+    border-radius: 50%;
+
+  }
+}

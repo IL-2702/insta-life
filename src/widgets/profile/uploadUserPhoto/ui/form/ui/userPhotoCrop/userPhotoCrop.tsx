@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Crop, ReactCrop } from 'react-image-crop'
 
 import { Button } from '@/shared/ui/Button'
+import { Typography } from '@/shared/ui/Typography'
 import Image from 'next/image'
 
 import s from './userPhotoCrop.module.scss'
@@ -20,7 +21,7 @@ export const UserPhotoCrop = ({ userPhoto }: Props) => {
   }
 
   return (
-    <div className={s.wrapper}>
+    <>
       <ReactCrop aspect={1} circularCrop crop={crop} locked onChange={c => setCrop(c)}>
         <Image
           alt={'User Photo'}
@@ -32,9 +33,11 @@ export const UserPhotoCrop = ({ userPhoto }: Props) => {
         />
       </ReactCrop>
       <div className={s.button}>
-        <Button>Save</Button>
+        <Button>
+          <Typography variant={'h3'}>Save</Typography>{' '}
+        </Button>
       </div>
-    </div>
+    </>
   )
 }
 

@@ -6,7 +6,7 @@ import Image from 'next/image'
 
 import s from './noCover.module.scss'
 
-import noCover from '../../../../../../../public/assets/noCover.jpg'
+import noCover from '../../../../../../../../public/assets/noCover.svg'
 
 export const NoCover = ({ control, extraActionsUserPhoto }: Props) => {
   return (

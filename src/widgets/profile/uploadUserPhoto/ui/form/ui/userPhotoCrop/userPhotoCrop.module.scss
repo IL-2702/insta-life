@@ -1,4 +1,4 @@
-.wrapper {
+
   .image {
     width: 332px;
     height: 332px;
@@ -6,8 +6,12 @@
   }
 
   .button {
+    position: relative;
+
     display: flex;
     justify-content: flex-end;
-    margin: 36px 0;
+
+    width: 100%;
+    padding: 36px 24px 36px 0;
   }
-}
+
