@@ -1,7 +1,7 @@
 import { Typography } from '@/shared/ui/Typography'
+import { useUploadUserPhoto } from '@/widgets/profile/uploadUserPhoto/ui/form/hooks/useUploadUserPhoto'
 import { NoCover } from '@/widgets/profile/uploadUserPhoto/ui/form/ui/noCover'
 import { UserPhotoCrop } from '@/widgets/profile/uploadUserPhoto/ui/form/ui/userPhotoCrop'
-import { useUploadUserPhoto } from '@/widgets/profile/uploadUserPhoto/ui/form/useUploadUserPhoto'
 import { clsx } from 'clsx'
 
 import 'react-image-crop/src/ReactCrop.scss'

@@ -29,7 +29,7 @@ export const useUploadUserPhoto = (currUserPhoto?: string) => {
     }
 
     if (file) {
-      const badCase = userPhoto || ''
+      const badCase = currUserPhoto || ''
       const img = success ? URL.createObjectURL(file) : badCase
 
       setUSerPhoto(img)
