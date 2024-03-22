@@ -4,11 +4,11 @@ import { ProfileInfo } from '@/widgets/profile/profileHeader/ui/ProfileInfo/Prof
 
 import s from './ProfileHeader.module.scss'
 
-export const ProfileHeader = ({ avatar }: ProfileHeaderProps | any) => {
+export const ProfileHeader = ({ aboutMe, avatars, userName }: ProfileHeaderProps) => {
   return (
     <div className={s.wrapper}>
-      <Avatar avatar={avatar} />
-      <ProfileInfo userName={'John Wick'} />
+      <Avatar avatar={avatars[0]} />
+      <ProfileInfo aboutMe={aboutMe} userName={userName} />
     </div>
   )
 }
