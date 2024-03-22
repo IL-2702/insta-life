@@ -1,10 +1,11 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 
+import { useAppDispatch } from '@/app/store/hooks/useAppDispatch'
 import { useAppSelector } from '@/app/store/hooks/useAppSelector'
-import { useGetMeQuery, useSignInMutation } from '@/services/authService/authEndpoints'
+import { useSignInMutation } from '@/services/authService/authEndpoints'
+import { authActions } from '@/services/authService/store/slice/authEndpoints.slice'
 import { ROUTES } from '@/shared/constants/routes'
-import useSafePush from '@/shared/hooks/useSafePush'
 import { useTranslation } from '@/shared/hooks/useTranslation'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useRouter } from 'next/router'
@@ -33,13 +34,14 @@ export const useContainer = () => {
     resolver: zodResolver(signInSchema),
   })
   const [signIn, { isLoading: signIsLoading }] = useSignInMutation()
-  // const { isLoading } = useGetMeQuery()
   const errorPassword = errors.password?.message
   const errorEmail = errors.email?.message
 
   const email = watch('email')
   const password = watch('password')
   const isDisabled = !email || !password || !!errorPassword || !!errorEmail || signIsLoading
+
+  const dispatch = useAppDispatch()
 
   const token = useAppSelector(state => state.authReducer.accessToken)
 
@@ -54,7 +56,18 @@ export const useContainer = () => {
           type: 'manual',
         })
       })
+
+    dispatch(authActions.setEmail(email))
   })
+
+  const login = () => {
+    const GOOGLE_CLIENT_ID =
+      '617342613759-f3kbvgm8l310fn40vh6qna2pv8u2uccr.apps.googleusercontent.com'
+    const REDIRECT_URL = 'http://localhost:3000/google'
+    const scope = 'email profile'
+
+    return `https://accounts.google.com/o/oauth2/v2/auth?scope=${scope}&response_type=code&redirect_uri=${REDIRECT_URL}&client_id=${GOOGLE_CLIENT_ID}`
+  }
 
   useEffect(() => {
     if (token) {
@@ -67,6 +80,7 @@ export const useContainer = () => {
     errorEmail,
     errorPassword,
     isDisabled,
+    login,
     onSubmit,
     signIsLoading,
     t,
