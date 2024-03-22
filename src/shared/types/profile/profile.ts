@@ -5,7 +5,7 @@ export type Profile = {
   createdAt: string
   dateOfBirth: string
   firstName: string
-  id: number
+  id: null | number
   lastName: string
   userName: string
 }
