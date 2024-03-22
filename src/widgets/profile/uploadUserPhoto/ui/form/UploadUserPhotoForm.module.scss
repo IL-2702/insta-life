@@ -1,0 +1,25 @@
+.errorWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 24px;
+
+  background: var(--color-danger-900);
+  border: 1px solid var(--color-danger-500);
+
+  & > *:first-child {
+    padding: 6px 24px;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.noError {
+  margin-top: 72px;
+}

@@ -1,0 +1,13 @@
+.wrapper {
+  .image {
+    width: 332px;
+    height: 332px;
+    object-fit: cover;
+  }
+
+  .button {
+    display: flex;
+    justify-content: flex-end;
+    margin: 36px 0;
+  }
+}
