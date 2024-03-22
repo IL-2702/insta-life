@@ -1,4 +1,5 @@
 import { ComponentPropsWithoutRef, ReactNode } from 'react'
+import { cls } from 'react-image-crop'
 
 import { Close } from '@/shared/assets/icons/Close'
 import { Button } from '@/shared/ui/Button'
@@ -26,6 +27,7 @@ type ModalPropsType = {
 
 export const Modal = ({
   children,
+  className,
   customButtonsBlock = false,
   editPost,
   isPostModal = false,
@@ -49,6 +51,9 @@ export const Modal = ({
       onPointerOutsideClickHandler()
     }
   }
+  const classNames = {
+    content: clsx(s.DialogContent, className),
+  }
 
   return (
     <Dialog.Root onOpenChange={modalHandler} open={open}>
@@ -56,7 +61,7 @@ export const Modal = ({
       <Dialog.Portal>
         <div className={s.DialogOverlay} />
         <Dialog.Content
-          className={s.DialogContent}
+          className={classNames.content}
           onOpenAutoFocus={e => e.preventDefault()}
           onPointerDownOutside={onPointerDownOutside}
         >
