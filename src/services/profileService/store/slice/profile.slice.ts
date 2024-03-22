@@ -13,7 +13,7 @@ const initialState: Profile = {
   userName: '',
 }
 
-const profileSlice = createSlice({
+export const profileSlice = createSlice({
   initialState,
   name: 'profileReducer',
   reducers: {
