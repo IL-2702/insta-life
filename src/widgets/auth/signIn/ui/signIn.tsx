@@ -3,6 +3,7 @@ import { memo } from 'react'
 import { ROUTES } from '@/shared/constants/routes'
 import { Button } from '@/shared/ui/Button'
 import { Card } from '@/shared/ui/Card'
+import { Spinner } from '@/shared/ui/Spinner'
 import { Typography } from '@/shared/ui/Typography'
 import { ControlledTextField } from '@/shared/ui/controlledInsta/ControlledTextField/ControlledTextField'
 import { SignInProps } from '@/widgets/auth/signIn/container'
@@ -32,13 +33,7 @@ export const SignIn = memo(
         </Typography>
         <div className={s.service}>
           <Link href={login()}>
-            <Image
-              alt={'SignIn with google service'}
-              className={s.image}
-              height={36}
-              src={gLogo}
-              width={36}
-            />
+            <Image alt={'SignIn with google service'} height={36} src={gLogo} width={36} />
           </Link>
           <Link href={'https://inctagram.work/api/v1/auth/github/login'}>
             <Image alt={'SignIn with github service'} height={36} src={gitLogo} width={36} />

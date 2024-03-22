@@ -67,8 +67,6 @@ export const useContainer = () => {
     const scope = 'email profile'
 
     return `https://accounts.google.com/o/oauth2/v2/auth?scope=${scope}&response_type=code&redirect_uri=${REDIRECT_URL}&client_id=${GOOGLE_CLIENT_ID}`
-
-    //   window.location.assign(url)
   }
 
   useEffect(() => {
