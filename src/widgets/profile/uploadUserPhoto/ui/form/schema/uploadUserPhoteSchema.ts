@@ -3,7 +3,7 @@ import { z } from 'zod'
 export const uploadUserPhotoSchema = z.object({
   userPhoto: z
     .instanceof(File)
-    .refine(file => file.size <= 1000000, `Max image size is 1MB.`)
+    .refine(file => file.size <= 10000000, `Max image size is 10MB.`)
     .refine(
       file => ['image/jpeg', 'image/jpg', 'image/png'].includes(file.type),
       'Only .jpg, .jpeg, .png  formats are supported.'
@@ -16,8 +16,8 @@ export const uploadUserPhotoSchema = z.object({
         image.onload = resolve
       })
 
-      return image.width >= 300 && image.height >= 300 // Проверяем, что ширина не больше 800px и высота не больше 600px
-    }, 'Image should be no larger than 800x600.')
+      return image.width >= 332 && image.height >= 332 // Проверяем, что ширина не больше 800px и высота не больше 600px
+    }, 'Image should be larger than 332x332.')
     .optional(),
 })
 

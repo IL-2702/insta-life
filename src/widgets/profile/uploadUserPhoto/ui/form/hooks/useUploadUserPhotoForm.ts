@@ -7,35 +7,31 @@ import {
 } from '@/widgets/profile/uploadUserPhoto/ui/form/schema/uploadUserPhoteSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
 
-export const useUploadUserPhoto = (currUserPhoto?: string) => {
+export const useUploadUserPhotoForm = (currUserPhoto?: string) => {
   const [userPhoto, setUSerPhoto] = useState<string | undefined>(currUserPhoto)
-  const [userPhotoError, setUserPhotoError] = useState<string | undefined>(undefined)
 
-  const { control, getFieldState, handleSubmit, resetField, trigger, watch } =
-    useForm<uploadUserPhotoFormSchema>({
-      resolver: zodResolver(uploadUserPhotoSchema),
-    })
+  const {
+    control,
+    formState: { errors },
+    handleSubmit,
+    resetField,
+    trigger,
+    watch,
+  } = useForm<uploadUserPhotoFormSchema>({
+    resolver: zodResolver(uploadUserPhotoSchema),
+  })
 
+  const userPhotoError = errors.userPhoto?.message
   const extraActionsUserPhoto = async () => {
     const success = await trigger('userPhoto')
 
-    const { error } = getFieldState('userPhoto')
-
     const file = watch('userPhoto')
-
-    if (!success && error?.message) {
-      setUserPhotoError(error.message)
-      resetField('userPhoto')
-    }
 
     if (file) {
       const badCase = currUserPhoto || ''
       const img = success ? URL.createObjectURL(file) : badCase
 
       setUSerPhoto(img)
-      if (userPhotoError) {
-        setUserPhotoError(undefined)
-      }
     }
   }
 

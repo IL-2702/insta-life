@@ -1,5 +1,5 @@
 import { Typography } from '@/shared/ui/Typography'
-import { useUploadUserPhoto } from '@/widgets/profile/uploadUserPhoto/ui/form/hooks/useUploadUserPhoto'
+import { useUploadUserPhotoForm } from '@/widgets/profile/uploadUserPhoto/ui/form/hooks/useUploadUserPhotoForm'
 import { NoCover } from '@/widgets/profile/uploadUserPhoto/ui/form/ui/noCover'
 import { UserPhotoCrop } from '@/widgets/profile/uploadUserPhoto/ui/form/ui/userPhotoCrop'
 import { clsx } from 'clsx'
@@ -10,7 +10,7 @@ import s from './UploadUserPhotoForm.module.scss'
 
 export const UploadUserPhotoForm = ({ currUserPhoto }: Props) => {
   const { control, extraActionsUserPhoto, handleSubmit, userPhoto, userPhotoError } =
-    useUploadUserPhoto(currUserPhoto)
+    useUploadUserPhotoForm(currUserPhoto)
   const classNames = {
     errorWrapper: s.errorWrapper,
     form: clsx(s.form, !userPhotoError && s.noError),
