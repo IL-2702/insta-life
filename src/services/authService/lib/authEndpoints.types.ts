@@ -37,6 +37,11 @@ export type SignInResponse = {
   accessToken?: string
 } & Partial<ErrorResponse>
 
+export type OAuthGoogleResponse = {
+  accessToken?: string
+  email?: string
+} & Partial<ErrorResponse>
+
 export type ErrorResponse = {
   error: string
   messages: [{ field: string; message: string }]
@@ -62,4 +67,8 @@ export type PasswordRecoveryParams = {
 export type NewPasswordParams = {
   newPassword: string
   recoveryCode: string
+}
+
+export type OAuthGoogleParams = {
+  code: string
 }
