@@ -9,11 +9,12 @@
 .titleAndStat {
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
   gap: 20px;
 }
 
 .stat {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px 100px;
+  gap: 20px;
 }
