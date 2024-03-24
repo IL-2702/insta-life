@@ -76,11 +76,11 @@ export const useContainer = () => {
   const [signUp] = useSignUpMutation()
 
   const onSubmit = handleSubmit((data: SignUpFormSchema) => {
-    setIsOpen(true)
     const { email, password, userName } = data
 
     signUp({ baseUrl: FRONTEND_URL, email, password, userName })
       .unwrap()
+      .then(() => setIsOpen(true))
       .catch(err => {
         setError(err.data.messages[0].field, {
           message: err?.data?.messages[0].message,
