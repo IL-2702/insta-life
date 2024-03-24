@@ -1,5 +1,6 @@
 import { memo } from 'react'
 
+import { ROUTES } from '@/shared/constants/routes'
 import { Button } from '@/shared/ui/Button'
 import { Card } from '@/shared/ui/Card'
 import { Modal } from '@/shared/ui/Modal'
@@ -13,9 +14,6 @@ import gitLogo from 'public/assets/githubLogo.svg'
 import gLogo from 'public/assets/googleLogo.svg'
 
 import s from './SignUp.module.scss'
-
-const TERMS_OF_SERVICE = 'terms-of-service'
-const PRIVACY_POLICY = 'privacy-policy'
 
 export const SignUp = memo(
   ({
@@ -82,13 +80,13 @@ export const SignUp = memo(
               <ControlledCheckbox control={control} name={'termsAgreement'} />
               <Typography color={'light'} variant={'link-small'}>
                 I agree to the&nbsp;
-                <Link href={TERMS_OF_SERVICE}>
+                <Link href={ROUTES.TERMS_OF_SERVICE}>
                   <Typography as={'span'} color={'primary'} variant={'link-small'}>
                     {t.auth.termsOfServicePage.title}
                   </Typography>
                 </Link>
                 &nbsp;and&nbsp;
-                <Link href={PRIVACY_POLICY}>
+                <Link href={ROUTES.PRIVACY_POLICY}>
                   <Typography as={'span'} color={'primary'} variant={'link-small'}>
                     {t.auth.privacyPolicyPage.title}
                   </Typography>
