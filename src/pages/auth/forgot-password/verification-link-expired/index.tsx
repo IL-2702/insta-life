@@ -1,9 +1,9 @@
 import { getBaseLayout } from '@/layouts/publ/BaseLayout'
 import { EmailLinkExpired } from '@/widgets/auth/emailLinkExpired'
 
-const EmailLinkExpiredPage = () => {
+const VerificationLinkExpiredPage = () => {
   return <EmailLinkExpired.widget />
 }
 
-export default EmailLinkExpiredPage
-EmailLinkExpiredPage.getLayout = getBaseLayout
+export default VerificationLinkExpiredPage
+VerificationLinkExpiredPage.getLayout = getBaseLayout
