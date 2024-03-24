@@ -1,0 +1,39 @@
+.tabsRoot {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  padding: 36px 64px 0 24px;
+}
+
+.tabsList {
+  display: flex;
+  border-bottom: 2px solid var(--color-dark-100);
+}
+
+.tabsTrigger {
+  user-select: none;
+
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+
+  padding-bottom: 9px;
+
+  font: var(--font-h3);
+  color: var(--color-dark-100);
+}
+
+.tabsTrigger:hover {
+  color: var(--color-primary-500);
+}
+
+.tabsTrigger[data-state='active'] {
+  color: var(--color-primary-500);
+  box-shadow: 1px 3px 0 -1px var(--color-primary-500);
+}
+
+.tabsTrigger[data-state='active']:first-child {
+  color: var(--color-primary-500);
+  box-shadow: 0 2px 0 0 var(--color-primary-500);
+}
