@@ -2,25 +2,25 @@ import { Button } from '@/shared/ui/Button'
 import { clsx } from 'clsx'
 import Image from 'next/image'
 
-import s from './userAvatar.module.scss'
+import s from './Avatar.module.scss'
 
-import close from '../../../../../../../../public/assets/close-outline.svg'
-import noCover from '../../../../../../../../public/assets/noCover.svg'
-export const UserAvatar = ({ userAvatar }: Props) => {
+import close from '../../../../public/assets/close-outline.svg'
+import noCover from '../../../../public/assets/noCover.svg'
+export const Avatar = ({ height = 192, userAvatar, width = 192 }: Props) => {
   const classNames = {
     avatar: clsx(userAvatar ? s.avatar : s.noCover),
     img: clsx(userAvatar && s.img),
   }
 
   return (
-    <div className={classNames.avatar}>
+    <div className={classNames.avatar} style={{ height: height, width: width }}>
       <Image
         alt={'User Avatar'}
         className={classNames.img}
-        height={userAvatar ? 192 : 48}
+        height={userAvatar ? height : 48}
         loading={'lazy'}
         src={userAvatar || noCover}
-        width={userAvatar ? 192 : 48}
+        width={userAvatar ? width : 48}
       />
       {userAvatar && (
         <Button className={s.delAvatarBtn}>
@@ -32,5 +32,7 @@ export const UserAvatar = ({ userAvatar }: Props) => {
 }
 
 type Props = {
+  height?: number
   userAvatar?: string
+  width?: number
 }

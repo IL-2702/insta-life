@@ -140,7 +140,7 @@ export const ru: Local = {
     },
   },
   button: {
-    addAProfilePhoto: 'Добавьте фотографию профиля',
+    addAProfilePhoto: 'Добавить фото',
     backToPayment: 'Вернуться к оплате',
     banInTheSystem: 'Булочка в системе :)',
     copyLink: 'Копировать ссылку',

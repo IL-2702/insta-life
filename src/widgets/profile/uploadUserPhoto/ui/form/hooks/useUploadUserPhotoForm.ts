@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
+import { useUploadAvatarMutation } from '@/services/profileService/profileEndpoints'
 import {
   uploadUserPhotoFormSchema,
   uploadUserPhotoSchema,
@@ -9,7 +10,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 
 export const useUploadUserPhotoForm = (currUserPhoto?: string) => {
   const [userPhoto, setUSerPhoto] = useState<string | undefined>(currUserPhoto)
-
+  const [uploadAvatar] = useUploadAvatarMutation()
   const {
     control,
     formState: { errors },
