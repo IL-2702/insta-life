@@ -68,6 +68,22 @@ const authEndpoints = api.injectEndpoints({
       }),
     }),
     oAuthGoogle: builder.mutation<OAuthGoogleResponse, OAuthGoogleParams>({
+      onQueryStarted: async (_, { dispatch, queryFulfilled }) => {
+        try {
+          const {
+            data: { accessToken },
+          } = await queryFulfilled
+
+          if (accessToken) {
+            dispatch(authActions.setAccessToken(accessToken))
+            setTimeout(() => {
+              dispatch(api.util.invalidateTags(['Me']))
+            }, 50)
+          }
+        } catch (e) {
+          console.log(e)
+        }
+      },
       query: body => ({
         body,
         method: 'POST',

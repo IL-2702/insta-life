@@ -70,18 +70,16 @@ export const useContainer = () => {
         code: googleResponse.code,
       }
 
-      console.log(data)
-
       oAuthGoogle(data)
         .unwrap()
         .then(res => {
-          push(ROUTES.PROFILE)
+          void push(ROUTES.PROFILE)
           dispatch(authActions.setAccessToken(res.accessToken!))
           dispatch(authActions.setEmail(res.email!))
         })
         .catch(err => {
           console.log(err)
-          push(ROUTES.LOGIN)
+          void push(ROUTES.LOGIN)
         })
     },
   })
