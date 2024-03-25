@@ -14,8 +14,8 @@ import gLogo from 'public/assets/googleLogo.svg'
 
 import s from './SignUp.module.scss'
 
-const TERMS_OF_SERVICE = 'terms-of-service'
-const PRIVACY_POLICY = 'privacy-policy'
+const TERMS_OF_SERVICE = 'sign-up/terms-of-service'
+const PRIVACY_POLICY = 'sign-up/privacy-policy'
 
 export const SignUp = memo(
   ({
