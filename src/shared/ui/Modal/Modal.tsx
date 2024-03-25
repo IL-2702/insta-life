@@ -26,6 +26,7 @@ type ModalPropsType = {
 
 export const Modal = ({
   children,
+  className,
   customButtonsBlock = false,
   editPost,
   isPostModal = false,
@@ -39,9 +40,12 @@ export const Modal = ({
   title,
 }: ModalPropsType) => {
   const modalContentClassName = clsx({
+    className,
     [s.DialogDescription]: true,
     [s.DialogDescription_postModal]: isPostModal,
   })
+
+  const modalClassName = { root: clsx(s.DialogContent, className) }
 
   const onPointerDownOutside = (e: PointerDownOutsideEvent) => {
     if (onPointerOutsideClickHandler) {
@@ -56,7 +60,7 @@ export const Modal = ({
       <Dialog.Portal>
         <div className={s.DialogOverlay} />
         <Dialog.Content
-          className={s.DialogContent}
+          className={modalClassName.root}
           onOpenAutoFocus={e => e.preventDefault()}
           onPointerDownOutside={onPointerDownOutside}
         >

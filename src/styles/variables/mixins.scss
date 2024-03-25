@@ -1,9 +1,9 @@
 @mixin container {
   width: 100%;
-  max-width: 63rem;
+  max-width: 1280px;
   height: 100%;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 60px;
 }
 
 @mixin typography(

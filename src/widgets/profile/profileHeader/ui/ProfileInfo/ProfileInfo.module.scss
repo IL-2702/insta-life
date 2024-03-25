@@ -1,5 +1,7 @@
 .mainWrapper {
   display: flex;
+  flex: 1;
+  flex-wrap: wrap;
   align-items: flex-start;
   justify-content: space-between;
 }
@@ -7,10 +9,12 @@
 .titleAndStat {
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
   gap: 20px;
 }
 
 .stat {
   display: flex;
-  gap: 100px;
+  flex-wrap: wrap;
+  gap: 20px;
 }
