@@ -97,7 +97,9 @@ export const ru: Local = {
           )
         },
       },
-      notification: 'Уведомление',
+      noButton: 'Нет',
+      notification: 'Выход',
+      yesButton: 'Да',
     },
     privacyPolicyPage: {
       h1: 'Политика конфиденциальности',

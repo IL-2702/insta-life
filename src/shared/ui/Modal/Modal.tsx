@@ -1,6 +1,7 @@
 import { ComponentPropsWithoutRef, ReactNode } from 'react'
 
 import { Close } from '@/shared/assets/icons/Close'
+import { useTranslation } from '@/shared/hooks/useTranslation'
 import { Button } from '@/shared/ui/Button'
 import * as Dialog from '@radix-ui/react-dialog'
 import { PointerDownOutsideEvent } from '@radix-ui/react-dismissable-layer'
@@ -12,8 +13,8 @@ type ModalPropsType = {
   children: ReactNode
   className?: string
   customButtonsBlock?: ReactNode
-  editPost?: boolean
   isPostModal?: boolean
+  logOut?: boolean
   modalHandler?: (isOpen: boolean) => void
   modalTrigger?: ReactNode
   nextStepBtn?: ReactNode
@@ -28,8 +29,8 @@ export const Modal = ({
   children,
   className,
   customButtonsBlock = false,
-  editPost,
   isPostModal = false,
+  logOut,
   modalHandler,
   modalTrigger,
   nextStepBtn = false,
@@ -46,6 +47,8 @@ export const Modal = ({
   })
 
   const modalClassName = { root: clsx(s.DialogContent, className) }
+
+  const { t } = useTranslation()
 
   const onPointerDownOutside = (e: PointerDownOutsideEvent) => {
     if (onPointerOutsideClickHandler) {
@@ -96,8 +99,15 @@ export const Modal = ({
             <div
               style={{ display: 'flex', justifyContent: 'flex-end', margin: '18px 24px 36px 0' }}
             >
-              {editPost ? (
-                <Button onClick={onSubmit}>Save changes</Button>
+              {logOut ? (
+                <div>
+                  <Button className={s.btnYes} onClick={onSubmit} variant={'outlined'}>
+                    {t.auth.modal.yesButton}
+                  </Button>
+                  <Dialog.Close asChild>
+                    <Button>{t.auth.modal.noButton}</Button>
+                  </Dialog.Close>
+                </div>
               ) : (
                 <Dialog.Close asChild>
                   <Button onClick={onSubmit}>OK</Button>
