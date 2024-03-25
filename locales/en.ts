@@ -91,7 +91,9 @@ export const en = {
           return 'We have sent a link to confirm your email to ' + email
         },
       },
-      notification: 'Notification',
+      noButton: 'No',
+      notification: 'Log Out',
+      yesButton: 'Yes',
     },
     privacyPolicyPage: {
       h1: 'Privacy Policy',
