@@ -8,14 +8,22 @@ import { ProfileIcon } from '@/shared/assets/icons/asideIcons/profileIcon'
 import { SearchIcon } from '@/shared/assets/icons/asideIcons/searchIcon'
 import { StatisticsIcon } from '@/shared/assets/icons/asideIcons/statisticsIcon'
 import { ROUTES } from '@/shared/constants/routes'
-import { Button } from '@/shared/ui/Button'
 import { Modal } from '@/shared/ui/Modal'
+import { Spinner } from '@/shared/ui/Spinner'
 import { Typography } from '@/shared/ui/Typography'
 import Link from 'next/link'
 
 import s from './SideBar.module.scss'
 
-export const SideBar = ({ email, handleLogOut, isOpen, pathname, setIsOpen, t }: SideBarProps) => {
+export const SideBar = ({
+  email,
+  handleLogOut,
+  isLoading,
+  isOpen,
+  pathname,
+  setIsOpen,
+  t,
+}: SideBarProps) => {
   return (
     <aside className={s.aside}>
       <Link className={pathname === ROUTES.HOME ? s.activeLink : ''} href={ROUTES.HOME}>
@@ -66,16 +74,23 @@ export const SideBar = ({ email, handleLogOut, isOpen, pathname, setIsOpen, t }:
           {t.sidebar.logOut}
         </Typography>
       </Link>
-      <Modal
-        modalHandler={() => setIsOpen(false)}
-        onSubmit={handleLogOut}
-        open={isOpen}
-        title={t.auth.modal.notification}
-      >
-        <Typography variant={'regular16'}>
-          {t.auth.modal.modalLogOutText.getEmail(email)}
-        </Typography>
-      </Modal>
+      {isLoading ? (
+        <div className={s.spinner}>
+          <Spinner />
+        </div>
+      ) : (
+        <Modal
+          logOut
+          modalHandler={() => setIsOpen(false)}
+          onSubmit={handleLogOut}
+          open={isOpen}
+          title={t.auth.modal.notification}
+        >
+          <Typography variant={'regular16'}>
+            {t.auth.modal.modalLogOutText.getEmail(email)}
+          </Typography>
+        </Modal>
+      )}
     </aside>
   )
 }

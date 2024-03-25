@@ -2,4 +2,8 @@
   display: flex;
   gap: 28px;
   justify-content: space-between;
+
+  @media (width <= 720px) {
+    flex-wrap: wrap;
+  }
 }
