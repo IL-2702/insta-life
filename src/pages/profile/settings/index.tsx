@@ -1,6 +1,9 @@
 import { getBaseLayout } from '@/layouts/publ/BaseLayout'
+import { ProfileSettings } from '@/widgets/profile/profileSettings'
 
-export default function ProfileSettings() {
-  return <div>Profile Settings</div>
+const ProfileSettingsPage = () => {
+  return <ProfileSettings.widget />
 }
-ProfileSettings.getLayout = getBaseLayout
+
+export default ProfileSettingsPage
+ProfileSettingsPage.getLayout = getBaseLayout

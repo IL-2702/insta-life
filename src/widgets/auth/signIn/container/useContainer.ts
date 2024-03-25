@@ -1,12 +1,14 @@
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 
+import { useAppDispatch } from '@/app/store/hooks/useAppDispatch'
 import { useAppSelector } from '@/app/store/hooks/useAppSelector'
-import { useGetMeQuery, useSignInMutation } from '@/services/authService/authEndpoints'
+import { useOAuthGoogleMutation, useSignInMutation } from '@/services/authService/authEndpoints'
+import { authActions } from '@/services/authService/store/slice/authEndpoints.slice'
 import { ROUTES } from '@/shared/constants/routes'
-import useSafePush from '@/shared/hooks/useSafePush'
 import { useTranslation } from '@/shared/hooks/useTranslation'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useGoogleLogin } from '@react-oauth/google'
 import { useRouter } from 'next/router'
 import { z } from 'zod'
 
@@ -33,13 +35,16 @@ export const useContainer = () => {
     resolver: zodResolver(signInSchema),
   })
   const [signIn, { isLoading: signIsLoading }] = useSignInMutation()
-  // const { isLoading } = useGetMeQuery()
+  const [oAuthGoogle, { isLoading: isLoadingGoogle }] = useOAuthGoogleMutation()
+
   const errorPassword = errors.password?.message
   const errorEmail = errors.email?.message
 
   const email = watch('email')
   const password = watch('password')
   const isDisabled = !email || !password || !!errorPassword || !!errorEmail || signIsLoading
+
+  const dispatch = useAppDispatch()
 
   const token = useAppSelector(state => state.authReducer.accessToken)
 
@@ -54,6 +59,31 @@ export const useContainer = () => {
           type: 'manual',
         })
       })
+
+    dispatch(authActions.setEmail(email))
+  })
+
+  const login = useGoogleLogin({
+    flow: 'auth-code',
+    onSuccess: googleResponse => {
+      const data = {
+        code: googleResponse.code,
+      }
+
+      console.log(data)
+
+      oAuthGoogle(data)
+        .unwrap()
+        .then(res => {
+          push(ROUTES.PROFILE)
+          dispatch(authActions.setAccessToken(res.accessToken!))
+          dispatch(authActions.setEmail(res.email!))
+        })
+        .catch(err => {
+          console.log(err)
+          push(ROUTES.LOGIN)
+        })
+    },
   })
 
   useEffect(() => {
@@ -67,6 +97,8 @@ export const useContainer = () => {
     errorEmail,
     errorPassword,
     isDisabled,
+    isLoadingGoogle,
+    login,
     onSubmit,
     signIsLoading,
     t,

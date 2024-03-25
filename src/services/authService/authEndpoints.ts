@@ -5,6 +5,8 @@ import {
   ErrorResponse,
   GetMeResponse,
   NewPasswordParams,
+  OAuthGoogleParams,
+  OAuthGoogleResponse,
   PasswordRecoveryParams,
   PasswordRecoveryResponse,
   SignInParams,
@@ -63,6 +65,13 @@ const authEndpoints = api.injectEndpoints({
       query: () => ({
         method: 'POST',
         url: 'auth/logout',
+      }),
+    }),
+    oAuthGoogle: builder.mutation<OAuthGoogleResponse, OAuthGoogleParams>({
+      query: body => ({
+        body,
+        method: 'POST',
+        url: 'auth/google/login',
       }),
     }),
     passwordRecovery: builder.mutation<PasswordRecoveryResponse, PasswordRecoveryParams>({
@@ -125,6 +134,7 @@ export const {
   useCreateNewPasswordMutation,
   useGetMeQuery,
   useLogOutMutation,
+  useOAuthGoogleMutation,
   usePasswordRecoveryMutation,
   useSignInMutation,
   useSignUpConfirmationMutation,

@@ -1,12 +1,13 @@
 .header {
+  height: var(--header-height);
+  border-bottom: 1px solid var(--color-dark-300);
+}
+
+.container {
   display: flex;
+  gap: 20px;
   align-items: center;
   justify-content: space-between;
-
-  height: 60px;
-  padding: 0 60px;
-
-  border-bottom: 1px solid var(--color-dark-300);
 }
 
 .wrapper {

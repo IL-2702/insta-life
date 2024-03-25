@@ -16,16 +16,23 @@ import gitLogo from '../../../../../public/assets/githubLogo.svg'
 import gLogo from '../../../../../public/assets/googleLogo.svg'
 
 export const SignIn = memo(
-  ({ control, errorEmail, errorPassword, isDisabled, onSubmit, signIsLoading, t }: SignInProps) => {
-    const login = () => {
-      const GOOGLE_CLIENT_ID =
-        '617342613759-f3kbvgm8l310fn40vh6qna2pv8u2uccr.apps.googleusercontent.com'
-      const REDIRECT_URL = 'https://instalife.fun/google'
-      const scope = 'email profile'
-
-      const url = `https://accounts.google.com/o/oauth2/v2/auth?scope=${scope}&response_type=code&redirect_uri=${REDIRECT_URL}&client_id=${GOOGLE_CLIENT_ID}`
-
-      window.location.assign(url)
+  ({
+    control,
+    errorEmail,
+    errorPassword,
+    isDisabled,
+    isLoadingGoogle,
+    login,
+    onSubmit,
+    signIsLoading,
+    t,
+  }: SignInProps) => {
+    if (isLoadingGoogle) {
+      return (
+        <div className={s.spinner}>
+          <Spinner />
+        </div>
+      )
     }
 
     return (
@@ -34,12 +41,17 @@ export const SignIn = memo(
           {t.auth.signInPage.title}
         </Typography>
         <div className={s.service}>
-          <Button onClick={login}>
+          <Button className={s.btnOAuth} onClick={login} variant={'link'}>
             <Image alt={'SignIn with google service'} height={36} src={gLogo} width={36} />
           </Button>
-          <Link href={'https://inctagram.work/api/v1/auth/github/login'}>
+          <Button
+            as={'a'}
+            className={s.btnOAuth}
+            href={'https://inctagram.work/api/v1/auth/github/login'}
+            variant={'link'}
+          >
             <Image alt={'SignIn with github service'} height={36} src={gitLogo} width={36} />
-          </Link>
+          </Button>
         </div>
         <form onSubmit={onSubmit}>
           <ControlledTextField
