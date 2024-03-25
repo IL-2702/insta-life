@@ -3,9 +3,7 @@ import { PixelCrop } from 'react-image-crop'
 export async function canvasPreview(
   image: HTMLImageElement | null,
   canvas: HTMLCanvasElement | null,
-  crop: PixelCrop,
-  scale = 1,
-  rotate = 0
+  crop: PixelCrop
 ) {
   if (!image || !canvas) {
     throw new Error('Image element is null')

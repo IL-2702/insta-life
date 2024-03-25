@@ -11,11 +11,9 @@ import s from './userPhotoCrop.module.scss'
 
 export const UserPhotoCrop = ({ userPhoto }: Props) => {
   const [crop, setCrop] = useState<Crop>()
-  const [croppedImage, setCroppedImage] = useState<HTMLImageElement>()
-  const [croppedImageIMG, setCroppedImageIMG] = useState<string>('')
 
   const imgRef = useRef<HTMLImageElement>(null)
-  const canvasRef = useRef(null)
+  const canvasRef = useRef<HTMLCanvasElement>(null)
   const [uploadAvatar] = useUploadAvatarMutation()
   const onImageLoaded = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
     const { height, width } = e.currentTarget
@@ -32,7 +30,22 @@ export const UserPhotoCrop = ({ userPhoto }: Props) => {
 
     setCrop(centeredCrop)
   }
-  const onSave = () => {}
+  const onSave = () => {
+    canvasPreview(
+      imgRef?.current,
+      canvasRef.current,
+      convertToPixelCrop(crop!, imgRef.current?.width!, imgRef.current?.height!)
+    )
+
+    canvasRef?.current?.toBlob(blob => {
+      if (blob) {
+        const formData = new FormData()
+
+        blob && formData.append('file', blob)
+        uploadAvatar({ file: formData })
+      }
+    }, 'image/jpeg')
+  }
 
   return (
     <>
@@ -48,25 +61,11 @@ export const UserPhotoCrop = ({ userPhoto }: Props) => {
         />
       </ReactCrop>
       <div className={s.button}>
-        <Button
-          onClick={() =>
-            canvasPreview(
-              imgRef?.current,
-              canvasRef.current,
-              convertToPixelCrop(crop!, imgRef.current?.width!, imgRef.current?.height!)
-            )
-          }
-          type={'button'}
-        >
+        <Button onClick={onSave} type={'button'}>
           <Typography variant={'h3'}>Save</Typography>{' '}
         </Button>
       </div>
-      {crop && (
-        <canvas
-          ref={canvasRef}
-          style={{ borderRadius: '50%', height: 192, objectFit: 'cover', width: 192 }}
-        />
-      )}
+      {crop && <canvas ref={canvasRef} style={{ display: 'none' }} />}
     </>
   )
 }

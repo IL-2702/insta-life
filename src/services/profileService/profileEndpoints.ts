@@ -3,10 +3,21 @@ import { Avatar, Profile } from '@/shared/types/profile'
 
 const profileEndpoints = api.injectEndpoints({
   endpoints: builder => ({
+    deleteAvatar: builder.mutation<void, void>({
+      invalidatesTags: ['Profile'],
+      query: () => {
+        return {
+          method: 'DELETE',
+          url: 'users/profile/avatar',
+        }
+      },
+    }),
     getProfile: builder.query<Profile, void>({
+      providesTags: ['Profile'],
       query: _ => `users/profile`,
     }),
     uploadAvatar: builder.mutation<Avatar[], { file: FormData }>({
+      invalidatesTags: ['Profile'],
       query: ({ file }) => {
         return {
           FormData,
@@ -19,4 +30,5 @@ const profileEndpoints = api.injectEndpoints({
   }),
 })
 
-export const { useGetProfileQuery, useUploadAvatarMutation } = profileEndpoints
+export const { useDeleteAvatarMutation, useGetProfileQuery, useUploadAvatarMutation } =
+  profileEndpoints

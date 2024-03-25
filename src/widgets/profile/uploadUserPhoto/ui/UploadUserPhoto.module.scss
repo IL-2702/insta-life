@@ -7,6 +7,39 @@
   & > *:last-child {
     margin-top: 24px;
   }
+
+  .avatarWrapper {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 192px;
+    height: 192px;
+
+    background: var(--color-dark-500);
+    border-radius: 50%;
+
+    .delAvatarBtn {
+      all: unset;
+
+      cursor: pointer;
+
+      position: absolute;
+      z-index: 20;
+      top: 19px;
+      right: 19px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background: var(--color-danger-300);
+      border-radius: 50%;
+      outline: 3px solid var(--color-dark-700);
+    }
+  }
 }
 
 .modal {
