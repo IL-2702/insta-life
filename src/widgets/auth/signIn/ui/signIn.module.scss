@@ -1,19 +1,18 @@
 .container {
-  padding: 25px;
-  max-width: 378px;
-  margin-top: 43px;
   display: flex;
   flex-direction: column;
+  max-width: 378px;
+  padding: 25px;
 
   .title {
-    text-align: center;
     margin-bottom: 13px;
+    text-align: center;
   }
 
   .service {
-    margin-bottom: 24px;
     display: flex;
     justify-content: center;
+    margin-bottom: 24px;
 
     & > *:first-child {
       margin-right: 60px;
@@ -38,14 +37,25 @@
     margin-bottom: 24px;
   }
 
+  .btnOAuth {
+    padding: 0;
+  }
+
   .signup {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 
     & > *:not(:last-child) {
       margin-bottom: 6px;
     }
   }
+}
+
+.spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 60px);
 }

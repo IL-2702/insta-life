@@ -1,16 +1,12 @@
 .aside {
-  float: left;
-  overflow-y: hidden;
   display: flex;
-  flex: 1;
   flex-direction: column;
   gap: 24px;
 
-  width: 100%;
-  max-width: 220px;
-  margin-left: 60px;
+  min-width: 220px;
+  height: 100%;
   padding-top: 72px;
-  padding-bottom: 0;
+  padding-right: 20px;
 
   border-right: 1px solid var(--color-dark-300);
 
@@ -34,6 +30,13 @@
   & > a:nth-child(8) {
     margin-top: 180px;
     padding-bottom: 100px;
+  }
+
+  & > .spinner {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 }
 

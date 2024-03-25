@@ -5,6 +5,8 @@ import {
   ErrorResponse,
   GetMeResponse,
   NewPasswordParams,
+  OAuthGoogleParams,
+  OAuthGoogleResponse,
   PasswordRecoveryParams,
   PasswordRecoveryResponse,
   SignInParams,
@@ -63,6 +65,29 @@ const authEndpoints = api.injectEndpoints({
       query: () => ({
         method: 'POST',
         url: 'auth/logout',
+      }),
+    }),
+    oAuthGoogle: builder.mutation<OAuthGoogleResponse, OAuthGoogleParams>({
+      onQueryStarted: async (_, { dispatch, queryFulfilled }) => {
+        try {
+          const {
+            data: { accessToken },
+          } = await queryFulfilled
+
+          if (accessToken) {
+            dispatch(authActions.setAccessToken(accessToken))
+            setTimeout(() => {
+              dispatch(api.util.invalidateTags(['Me']))
+            }, 50)
+          }
+        } catch (e) {
+          console.log(e)
+        }
+      },
+      query: body => ({
+        body,
+        method: 'POST',
+        url: 'auth/google/login',
       }),
     }),
     passwordRecovery: builder.mutation<PasswordRecoveryResponse, PasswordRecoveryParams>({
@@ -125,6 +150,7 @@ export const {
   useCreateNewPasswordMutation,
   useGetMeQuery,
   useLogOutMutation,
+  useOAuthGoogleMutation,
   usePasswordRecoveryMutation,
   useSignInMutation,
   useSignUpConfirmationMutation,

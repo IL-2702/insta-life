@@ -1,0 +1,12 @@
+.main {
+  height: 100%;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 100%;
+  margin-top: calc(0px - 2 * var(--header-height));
+}
