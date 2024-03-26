@@ -34,14 +34,14 @@ export const useUploadUserPhotoForm = (currUserPhoto?: string, onClose?: () => v
   const extraActionsUserPhoto = async () => {
     const success = await trigger('userPhoto')
 
-    // const file = watch('userPhoto')
-    //
-    // if (file) {
-    //   const badCase = currUserPhoto || ''
-    //   const img = success ? URL.createObjectURL(file) : badCase
+    const file = watch('userPhoto')
 
-    // setUSerPhoto(img)
-    // }
+    if (file) {
+      const badCase = currUserPhoto || ''
+      const img = success ? URL.createObjectURL(file) : badCase
+
+      setUSerPhoto(img)
+    }
   }
 
   return {

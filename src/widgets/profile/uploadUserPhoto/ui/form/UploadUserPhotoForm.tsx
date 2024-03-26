@@ -37,8 +37,7 @@ export const UploadUserPhotoForm = ({ currUserPhoto, onClose }: Props) => {
             userPhoto={userPhoto}
           />
         ) : (
-          <div></div>
-          //<NoCover control={control} extraActionsUserPhoto={extraActionsUserPhoto} />
+          <NoCover control={control} extraActionsUserPhoto={extraActionsUserPhoto} />
         )}
       </form>
     </>
