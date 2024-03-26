@@ -31,12 +31,11 @@ export const UploadUserPhotoForm = ({ currUserPhoto, onClose }: Props) => {
 
       <form className={classNames.form} onSubmit={handleSubmit(data => {})}>
         {userPhoto ? (
-          // <UserPhotoCrop
-          //   isLoading={isLoadingUploadAvatar}
-          //   uploadAvatar={uploadAvatarHandler}
-          //   userPhoto={userPhoto}
-          // />
-          <div></div>
+          <UserPhotoCrop
+            isLoading={isLoadingUploadAvatar}
+            uploadAvatar={uploadAvatarHandler}
+            userPhoto={userPhoto}
+          />
         ) : (
           <NoCover control={control} extraActionsUserPhoto={extraActionsUserPhoto} />
         )}
