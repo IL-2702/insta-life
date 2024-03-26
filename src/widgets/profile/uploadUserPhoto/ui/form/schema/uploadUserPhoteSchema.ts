@@ -8,16 +8,16 @@ export const uploadUserPhotoSchema = z.object({
       file => ['image/jpeg', 'image/jpg', 'image/png'].includes(file.type),
       'Only .jpg, .jpeg, .png  formats are supported.'
     )
-    .refine(async file => {
-      const image = new Image()
-
-      image.src = URL.createObjectURL(file)
-      await new Promise(resolve => {
-        image.onload = resolve
-      })
-
-      return image.width >= 332 && image.height >= 332 // Проверяем, что ширина не больше 800px и высота не больше 600px
-    }, 'Image should be larger than 332x332.')
+    // .refine(async file => {
+    //   const image = new Image()
+    //
+    //   image.src = URL.createObjectURL(file)
+    //   await new Promise(resolve => {
+    //     image.onload = resolve
+    //   })
+    //
+    //   return image.width >= 332 && image.height >= 332 // Проверяем, что ширина не больше 800px и высота не больше 600px
+    // }, 'Image should be larger than 332x332.')
     .optional(),
 })
 

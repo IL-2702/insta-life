@@ -15,42 +15,42 @@ export const useUploadUserPhotoForm = (currUserPhoto?: string, onClose?: () => v
     uploadAvatar({ file })
       .unwrap()
       .then(() => {
-        // resetField('userPhoto')
+        resetField('userPhoto')
         onClose?.()
       })
   }
-  // const {
-  //   control,
-  //   formState: { errors },
-  //   handleSubmit,
-  //   resetField,
-  //   trigger,
-  //   watch,
-  // } = useForm<uploadUserPhotoFormSchema>({
-  //   resolver: zodResolver(uploadUserPhotoSchema),
-  // })
+  const {
+    control,
+    formState: { errors },
+    handleSubmit,
+    resetField,
+    trigger,
+    watch,
+  } = useForm<uploadUserPhotoFormSchema>({
+    resolver: zodResolver(uploadUserPhotoSchema),
+  })
 
-  // const userPhotoError = errors.userPhoto?.message
-  // const extraActionsUserPhoto = async () => {
-  //   const success = await trigger('userPhoto')
-  //
-  //   const file = watch('userPhoto')
-  //
-  //   if (file) {
-  //     const badCase = currUserPhoto || ''
-  //     const img = success ? URL.createObjectURL(file) : badCase
-  //
-  //     setUSerPhoto(img)
-  //   }
-  // }
+  const userPhotoError = errors.userPhoto?.message
+  const extraActionsUserPhoto = async () => {
+    const success = await trigger('userPhoto')
+
+    const file = watch('userPhoto')
+
+    if (file) {
+      const badCase = currUserPhoto || ''
+      const img = success ? URL.createObjectURL(file) : badCase
+
+      setUSerPhoto(img)
+    }
+  }
 
   return {
-    // control,
-    // extraActionsUserPhoto,
-    // handleSubmit,
+    control,
+    extraActionsUserPhoto,
+    handleSubmit,
     isLoadingUploadAvatar,
     uploadAvatarHandler,
     userPhoto,
-    // userPhotoError,
+    userPhotoError,
   }
 }
