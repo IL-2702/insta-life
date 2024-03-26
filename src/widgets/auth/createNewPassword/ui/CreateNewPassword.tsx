@@ -42,7 +42,9 @@ export const CreateNewPassword = ({
           />
           <Typography as={'p'} variant={'regular14'} />
           <Button className={s.submitButton} fullWidth type={'submit'}>
-            {t.auth.button.createNewPassword}
+            <Typography as={'span'} variant={'h3'}>
+              {t.auth.button.createNewPassword}
+            </Typography>
           </Button>
         </form>
       </Card>
