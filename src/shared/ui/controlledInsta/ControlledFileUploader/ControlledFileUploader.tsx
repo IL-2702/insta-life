@@ -36,6 +36,7 @@ export const ControlledFileUploader = <T extends FieldValues>({
         {children ?? 'Edit'}
       </Button>
       <input
+        accept={'image/png, image/jpeg, image/jpg'}
         name={name}
         onChange={changeHandler}
         ref={inputRef}
