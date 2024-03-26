@@ -64,7 +64,7 @@ export const UploadUserPhoto = memo(
                 isLoading={isLoadingDeleteAvatar}
                 onClick={deleteAvatarHandler}
               >
-                <Typography variant={'h3'}>{t.button.yes}</Typography>
+                <Typography variant={'h3'}>{!isLoadingDeleteAvatar && t.button.yes}</Typography>
               </Button>
               <Button
                 disabled={isLoadingDeleteAvatar}
