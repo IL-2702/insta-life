@@ -47,8 +47,7 @@ export const UploadUserPhoto = memo(
           open={isUploadOpen}
           title={t.modal.addPhotoModalTitle}
         >
-          <div>HALLo</div>
-          {/*<UploadUserPhotoForm onClose={() => setIsUploadOpen(false)} />*/}
+          <UploadUserPhotoForm onClose={() => setIsUploadOpen(false)} />
         </Modal>
         <Modal
           className={s.modal}

@@ -29,17 +29,17 @@ export const UploadUserPhotoForm = ({ currUserPhoto, onClose }: Props) => {
         {userPhotoError && <Typography variant={'error'}>{userPhotoError}</Typography>}
       </div>
 
-      <form className={classNames.form} onSubmit={handleSubmit(data => {})}>
-        {userPhoto ? (
-          <UserPhotoCrop
-            isLoading={isLoadingUploadAvatar}
-            uploadAvatar={uploadAvatarHandler}
-            userPhoto={userPhoto}
-          />
-        ) : (
-          <NoCover control={control} extraActionsUserPhoto={extraActionsUserPhoto} />
-        )}
-      </form>
+      {/*<form className={classNames.form} onSubmit={handleSubmit(data => {})}>*/}
+      {/*  {userPhoto ? (*/}
+      {/*    <UserPhotoCrop*/}
+      {/*      isLoading={isLoadingUploadAvatar}*/}
+      {/*      uploadAvatar={uploadAvatarHandler}*/}
+      {/*      userPhoto={userPhoto}*/}
+      {/*    />*/}
+      {/*  ) : (*/}
+      {/*    <NoCover control={control} extraActionsUserPhoto={extraActionsUserPhoto} />*/}
+      {/*  )}*/}
+      {/*</form>*/}
     </>
   )
 }
