@@ -33,7 +33,9 @@ export const Calendar = () => {
       formatWeekDay={date => date.substring(0, 3)}
       locale={locale === 'ru' ? ru : enUS}
       onChange={(date: any) => setStartDate(date)}
-      // renderCustomHeader={() => <CustomHeader />}
+      renderCustomHeader={({ changeMonth, changeYear, date }) => (
+        <CustomHeader changeMonth={changeMonth} changeYear={changeYear} date={date} />
+      )}
       selected={startDate}
       showMonthDropdown
       showYearDropdown

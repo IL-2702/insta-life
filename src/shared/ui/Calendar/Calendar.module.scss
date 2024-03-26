@@ -1,0 +1,35 @@
+.customHeader {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 10px;
+
+  .mountWrapper {
+    min-width: 100px;
+
+    .select {
+      background-color: var(--color-dark-500);
+    }
+  }
+
+  .yearsWrapper {
+    min-width: 70px;
+
+    .select {
+      background-color: var(--color-dark-500);
+    }
+  }
+
+  .arrowLeft,
+  .arrowRight {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 20px;
+    height: 20px;
+
+    background-color: var(--color-dark-100);
+    border-radius: 50%;
+  }
+}
