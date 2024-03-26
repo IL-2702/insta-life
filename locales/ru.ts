@@ -184,6 +184,8 @@ export const ru: Local = {
     deletePostText: 'Вы уверены, что хотите удалить этот пост?',
     deletePostTitle: 'Удалить пост ?',
     deleteUser: 'Удалить пользователя',
+    deleteUserAvatar: 'Удалить фотографию',
+    deleteUserAvatarText: 'Вы действительно хотите удалить фотографию?',
     errorTransactionModalDescription:
       'Транзакция завершилась неудачей, пожалуйста, повторите попытку',
     errorTransactionModalTitle: 'Ошибка',
@@ -294,7 +296,5 @@ export const ru: Local = {
     like: 'Понравилось',
     month: 'Месяц',
     publicationViews: 'Просмотры публикаций',
-    title: 'Статистика',
-    week: 'Неделя',
   },
 }

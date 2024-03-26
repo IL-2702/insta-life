@@ -8,9 +8,17 @@ import {
 } from '@/widgets/profile/uploadUserPhoto/ui/form/schema/uploadUserPhoteSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
 
-export const useUploadUserPhotoForm = (currUserPhoto?: string) => {
+export const useUploadUserPhotoForm = (currUserPhoto?: string, onClose?: () => void) => {
   const [userPhoto, setUSerPhoto] = useState<string | undefined>(currUserPhoto)
-  const [uploadAvatar] = useUploadAvatarMutation()
+  const [uploadAvatar, { isLoading: isLoadingUploadAvatar }] = useUploadAvatarMutation()
+  const uploadAvatarHandler = (file: FormData) => {
+    uploadAvatar({ file })
+      .unwrap()
+      .then(() => {
+        resetField('userPhoto')
+        onClose?.()
+      })
+  }
   const {
     control,
     formState: { errors },
@@ -36,5 +44,13 @@ export const useUploadUserPhotoForm = (currUserPhoto?: string) => {
     }
   }
 
-  return { control, extraActionsUserPhoto, handleSubmit, userPhoto, userPhotoError }
+  return {
+    control,
+    extraActionsUserPhoto,
+    handleSubmit,
+    isLoadingUploadAvatar,
+    uploadAvatarHandler,
+    userPhoto,
+    userPhotoError,
+  }
 }

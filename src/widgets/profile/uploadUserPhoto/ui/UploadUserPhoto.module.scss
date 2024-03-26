@@ -45,3 +45,14 @@
 .modal {
   min-width: 490px;
 }
+
+
+.confirmButtonWrapper {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 50px;
+
+  & > *:first-child{
+    margin-right: 24px;
+  }
+}

@@ -12,4 +12,4 @@ const SvgComponent = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 )
 
-export const DeleteAva = memo(forwardRef(SvgComponent))
+export const NoCover = memo(forwardRef(SvgComponent))
