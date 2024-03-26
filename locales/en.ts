@@ -178,6 +178,8 @@ export const en = {
     deletePostText: 'Are you sure you want to delete this post?',
     deletePostTitle: 'Delete Post',
     deleteUser: 'Delete user',
+    deleteUserAvatar: 'Delete Photo',
+    deleteUserAvatarText: 'Are you sure you want to delete the photo?',
     errorTransactionModalDescription: 'Transaction failed, please try again',
     errorTransactionModalTitle: 'Error',
     followersModalTitle: 'Followers',
@@ -287,8 +289,6 @@ export const en = {
     like: 'Like',
     month: 'Month',
     publicationViews: 'Publication views',
-    title: 'Statistic',
-    week: 'Week',
   },
 }
 
