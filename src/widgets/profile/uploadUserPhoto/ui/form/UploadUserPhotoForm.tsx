@@ -10,26 +10,26 @@ import s from './UploadUserPhotoForm.module.scss'
 
 export const UploadUserPhotoForm = ({ currUserPhoto, onClose }: Props) => {
   const {
-    control,
-    extraActionsUserPhoto,
-    handleSubmit,
+    // control,
+    // extraActionsUserPhoto,
+    // handleSubmit,
     isLoadingUploadAvatar,
     uploadAvatarHandler,
     userPhoto,
-    userPhotoError,
+    // userPhotoError,
   } = useUploadUserPhotoForm(currUserPhoto, onClose)
   const classNames = {
-    errorWrapper: clsx(s.errorWrapper, !userPhotoError && s.hidden),
-    form: clsx(s.form, !userPhotoError && s.noError),
+    errorWrapper: clsx(s.errorWrapper),
+    form: clsx(s.form),
   }
 
   return (
     <>
       <div className={classNames.errorWrapper}>
-        {userPhotoError && <Typography variant={'error'}>{userPhotoError}</Typography>}
+        {/*{userPhotoError && <Typography variant={'error'}>{userPhotoError}</Typography>}*/}
       </div>
 
-      <form className={classNames.form} onSubmit={handleSubmit(() => {})}>
+      <form className={classNames.form} onSubmit={() => {}}>
         {userPhoto ? (
           <UserPhotoCrop
             isLoading={isLoadingUploadAvatar}
@@ -37,7 +37,8 @@ export const UploadUserPhotoForm = ({ currUserPhoto, onClose }: Props) => {
             userPhoto={userPhoto}
           />
         ) : (
-          <NoCover control={control} extraActionsUserPhoto={extraActionsUserPhoto} />
+          <div>Hallo</div>
+          // <NoCover control={control} extraActionsUserPhoto={extraActionsUserPhoto} />
         )}
       </form>
     </>
