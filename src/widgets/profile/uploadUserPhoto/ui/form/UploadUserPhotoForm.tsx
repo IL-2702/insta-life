@@ -9,15 +9,15 @@ import 'react-image-crop/src/ReactCrop.scss'
 import s from './UploadUserPhotoForm.module.scss'
 
 export const UploadUserPhotoForm = ({ currUserPhoto, onClose }: Props) => {
-  // const {
-  //   control,
-  //   extraActionsUserPhoto,
-  //   handleSubmit,
-  //   isLoadingUploadAvatar,
-  //   uploadAvatarHandler,
-  //   userPhoto,
-  //   userPhotoError,
-  // } = useUploadUserPhotoForm(currUserPhoto, onClose)
+  const {
+    control,
+    extraActionsUserPhoto,
+    // handleSubmit,
+    // isLoadingUploadAvatar,
+    // uploadAvatarHandler,
+    // userPhoto,
+    // userPhotoError,
+  } = useUploadUserPhotoForm(currUserPhoto, onClose)
 
   // const classNames = {
   //   errorWrapper: clsx(s.errorWrapper, !userPhotoError && s.hidden),
