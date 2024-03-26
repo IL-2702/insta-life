@@ -28,6 +28,7 @@
 
   &__current-month {
     display: none;
+    color: var(--color-light-100);
   }
 
   &__month-read-view,
@@ -61,10 +62,6 @@
     &--selected {
       border-radius: 50%;
     }
-  }
-
-  &__current-month {
-    color: var(--color-light-100);
   }
 
   &__day-name {
