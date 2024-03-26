@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import { SyntheticEvent, useRef, useState } from 'react'
 import { Crop, ReactCrop, centerCrop, convertToPixelCrop, makeAspectCrop } from 'react-image-crop'
 
 import { Button } from '@/shared/ui/Button'
@@ -14,7 +14,7 @@ export const UserPhotoCrop = ({ isLoading, uploadAvatar, userPhoto }: Props) => 
 
   const imgRef = useRef<HTMLImageElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  const onImageLoaded = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+  const onImageLoaded = (e: SyntheticEvent<HTMLImageElement, Event>) => {
     const { height, width } = e.currentTarget
     const crop = makeAspectCrop(
       {
