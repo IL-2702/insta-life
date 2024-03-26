@@ -28,27 +28,27 @@ export const UploadUserPhoto = memo(
     return (
       <>
         <div className={s.container}>
-          {/*<div className={s.avatarWrapper}>*/}
-          {/*  <Avatar height={avaHeight} userAvatar={avatar} width={avaWidth} />*/}
-          {/*  {avatar && (*/}
-          {/*    <Button className={s.delAvatarBtn} onClick={() => setIsDeleteOpen(true)}>*/}
-          {/*      <Image alt={'delete Avatar'} height={16} src={close} width={16} />*/}
-          {/*    </Button>*/}
-          {/*  )}*/}
-          {/*</div>*/}
+          <div className={s.avatarWrapper}>
+            <Avatar height={avaHeight} userAvatar={avatar} width={avaWidth} />
+            {avatar && (
+              <Button className={s.delAvatarBtn} onClick={() => setIsDeleteOpen(true)}>
+                <Image alt={'delete Avatar'} height={16} src={close} width={16} />
+              </Button>
+            )}
+          </div>
           <Button onClick={() => setIsUploadOpen(true)} variant={'outlined'}>
             <Typography variant={'h3'}>{t.button.addAProfilePhoto}</Typography>
           </Button>
         </div>
-        <Modal
-          className={s.modal}
-          customButtonsBlock={<></>}
-          modalHandler={setIsUploadOpen}
-          open={isUploadOpen}
-          title={t.modal.addPhotoModalTitle}
-        >
-          <UploadUserPhotoForm onClose={() => setIsUploadOpen(false)} />
-        </Modal>
+        {/*<Modal*/}
+        {/*  className={s.modal}*/}
+        {/*  customButtonsBlock={<></>}*/}
+        {/*  modalHandler={setIsUploadOpen}*/}
+        {/*  open={isUploadOpen}*/}
+        {/*  title={t.modal.addPhotoModalTitle}*/}
+        {/*>*/}
+        {/*  <UploadUserPhotoForm onClose={() => setIsUploadOpen(false)} />*/}
+        {/*</Modal>*/}
         <Modal
           className={s.modal}
           customButtonsBlock={<></>}
