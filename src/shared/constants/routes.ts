@@ -9,13 +9,13 @@ export const ROUTES = {
   HOME: '/home',
   LOGIN: '/auth/sign-in',
   MESSENGER: '/messenger',
-  PRIVACY_POLICY: 'privacy-policy',
+  PRIVACY_POLICY: '/auth/privacy-policy',
   PROFILE: '/profile',
   PROFILE_SETTINGS: '/profile/settings',
   REGISTER: '/auth/sign-up',
   SEARCH: '/search',
   STATISTICS: '/statistics',
-  TERMS_OF_SERVICE: 'terms-of-service',
+  TERMS_OF_SERVICE: '/auth/terms-of-service',
   VERIFICATION_LINK_EXPIRED: '/auth/forgot-password/verification-link-expired',
 }
 export const PRIVATE_ROUTES = [
