@@ -5,7 +5,6 @@ import { useSignUpMutation } from '@/services/authService/authEndpoints'
 import { FRONTEND_URL } from '@/shared/constants/frontendUrl'
 import { useTranslation } from '@/shared/hooks/useTranslation'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useRouter } from 'next/router'
 import { z } from 'zod'
 
 const userNameRegExp = RegExp(/^[0-9A-Za-z]+$/)
@@ -67,13 +66,11 @@ export const useContainer = () => {
   const passwordErrorMessage = errors.password?.message
   const passwordConfirmationErrorMessage = errors.passwordConfirmation?.message
 
-  const fieldNames = Object.keys(signUpSchema)
-  const isFormValid = Object.keys(errors).length === 0 && isDirty && dirtyFields.termsAgreement
+  const [signUp, { isLoading }] = useSignUpMutation()
+  const isFormValid =
+    (Object.keys(errors).length === 0 && isDirty && dirtyFields.termsAgreement) || isLoading
 
-  const router = useRouter()
   const { t } = useTranslation()
-
-  const [signUp] = useSignUpMutation()
 
   const onSubmit = handleSubmit((data: SignUpFormSchema) => {
     const { email, password, userName } = data
@@ -100,6 +97,7 @@ export const useContainer = () => {
     emailErrorMessage,
     handleCloseModal,
     isFormValid,
+    isLoading,
     isOpen,
     onSubmit,
     passwordConfirmationErrorMessage,
