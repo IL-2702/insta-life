@@ -22,6 +22,7 @@ export const SignUp = memo(
     emailErrorMessage,
     handleCloseModal,
     isFormValid,
+    isLoading,
     isOpen,
     onSubmit,
     passwordConfirmationErrorMessage,
@@ -93,7 +94,13 @@ export const SignUp = memo(
                 </Link>
               </Typography>
             </div>
-            <Button className={s.submit} disabled={!isFormValid} fullWidth type={'submit'}>
+            <Button
+              className={s.submit}
+              disabled={!isFormValid}
+              fullWidth
+              isLoading={isLoading}
+              type={'submit'}
+            >
               {t.auth.button.signUpButton}
             </Button>
             <div className={s.signInSuggestion}>
