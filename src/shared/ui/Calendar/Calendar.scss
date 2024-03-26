@@ -1,0 +1,73 @@
+.react-datepicker {
+  padding: 16px 24px;
+
+  background-color: var(--color-dark-500);
+  border: none;
+  border-radius: 2px;
+  outline: 1px solid var(--color-dark-100);
+
+  &__triangle {
+    display: none;
+  }
+
+  &__header {
+    color: var(--color-light-100);
+    background-color: var(--color-dark-500);
+    border-bottom: none;
+  }
+
+  &__day-names {
+    display: grid;
+    grid-template: 1fr / repeat(7, 1fr);
+    justify-content: space-between;
+
+    margin-bottom: 12px;
+
+    background-color: transparent;
+  }
+
+  &__current-month {
+    display: none;
+  }
+
+  &__month-read-view,
+  &__year-read-view {
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 24px;
+    visibility: visible !important;
+
+    &--down-arrow {
+      display: none;
+    }
+  }
+
+  &__year-dropdown,
+  &__month-dropdown {
+    background-color: var(--color-dark-300);
+  }
+
+  &__current-month--hasYearDropdown {
+    visibility: visible;
+  }
+
+  &__day {
+    color: var(--color-light-100);
+
+    &--weekend {
+      color: var(--color-danger-300);
+    }
+
+    &--selected {
+      border-radius: 50%;
+    }
+  }
+
+  &__current-month {
+    color: var(--color-light-100);
+  }
+
+  &__day-name {
+    color: var(--color-light-900);
+  }
+}
