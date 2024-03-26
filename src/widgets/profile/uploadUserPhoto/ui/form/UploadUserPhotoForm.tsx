@@ -9,33 +9,29 @@ import 'react-image-crop/src/ReactCrop.scss'
 import s from './UploadUserPhotoForm.module.scss'
 
 export const UploadUserPhotoForm = ({ currUserPhoto, onClose }: Props) => {
-  const {
-    control,
-    extraActionsUserPhoto,
-    handleSubmit,
-    isLoadingUploadAvatar,
-    uploadAvatarHandler,
-    userPhoto,
-    userPhotoError,
-  } = useUploadUserPhotoForm(currUserPhoto, onClose)
-  const classNames = {
-    errorWrapper: clsx(s.errorWrapper, !userPhotoError && s.hidden),
-    form: clsx(s.form, !userPhotoError && s.noError),
-  }
+  // const {
+  //   control,
+  //   extraActionsUserPhoto,
+  //   handleSubmit,
+  //   isLoadingUploadAvatar,
+  //   uploadAvatarHandler,
+  //   userPhoto,
+  //   userPhotoError,
+  // } = useUploadUserPhotoForm(currUserPhoto, onClose)
+  // const classNames = {
+  //   errorWrapper: clsx(s.errorWrapper, !userPhotoError && s.hidden),
+  //   form: clsx(s.form, !userPhotoError && s.noError),
+  // }
 
   return (
     <>
-      <div className={classNames.errorWrapper}>
-        {userPhotoError && <Typography variant={'error'}>{userPhotoError}</Typography>}
-      </div>
+      {/*<div className={classNames.errorWrapper}>*/}
+      {/*  {userPhotoError && <Typography variant={'error'}>{userPhotoError}</Typography>}*/}
+      {/*</div>*/}
 
       {/*<form className={classNames.form} onSubmit={handleSubmit(data => {})}>*/}
       {/*  {userPhoto ? (*/}
-      {/*    <UserPhotoCrop*/}
-      {/*      isLoading={isLoadingUploadAvatar}*/}
-      {/*      uploadAvatar={uploadAvatarHandler}*/}
-      {/*      userPhoto={userPhoto}*/}
-      {/*    />*/}
+      <UserPhotoCrop isLoading={false} uploadAvatar={() => {}} userPhoto={''} />
       {/*  ) : (*/}
       {/*    <NoCover control={control} extraActionsUserPhoto={extraActionsUserPhoto} />*/}
       {/*  )}*/}
