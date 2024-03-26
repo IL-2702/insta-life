@@ -40,15 +40,16 @@ export const UploadUserPhoto = memo(
             <Typography variant={'h3'}>{t.button.addAProfilePhoto}</Typography>
           </Button>
         </div>
-        {/*<Modal*/}
-        {/*  className={s.modal}*/}
-        {/*  customButtonsBlock={<></>}*/}
-        {/*  modalHandler={setIsUploadOpen}*/}
-        {/*  open={isUploadOpen}*/}
-        {/*  title={t.modal.addPhotoModalTitle}*/}
-        {/*>*/}
-        {/*  <UploadUserPhotoForm onClose={() => setIsUploadOpen(false)} />*/}
-        {/*</Modal>*/}
+        <Modal
+          className={s.modal}
+          customButtonsBlock={<></>}
+          modalHandler={setIsUploadOpen}
+          open={isUploadOpen}
+          title={t.modal.addPhotoModalTitle}
+        >
+          <div>HALLo</div>
+          {/*<UploadUserPhotoForm onClose={() => setIsUploadOpen(false)} />*/}
+        </Modal>
         <Modal
           className={s.modal}
           customButtonsBlock={<></>}
