@@ -67,7 +67,7 @@ export const UserPhotoCrop = ({ isLoading, uploadAvatar, userPhoto }: Props) => 
           {!isLoading && <Typography variant={'h3'}>Save</Typography>}
         </Button>
       </div>
-      {crop && <canvas ref={canvasRef} style={{ display: 'none' }} />}
+      <canvas ref={canvasRef} style={{ display: 'none' }} />
     </>
   )
 }
