@@ -1,8 +1,7 @@
 import { FC } from 'react'
 
-import { useContainer } from '@/widgets/profile/uploadUserPhoto/container/useContainer'
-
 import { UploadUserPhoto } from '../ui/UploadUserPhoto'
+import { useContainer } from './useContainer'
 
 export const Container: FC = () => <UploadUserPhoto {...useContainer()} />
 
