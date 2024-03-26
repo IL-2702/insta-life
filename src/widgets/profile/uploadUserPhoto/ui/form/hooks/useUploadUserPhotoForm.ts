@@ -30,15 +30,15 @@ export type uploadUserPhotoFormSchema = z.infer<typeof uploadUserPhotoSchema>
 
 export const useUploadUserPhotoForm = (currUserPhoto?: string, onClose?: () => void) => {
   const [userPhoto, setUSerPhoto] = useState<string | undefined>(currUserPhoto)
-  // const [uploadAvatar, { isLoading: isLoadingUploadAvatar }] = useUploadAvatarMutation()
-  // const uploadAvatarHandler = (file: FormData) => {
-  //   uploadAvatar({ file })
-  //     .unwrap()
-  //     .then(() => {
-  //       resetField('userPhoto')
-  //       onClose?.()
-  //     })
-  // }
+  const [uploadAvatar, { isLoading: isLoadingUploadAvatar }] = useUploadAvatarMutation()
+  const uploadAvatarHandler = (file: FormData) => {
+    uploadAvatar({ file })
+      .unwrap()
+      .then(() => {
+        resetField('userPhoto')
+        onClose?.()
+      })
+  }
   const {
     control,
     formState: { errors },
@@ -67,10 +67,10 @@ export const useUploadUserPhotoForm = (currUserPhoto?: string, onClose?: () => v
   return {
     control,
     extraActionsUserPhoto,
-    // handleSubmit,
-    // isLoadingUploadAvatar,
-    // uploadAvatarHandler,
-    // userPhoto,
-    // userPhotoError,
+    handleSubmit,
+    isLoadingUploadAvatar,
+    uploadAvatarHandler,
+    userPhoto,
+    userPhotoError,
   }
 }

@@ -12,30 +12,32 @@ export const UploadUserPhotoForm = ({ currUserPhoto, onClose }: Props) => {
   const {
     control,
     extraActionsUserPhoto,
-    // handleSubmit,
-    // isLoadingUploadAvatar,
-    // uploadAvatarHandler,
-    // userPhoto,
-    // userPhotoError,
+    handleSubmit,
+    isLoadingUploadAvatar,
+    uploadAvatarHandler,
+    userPhoto,
+    userPhotoError,
   } = useUploadUserPhotoForm(currUserPhoto, onClose)
-
-  // const classNames = {
-  //   errorWrapper: clsx(s.errorWrapper, !userPhotoError && s.hidden),
-  //   form: clsx(s.form, !userPhotoError && s.noError),
-  // }
+  const classNames = {
+    errorWrapper: clsx(s.errorWrapper, !userPhotoError && s.hidden),
+    form: clsx(s.form, !userPhotoError && s.noError),
+  }
 
   return (
     <>
-      <div className={s.errorWrapper}>
-        {/*{userPhotoError && <Typography variant={'error'}>{userPhotoError}</Typography>}*/}
+      <div className={classNames.errorWrapper}>
+        {userPhotoError && <Typography variant={'error'}>{userPhotoError}</Typography>}
       </div>
 
-      <form onSubmit={() => {}}>
-        {currUserPhoto ? (
-          <UserPhotoCrop isLoading uploadAvatar={() => {}} userPhoto={currUserPhoto} />
+      <form className={classNames.form} onSubmit={handleSubmit(() => {})}>
+        {userPhoto ? (
+          <UserPhotoCrop
+            isLoading={isLoadingUploadAvatar}
+            uploadAvatar={uploadAvatarHandler}
+            userPhoto={userPhoto}
+          />
         ) : (
-          <div></div>
-          //<NoCover control={control} extraActionsUserPhoto={extraActionsUserPhoto} />
+          <NoCover control={control} extraActionsUserPhoto={extraActionsUserPhoto} />
         )}
       </form>
     </>
