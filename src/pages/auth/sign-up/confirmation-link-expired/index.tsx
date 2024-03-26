@@ -1,8 +1,8 @@
 import { getBaseLayout } from '@/layouts/publ/BaseLayout'
-import { EmailLinkExpired } from '@/widgets/auth/emailLinkExpired'
+import { ConfirmationLinkExpired } from '@/widgets/auth/confirmationLinkExpired'
 
 const ConfirmationLinkExpiredPage = () => {
-  return <EmailLinkExpired.widget />
+  return <ConfirmationLinkExpired.widget />
 }
 
 export default ConfirmationLinkExpiredPage
