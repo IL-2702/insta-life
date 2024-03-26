@@ -47,7 +47,6 @@ export const baseQueryWithReAuth: BaseQueryFn<
       result = await baseQuery(args, api, extraOptions)
     } else {
       api.dispatch(authActions.reset())
-      console.log('logOut')
     }
   }
 
@@ -58,5 +57,5 @@ export const api = createApi({
   baseQuery: baseQueryWithReAuth,
   endpoints: () => ({}),
   reducerPath: 'api',
-  tagTypes: ['Me'],
+  tagTypes: ['Me', 'Profile'],
 })
