@@ -2,12 +2,13 @@ import { z } from 'zod'
 
 export const uploadUserPhotoSchema = z.object({
   userPhoto: z
-    .instanceof(File)
-    .refine(file => file.size <= 10000000, `Max image size is 10MB.`)
-    .refine(
-      file => ['image/jpeg', 'image/jpg', 'image/png'].includes(file.type),
-      'Only .jpg, .jpeg, .png  formats are supported.'
-    )
+    .string()
+    // .instanceof(File)
+    // .refine(file => file.size <= 10000000, `Max image size is 10MB.`)
+    // .refine(
+    //   file => ['image/jpeg', 'image/jpg', 'image/png'].includes(file.type),
+    //   'Only .jpg, .jpeg, .png  formats are supported.'
+    // )
     // .refine(async file => {
     //   const image = new Image()
     //
