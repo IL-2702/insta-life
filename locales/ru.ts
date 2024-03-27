@@ -164,7 +164,7 @@ export const ru: Local = {
     save: 'Сохранить',
     saveChanges: 'Сохранить изменения',
     saveDraft: 'Сохранить черновик',
-    selectFromComputer: 'Выбрать на ЭВМ',
+    selectFromComputer: 'Выбрать фаил',
     sendMessage: 'Отправить сообщение',
     terminateAllOtherSession: 'Завершите все остальные сеансы',
     unfollow: 'Отписаться',
