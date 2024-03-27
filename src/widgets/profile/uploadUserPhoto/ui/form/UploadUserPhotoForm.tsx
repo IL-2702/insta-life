@@ -14,6 +14,7 @@ export const UploadUserPhotoForm = ({ currUserPhoto, onClose }: Props) => {
     extraActionsUserPhoto,
     handleSubmit,
     isLoadingUploadAvatar,
+    t,
     uploadAvatarHandler,
     userPhoto,
     userPhotoError,
@@ -37,7 +38,7 @@ export const UploadUserPhotoForm = ({ currUserPhoto, onClose }: Props) => {
             userPhoto={userPhoto}
           />
         ) : (
-          <NoCover control={control} extraActionsUserPhoto={extraActionsUserPhoto} />
+          <NoCover control={control} extraActionsUserPhoto={extraActionsUserPhoto} t={t} />
         )}
       </form>
     </>

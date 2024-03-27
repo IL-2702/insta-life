@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 import { useUploadAvatarMutation } from '@/services/profileService/profileEndpoints'
+import { useTranslation } from '@/shared/hooks/useTranslation'
 import {
   uploadUserPhotoFormSchema,
   uploadUserPhotoSchema,
@@ -11,6 +12,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 export const useUploadUserPhotoForm = (currUserPhoto?: string, onClose?: () => void) => {
   const [userPhoto, setUSerPhoto] = useState<string | undefined>(currUserPhoto)
   const [uploadAvatar, { isLoading: isLoadingUploadAvatar }] = useUploadAvatarMutation()
+  const { t } = useTranslation()
   const uploadAvatarHandler = (file: FormData) => {
     uploadAvatar({ file })
       .unwrap()
@@ -49,6 +51,7 @@ export const useUploadUserPhotoForm = (currUserPhoto?: string, onClose?: () => v
     extraActionsUserPhoto,
     handleSubmit,
     isLoadingUploadAvatar,
+    t,
     uploadAvatarHandler,
     userPhoto,
     userPhotoError,
