@@ -28,7 +28,7 @@ export const useContainer = () => {
         })
         .catch(err => {
           console.log(err)
-          push({ pathname: ROUTES.VERIFICATION_LINK_EXPIRED, query: { email: query.email } })
+          push({ pathname: ROUTES.CONFIRMATION_LINK_EXPIRED, query: { email: query.email } })
           if (email) {
             dispatch(authActions.setEmail(email))
           }

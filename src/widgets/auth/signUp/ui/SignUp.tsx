@@ -1,5 +1,6 @@
 import { memo } from 'react'
 
+import { ROUTES } from '@/shared/constants/routes'
 import { Button } from '@/shared/ui/Button'
 import { Card } from '@/shared/ui/Card'
 import { Modal } from '@/shared/ui/Modal'
@@ -14,9 +15,6 @@ import gLogo from 'public/assets/googleLogo.svg'
 
 import s from './SignUp.module.scss'
 
-const TERMS_OF_SERVICE = 'sign-up/terms-of-service'
-const PRIVACY_POLICY = 'sign-up/privacy-policy'
-
 export const SignUp = memo(
   ({
     control,
@@ -24,6 +22,7 @@ export const SignUp = memo(
     emailErrorMessage,
     handleCloseModal,
     isFormValid,
+    isLoading,
     isOpen,
     onSubmit,
     passwordConfirmationErrorMessage,
@@ -82,20 +81,26 @@ export const SignUp = memo(
               <ControlledCheckbox control={control} name={'termsAgreement'} />
               <Typography color={'light'} variant={'link-small'}>
                 I agree to the&nbsp;
-                <Link href={TERMS_OF_SERVICE}>
+                <Link href={ROUTES.TERMS_OF_SERVICE}>
                   <Typography as={'span'} color={'primary'} variant={'link-small'}>
                     {t.auth.termsOfServicePage.title}
                   </Typography>
                 </Link>
                 &nbsp;and&nbsp;
-                <Link href={PRIVACY_POLICY}>
+                <Link href={ROUTES.PRIVACY_POLICY}>
                   <Typography as={'span'} color={'primary'} variant={'link-small'}>
                     {t.auth.privacyPolicyPage.title}
                   </Typography>
                 </Link>
               </Typography>
             </div>
-            <Button className={s.submit} disabled={!isFormValid} fullWidth type={'submit'}>
+            <Button
+              className={s.submit}
+              disabled={!isFormValid}
+              fullWidth
+              isLoading={isLoading}
+              type={'submit'}
+            >
               {t.auth.button.signUpButton}
             </Button>
             <div className={s.signInSuggestion}>

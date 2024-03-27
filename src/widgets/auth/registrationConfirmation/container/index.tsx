@@ -1,5 +1,5 @@
-import { useContainer } from '@/widgets/auth/registrationConfirmation/container/useContainer'
-import { RegistrationConfirmation } from 'src/widgets/auth/registrationConfirmation/ui/RegistrationConfirmation'
+import { RegistrationConfirmation } from '../ui/RegistrationConfirmation'
+import { useContainer } from './useContainer'
 
 export const Container = () => <RegistrationConfirmation {...useContainer()} />
 
