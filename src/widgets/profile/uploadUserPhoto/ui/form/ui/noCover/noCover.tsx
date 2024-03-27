@@ -6,9 +6,10 @@ import Image from 'next/image'
 
 import s from './noCover.module.scss'
 
+import { Local } from '../../../../../../../../locales/en'
 import noCover from '../../../../../../../../public/assets/noCover.svg'
 
-export const NoCover = ({ control, extraActionsUserPhoto }: Props) => {
+export const NoCover = ({ control, extraActionsUserPhoto, t }: Props) => {
   return (
     <>
       <div className={s.noCoverWrapper}>
@@ -20,7 +21,7 @@ export const NoCover = ({ control, extraActionsUserPhoto }: Props) => {
         extraActions={extraActionsUserPhoto}
         name={'userPhoto'}
       >
-        <Typography variant={'h3'}>Select from Computer</Typography>
+        <Typography variant={'h3'}>{t.button.selectFromComputer}</Typography>
       </ControlledFileUploader>
     </>
   )
@@ -29,4 +30,5 @@ export const NoCover = ({ control, extraActionsUserPhoto }: Props) => {
 type Props = {
   control: Control<{ userPhoto?: File | undefined }, any>
   extraActionsUserPhoto: (inputValue: string) => void
+  t: Local
 }

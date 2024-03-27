@@ -33,7 +33,7 @@ export const ControlledFileUploader = <T extends FieldValues>({
         variant={'primary'}
         {...restProps}
       >
-        {children ?? 'Edit'}
+        {children}
       </Button>
       <input
         accept={'image/png, image/jpeg, image/jpg'}
