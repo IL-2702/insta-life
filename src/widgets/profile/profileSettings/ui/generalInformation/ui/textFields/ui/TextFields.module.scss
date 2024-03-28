@@ -1,0 +1,71 @@
+.borderDark300 {
+  border-color: var(--color-dark-100);
+  border-radius: 2px;
+}
+
+.borderRadius {
+  color: #0a6638;
+  outline: 0;
+}
+
+.citiesList {
+  margin-right: -1px;
+  margin-left: -1px;
+
+  background-color: var(--color-dark-500);
+  border-top: none;
+  border-right: 1px solid var(--color-light-100);
+  border-bottom: 1px solid var(--color-light-100);
+  border-left: 1px solid var(--color-light-100);
+  border-radius: 0 0 2px 2px;
+}
+
+.displayNone {
+  display: none;
+}
+
+.city {
+  cursor: pointer;
+
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 12px;
+
+  font: var(--font-regular-14);
+  color: var(--color-light-100);
+
+  &:hover {
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-left: 12px;
+
+    color: var(--color-primary-500);
+
+    background-color: var(--color-dark-300);
+  }
+}
+
+.smallContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.inputWrap {
+  display: flex;
+  flex-direction: column;
+  margin-top: 24px;
+
+  &:first-child {
+    margin-top: -12px;
+  }
+}
+
+.star {
+  color: var(--color-danger-500);
+}
+
+.label {
+  font: var(--font-regular-14);
+  color: var(--color-light-900);
+}

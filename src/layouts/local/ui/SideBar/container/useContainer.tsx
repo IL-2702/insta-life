@@ -3,7 +3,6 @@ import { useState } from 'react'
 import { useAppSelector } from '@/app/store/hooks/useAppSelector'
 import { useLogOutMutation } from '@/services/authService/authEndpoints'
 import { useTranslation } from '@/shared/hooks/useTranslation'
-import { Spinner } from '@/shared/ui/Spinner'
 import { useRouter } from 'next/router'
 
 export const useContainer = () => {
