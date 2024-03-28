@@ -27,7 +27,10 @@ export const UploadUserPhotoForm = ({ currUserPhoto, onClose }: Props) => {
   return (
     <>
       <div className={classNames.errorWrapper}>
-        {userPhotoError && <Typography variant={'error'}>{userPhotoError}</Typography>}
+        {userPhotoError && (
+          //@ts-ignore
+          <Typography variant={'error'}>{t.myProfile.error[userPhotoError]}</Typography>
+        )}
       </div>
 
       <form className={classNames.form} onSubmit={handleSubmit(() => {})}>
