@@ -261,6 +261,7 @@ export const ru: Local = {
           city: 'Город',
           dateOfBirthday: 'Дата рождения',
           email: 'Почта',
+          enterName: 'Введите название города',
           firstname: 'Имя',
           lastname: 'Фамилия',
           username: 'Имя пользователя',

@@ -8,33 +8,36 @@ import { clsx } from 'clsx'
 import s from './TextFields.module.scss'
 
 export const TextFields = memo(
-  ({ cities, city, dropdownOpen, handleInputChange, handleOptionClick }: TextFieldsProps) => {
+  ({ cities, city, dropdownOpen, handleInputChange, handleOptionClick, t }: TextFieldsProps) => {
     return (
       <div className={s.smallContainer}>
         <div className={s.inputWrap}>
           <label className={s.label}>
-            Username<span className={s.star}>*</span>
+            {t.profileSettings.tab.generalInformation.form.username}
+            <span className={s.star}>*</span>
             <TextField />
           </label>
         </div>
         <div className={s.inputWrap}>
           <label className={s.label}>
-            First Name<span className={s.star}>*</span>
+            {t.profileSettings.tab.generalInformation.form.firstname}
+            <span className={s.star}>*</span>
             <TextField />
           </label>
         </div>
         <div className={s.inputWrap}>
           <label className={s.label}>
-            Last Name<span className={s.star}>*</span>
+            {t.profileSettings.tab.generalInformation.form.lastname}
+            <span className={s.star}>*</span>
             <TextField />
           </label>
         </div>
         <div className={s.inputWrap}>
           <label className={s.label}>
-            City
+            {t.profileSettings.tab.generalInformation.form.city}
             <TextField
               onChange={e => handleInputChange(e.target.value)}
-              placeholder={'Enter city name'}
+              placeholder={t.profileSettings.tab.generalInformation.form.enterName}
               value={city}
             />
           </label>
@@ -49,7 +52,7 @@ export const TextFields = memo(
         </div>
         <div className={s.inputWrap}>
           <label className={s.label}>
-            About Me <TextArea rows={3} />
+            {t.profileSettings.tab.generalInformation.form.aboutMe} <TextArea rows={3} />
           </label>
         </div>
       </div>
