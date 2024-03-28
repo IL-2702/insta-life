@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react'
+import { SetStateAction, useEffect, useState } from 'react'
 
+import { useTranslation } from '@/shared/hooks/useTranslation'
 import debounce from 'lodash/debounce'
 
 export const useContainer = () => {
@@ -8,6 +9,8 @@ export const useContainer = () => {
   const [selectedValue, setSelectedValue] = useState('')
   const [dropdownOpen, setDropdownOpen] = useState(false)
 
+  const { t } = useTranslation()
+
   const debouncedSearch = debounce((query: string) => {
     fetch(
       `https://api.geoapify.com/v1/geocode/autocomplete?text=${query}&apiKey=${process.env.NEXT_PUBLIC_GEO_API_KEY}`
@@ -15,7 +18,10 @@ export const useContainer = () => {
       .then(res => res.json())
       .then(({ features }) => {
         if (features) {
-          setCities(features.map((city: any) => city.properties.city))
+          const cities = features.map((city: any) => city.properties.city)
+          const uniqueCities: string[] = Array.from(new Set(cities))
+
+          setCities(uniqueCities as SetStateAction<never[]>)
         }
       })
       .catch(err => console.log(err))
@@ -56,5 +62,5 @@ export const useContainer = () => {
     }
   }, [dropdownOpen])
 
-  return { cities, city, dropdownOpen, handleInputChange, handleOptionClick }
+  return { cities, city, dropdownOpen, handleInputChange, handleOptionClick, t }
 }
