@@ -259,6 +259,7 @@ export const en = {
           city: 'City',
           dateOfBirthday: 'Date of Birthday',
           email: 'Email',
+          enterName: 'Enter City Name',
           firstname: 'First Name',
           lastname: 'Last Name',
           username: 'Username',

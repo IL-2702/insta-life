@@ -3,7 +3,6 @@ import { useState } from 'react'
 import { useAppSelector } from '@/app/store/hooks/useAppSelector'
 import { useLogOutMutation } from '@/services/authService/authEndpoints'
 import { useTranslation } from '@/shared/hooks/useTranslation'
-import { Spinner } from '@/shared/ui/Spinner'
 import { useRouter } from 'next/router'
 
 export const useContainer = () => {
@@ -15,8 +14,6 @@ export const useContainer = () => {
   const { pathname } = router
 
   const [logOut, { isLoading }] = useLogOutMutation()
-
-  console.log('isLoading: ', isLoading)
 
   const handleLogOut = async () => {
     try {
