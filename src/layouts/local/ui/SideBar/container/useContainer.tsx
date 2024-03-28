@@ -16,8 +16,6 @@ export const useContainer = () => {
 
   const [logOut, { isLoading }] = useLogOutMutation()
 
-  console.log('isLoading: ', isLoading)
-
   const handleLogOut = async () => {
     try {
       const res = await logOut().unwrap()
