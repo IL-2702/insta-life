@@ -195,6 +195,11 @@ export const en = {
     successTransactionModalTitle: 'Success',
   },
   myProfile: {
+    error: {
+      imgFormat: 'Only .jpg, .jpeg, .png  formats are supported',
+      imgLarger332: 'Image should be larger than 332x332',
+      imgLess10mb: 'Max image size is 10MB',
+    },
     followers: 'Followers',
     following: 'Following',
     pageTitle: 'My profile',
@@ -284,12 +289,7 @@ export const en = {
     statistics: 'Statistics',
     usersList: 'Users list',
   },
-  statistic: {
-    comments: 'Comments',
-    like: 'Like',
-    month: 'Month',
-    publicationViews: 'Publication views',
-  },
+  statistic: {},
 }
 
 export type Local = typeof en

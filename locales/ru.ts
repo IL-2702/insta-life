@@ -202,6 +202,11 @@ export const ru: Local = {
     successTransactionModalTitle: 'Успех',
   },
   myProfile: {
+    error: {
+      imgFormat: 'Только .jpg, .jpeg, .png  форматы поддерживаются',
+      imgLarger332: 'Изображение должно быть больше 332х332',
+      imgLess10mb: 'Максиамльный размер изображения 10мб',
+    },
     followers: 'Подписчики',
     following: 'Подписки',
     pageTitle: 'Мой профиль',
@@ -291,10 +296,5 @@ export const ru: Local = {
     statistics: 'Статистика',
     usersList: 'Пользователи',
   },
-  statistic: {
-    comments: 'Комментарии',
-    like: 'Понравилось',
-    month: 'Месяц',
-    publicationViews: 'Просмотры публикаций',
-  },
+  statistic: {},
 }
