@@ -1,7 +1,7 @@
 import { SetStateAction, useEffect, useState } from 'react'
 
 import { useTranslation } from '@/shared/hooks/useTranslation'
-import debounce from 'lodash/debounce'
+import { useDebouncedCallback } from 'use-debounce'
 
 export const useContainer = () => {
   const [cities, setCities] = useState([])
@@ -11,7 +11,7 @@ export const useContainer = () => {
 
   const { t } = useTranslation()
 
-  const debouncedSearch = debounce((query: string) => {
+  const debouncedSearch = useDebouncedCallback((query: string) => {
     fetch(
       `https://api.geoapify.com/v1/geocode/autocomplete?text=${query}&apiKey=${process.env.NEXT_PUBLIC_GEO_API_KEY}`
     )
